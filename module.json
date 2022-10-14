@@ -63,6 +63,8 @@
             "name": "Exocist"
         }
     ],
+    "manifest": "https://raw.githubusercontent.com/Exocist/ICON-1.45-WIP/main/module.json",
+    "download": "https://github.com/Exocist/ICON-1.45-WIP/archive/refs/tags/Alpha.zip"
     "minimumCoreVersion": "0.8.0",
     "compatibleCoreVersion": "9",
     "compatibility": {
