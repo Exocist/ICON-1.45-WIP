@@ -55,6 +55,14 @@
             "path": "packs/icon-macros.db",
             "entity": "Macro",
             "module": "icon-145-data-wip"
+        },
+{
+            "name": "seer-cards",
+            "label": "Seer Cards",
+            "type": "Cards",
+            "path": "packs/seer-cards.db",
+            "entity": "Cards",
+            "module": "icon-145-data-wip"
         }
     ],
     "id": "icon-145-data-wip",
