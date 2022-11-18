@@ -39,6 +39,15 @@
       "flags": {}
     },
     {
+      "name": "effects",
+      "label": "Effects",
+      "type": "Item",
+      "system": "worldbuilding",
+      "path": "packs/effects.db",
+      "private": false,
+      "flags": {}
+    },
+    {
       "name": "rules",
       "label": "Rules",
       "type": "JournalEntry",
@@ -62,14 +71,14 @@
       "private": false,
       "flags": {}
     },
-	{
-            "name": "maps",
-            "label": "Maps",
-            "type": "Scene",
-            "path": "packs/maps.db",
-            "entity": "Scene",
-            "module": "icon-145-data-wip"
-        }
+    {
+      "name": "maps",
+      "label": "Maps",
+      "type": "Scene",
+      "path": "packs/maps.db",
+      "private": false,
+      "flags": {}
+    }
   ],
   "id": "icon-145-data-wip",
   "authors": [
