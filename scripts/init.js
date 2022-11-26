@@ -4,7 +4,7 @@ class ICONSheet extends SimpleActorSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["ICONSheet", "worldbuilding", "sheet", "actor"],
-      template: "modules/icon-145-sheet/templates/icon-actor-sheet.html",
+      template: "modules/icon-145-data-wip/templates/icon-actor-sheet.html",
       width: 600,
       height: 600,
       tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}],
@@ -59,7 +59,7 @@ class ICONSheet extends SimpleActorSheet {
       //labels: item.system,
 	  //img: item.img
     };
-    const html = await renderTemplate("modules/icon-145-sheet/templates/chatcard.hbs", templateData);
+    const html = await renderTemplate("modules/icon-145-data-wip/templates/chatcard.hbs", templateData);
     // Create the ChatMessage data object
     const chatData = {
       user: game.user.id,
