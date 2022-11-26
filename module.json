@@ -80,6 +80,15 @@
       "flags": {}
     }
   ],
+  "esmodules": [
+   	 "scripts/init.js"
+  	],
+   "templates": [
+   	 "templates/icon-actor-sheet.html"
+  	],
+   "styles": [
+	"templates/itemsummary.css"
+	],
   "id": "icon-145-data-wip",
   "authors": [
     {

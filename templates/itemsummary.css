@@ -1,0 +1,14 @@
+/* GM AND PLAYER DISPLAY MODE */
+body :root {
+  --requestor-display-player: block;
+  --requestor-display-gm: block;
+}
+
+.ICONSheet .item-list .item-summary {
+  flex: 0 0 100%;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 0.25em 0.5em;
+  color: #191813;
+  border-top: 1px solid #c9c7b8;
+}
