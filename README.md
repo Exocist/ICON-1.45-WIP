@@ -1,5 +1,4 @@
-29/11/2022 - All artillery foes finished
-All heavy foes finishes
+29/11/2022 - All artillery & heavy foes finished
 
 28/11/2022 - All traits for all foes are hyperlinked.
 Starting work on hyperlinking and adding tags to all foe abilities.
