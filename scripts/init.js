@@ -56,7 +56,7 @@ class ICONSheet extends SimpleActorSheet {
       tokenId: token?.uuid || null,
       title: item.name,
       description: item.system.description,
-      //labels: item.system,
+      labels: item.system,
 	  //img: item.img
     };
     const html = await renderTemplate("modules/icon-145-data-wip/templates/chatcard.hbs", templateData);

@@ -1,3 +1,5 @@
+30/11/2022 - All foes completely hyperlinked and tagged.
+
 29/11/2022 - All artillery, leader & heavy foes finished
 
 28/11/2022 - All traits for all foes are hyperlinked.
