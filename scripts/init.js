@@ -145,5 +145,5 @@ static get defaultOptions() {
   }
   
 }
-Actors.registerSheet("icon-player-sheet", IconPlayerSheet, { makeDefault: true });
-Actors.registerSheet("icon-145-data-wip", ICONSheet, { makeDefault: false });
+Actors.registerSheet("icon-player-sheet", IconPlayerSheet, { makeDefault: false });
+Actors.registerSheet("icon-145-data-wip", ICONSheet, { makeDefault: true });
