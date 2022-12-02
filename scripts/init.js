@@ -8,9 +8,17 @@ class ICONSheet extends SimpleActorSheet {
       width: 600,
       height: 600,
       tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}],
-      scrollY: [".biography", ".items", ".attributes"],
-      dragDrop: [{dragSelector: ".item-list .item", dropSelector: null}]
+      scrollY: [".traits", ".items", ".attributes"],
+      dragDrop: [{dragSelector: ".trait-list .item-list .item", dropSelector: null}]
     });
+  }
+  
+  async getData(options) {
+    const context = await super.getData(options);
+    for (const item of context.data.items) {
+		item.isTrait = item.flags?.['icon-145-data-wip']?.isTrait || false
+	}
+    return context;
   }
   
   async _onItemSummary(event) {
@@ -74,10 +82,68 @@ class ICONSheet extends SimpleActorSheet {
 	return card
   }
   
+  _onTraitControl(event) {
+	console.log("here")
+    event.preventDefault();
+	
+    // Obtain event data
+    const button = event.currentTarget;
+    const li = button.closest(".item");
+    const item = this.actor.items.get(li?.dataset.itemId);
+
+    // Handle different actions
+    switch ( button.dataset.action ) {
+      case "create":
+        const cls = getDocumentClass("Item");
+        return cls.create({
+			name: game.i18n.localize("SIMPLE.ItemNew"), 
+			type: "item", 
+			flags: { ['icon-145-data-wip'] : { isTrait: true }} }, 
+			{parent: this.actor});
+      case "edit":
+        return item.sheet.render(true);
+      case "delete":
+        return item.delete();
+    }
+  }
+
+  
   activateListeners(html) {
     super.activateListeners(html);
 	html.find(".item-name").click(event => this._onItemSummary(event));
+	html.find(".trait-control").click(this._onTraitControl.bind(this));
 	html.find("[data-item-id] img").click(event => this._onItemUse(event));
 }
+
+
 }
-Actors.registerSheet("icon-145-sheet", ICONSheet, { makeDefault: true });
+
+class IconPlayerSheet extends ICONSheet {
+static get defaultOptions() {
+    return foundry.utils.mergeObject(super.defaultOptions, {
+      classes: ["IconPlayerSheet", "ICONSheet", "worldbuilding", "sheet", "actor"],
+      template: "modules/icon-145-data-wip/templates/icon-player-sheet.html",
+      width: 700,
+      height: 700,
+      tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}],
+      scrollY: [".narrative", ".biography", ".items", ".attributes"],
+      dragDrop: [{dragSelector: ".item-list .item", dropSelector: null}]
+    });
+  }
+  
+  async getData(options) {
+    const context = await super.getData(options);
+    context.narrativeHTML = await TextEditor.enrichHTML(context.systemData.narrative, {
+      secrets: this.document.isOwner,
+      async: true
+    });
+    return context;
+  }
+  
+  activateListeners(html) {
+    super.activateListeners(html);
+  }
+  
+}
+Actors.registerSheet("icon-player-sheet", IconPlayerSheet, { makeDefault: true });
+Actors.registerSheet("icon-145-data-wip", ICONSheet, { makeDefault: false });

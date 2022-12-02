@@ -81,13 +81,17 @@
     }
   ],
   "esmodules": [
-   	 "scripts/init.js"
+   	 "scripts/init.js",
+	 "scripts/blades-roll.js",
+	 "scripts/blades-helpers.js"
   	],
-   "templates": [
-   	 "templates/icon-actor-sheet.html"
+	"templates": [
+   	 "templates/icon-actor-sheet.html",
+   	 "templates/icon-player-sheet.html"	
   	],
-   "styles": [
-	"templates/itemsummary.css"
+	"styles": [
+	"templates/itemsummary.css",
+	"icon.css"
 	],
   "id": "icon-145-data-wip",
   "authors": [
