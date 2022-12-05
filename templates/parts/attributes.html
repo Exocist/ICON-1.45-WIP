@@ -1,0 +1,20 @@
+<div class="tab narrative" data-group="primary" data-tab="narrative">
+            {{!-- Skills --}}
+	{{#each actor.system.attributes.skills as |skill skill_name|}}
+
+    <div class="flex-horizontal">
+      <div class="attributes-container">
+
+        {{#multiboxes skill.value}}
+
+        {{#times_from_0 4}}
+        <input type="radio" id="attributes-{{../../actor._id}}-{{skill_name}}-{{this}}"
+               name="system.attributes.skills.{{skill_name}}.value" value="{{this}}">
+        <label for="attributes-{{../../actor._id}}-{{skill_name}}-{{this}}"></label>
+        {{/times_from_0}}
+
+        <div class="attribute-skill-label roll-die-attribute rollable-text" data-roll-attribute="{{skill_name}}">{{localize skill.label}}</div>
+        {{/multiboxes}}
+      </div>
+    </div>
+    {{/each}}

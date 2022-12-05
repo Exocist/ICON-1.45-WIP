@@ -1,3 +1,98 @@
 .worldbuilding .item-list .trait-controls {
   flex: 0 0 36px;
 }
+.worldbuilding.actor * .attributes-container {
+  display: flex;
+  margin: 3px 0px;
+  display: flex;
+  /* Hide the browser's default checkbox */
+}
+.worldbuilding.actor * .attributes-container label {
+  height: 15px;
+  width: 15px;
+  background-color: #191813;
+  vertical-align: middle;
+  border: 2px solid #191813;
+  border-radius: 24px;
+  transition: filter 0.1s;
+  cursor: pointer;
+}
+.worldbuilding.actor * .attributes-container label[for$="-0"] {
+  height: 5px;
+  width: 5px;
+  border-radius: 24px;
+  background-image: none !important;
+  background-color: red !important;
+  margin-right: 0px;
+}
+.worldbuilding.actor * .attributes-container label:hover {
+  filter: brightness(0.7);
+  opacity: 0.7;
+}
+.worldbuilding.actor * .attributes-container input {
+  display: none;
+}
+.worldbuilding.actor * .attributes-container input:checked ~ label {
+  background-color: #EEEFFF;
+}
+.worldbuilding.actor * .attributes-container input:checked + label {
+  transition: filter 0.1s;
+  cursor: pointer;
+  background-color: #191813;
+}
+.worldbuilding.actor * .attributes-container input:checked + label:hover {
+  filter: brightness(0.7);
+  opacity: 0.7;
+}
+.worldbuilding.actor * .attributes-container * {
+  margin-right: 5px;
+}
+.worldbuilding .icon-resource {
+  display: flexrow;
+  width: 25%;
+  height: 40px;
+  margin-top: 10px;
+  float: left;
+  text-align: center;
+}
+.worldbuilding .icon-resource input {
+  width: 50px;
+  height: 28px;
+}
+.worldbuilding .resource-label {
+	display:flex;
+	flex-flow:row;
+	vertical-align: top;
+	flex: 1 100%;
+	justify-content: center;
+}
+
+.worldbuilding .icon-sheet-header {
+  flex: 0 0 120px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+.worldbuilding .icon-sheet-header .profile-img {
+  flex: 0 0 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+.worldbuilding .icon-sheet-header .header-fields {
+  flex: 1;
+  height: 100px;
+}
+.worldbuilding .icon-sheet-header h1.charname {
+  height: 50px;
+  padding: 0px;
+  margin: 5px 0;
+  border-bottom: 0;
+}
+.worldbuilding .icon-sheet-header h1.charname input {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}

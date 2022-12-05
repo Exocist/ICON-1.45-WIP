@@ -1,28 +1,42 @@
 <form class="flexcol {{cssClass}}" autocomplete="off">
 
     {{!-- Sheet Header --}}
-    <header class="sheet-header">
+    <header class="icon-sheet-header">
         <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" height="100" width="100" />
-        <div class="header-fields">
+        <div class="header-fields flex-group-center">
             <h1 class="charname">
                 <input name="name" type="text" value="{{data.name}}" placeholder="Name" />
             </h1>
-            <div class="resource">
+            <div class="icon-resource">
+				<label for="data.health.value" class="resource-label">Health</label>
                 <input type="number" name="system.health.value" value="{{systemData.health.value}}"/>
                 <span> / </span>
                 <input type="number" name="system.health.max" value="{{systemData.health.max}}"/>
             </div>
-            <div class="resource">
+            <div class="icon-resource">
+				<label for="data.power.value" class="resource-label">Job Resource</label>
                 <input type="number" name="system.power.value" value="{{systemData.power.value}}"/>
                 <span> / </span>
                 <input type="number" name="system.power.max" value="{{systemData.power.max}}"/>
+            </div>
+			<div class="icon-resource">
+				<label for="data.strain.value" class="resource-label">Strain</label>
+                <input type="number" name="system.strain.value" value="{{systemData.strain.value}}"/>
+                <span> / </span>
+                <input type="number" name="system.strain.max" value="{{systemData.strain.max}}"/>
+            </div>
+            <div class="icon-resource">
+				<label for="data.effort.value" class="resource-label">Effort</label>
+                <input type="number" name="system.effort.value" value="{{systemData.effort.value}}"/>
+                <span> / </span>
+                <input type="number" name="system.effort.max" value="{{systemData.effort.max}}"/>
             </div>
         </div>
     </header>
 
     {{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="primary">
-		<a class="item" data-tab="description">Narrative</a>
+		<a class="item" data-tab="description">Description</a>
         <a class="item" data-tab="traits">Traits & Relics</a>
         <a class="item" data-tab="items">Abilities</a>
         <a class="item" data-tab="attributes">Attributes</a>
@@ -31,7 +45,7 @@
     {{!-- Sheet Body --}}
     <section class="sheet-body">
 
-        {{!-- Narrative Tab --}}
+        {{!-- Description Tab --}}
         <div class="tab description" data-group="primary" data-tab="description">
             {{editor biographyHTML target="system.biography" button=true editable=editable engine="prosemirror"}}
         </div>

@@ -1,3 +1,5 @@
+5/12/2022 - Added strain and effort to player sheets.
+
 2/12/2022 - Slight sheet modification to allow a second set of items ("Traits"), meaning you can paste these to chat.
 Player sheets should have a narrative section (currently blank) where foe sheets do not.
 WIP copying from the blades module to get the narrative section functional.

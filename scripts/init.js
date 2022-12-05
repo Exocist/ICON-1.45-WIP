@@ -1,5 +1,34 @@
 import { SimpleActorSheet } from "../../../systems/worldbuilding/module/actor-sheet.js";
 
+Handlebars.registerHelper('multiboxes', function(selected, options) {
+
+    let html = options.fn(this);
+
+    // Fix for single non-array values.
+    if ( !Array.isArray(selected) ) {
+      selected = [selected];
+    }
+
+    if (typeof selected !== 'undefined') {
+      selected.forEach(selected_value => {
+        if (selected_value !== false) {
+          let escapedValue = RegExp.escape(Handlebars.escapeExpression(selected_value));
+          let rgx = new RegExp(' value=\"' + escapedValue + '\"');
+          let oldHtml = html;
+          html = html.replace(rgx, "$& checked");
+          while( ( oldHtml === html ) && ( escapedValue >= 0 ) ){
+            escapedValue--;
+            rgx = new RegExp(' value=\"' + escapedValue + '\"');
+            html = html.replace(rgx, "$& checked");
+          }
+        }
+      });
+    }
+	if (html !== null) {
+    return html;
+	}
+  });
+
 class ICONSheet extends SimpleActorSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -113,6 +142,11 @@ class ICONSheet extends SimpleActorSheet {
 	html.find(".item-name").click(event => this._onItemSummary(event));
 	html.find(".trait-control").click(this._onTraitControl.bind(this));
 	html.find("[data-item-id] img").click(event => this._onItemUse(event));
+}
+
+_updateObject(event, formData) {
+  console.log("FormData:", duplicate(formData));
+  super._updateObject(event, formData);
 }
 
 
