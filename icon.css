@@ -218,12 +218,12 @@
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-10-9-wallflower_green {
 	left: 10px;
-	top: -13px;
+	top: -10px;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-10-10-wallflower_green {
-	left: 4px;
-	top: -23px;
+	left: 3px;
+	top: -20px;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input[value="0"] {
