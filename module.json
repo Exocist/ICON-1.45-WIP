@@ -1,6 +1,44 @@
 {
   "title": "ICON 1.45 Data (WIP)",
   "description": "Data for ICON 1.45 Foes, Abilities, Jobs &amp; Relics. Incomplete.",
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json",
+      "flags": {}
+    },
+    {
+      "lang": "ru",
+      "name": "Russian",
+      "path": "lang/ru.json",
+      "flags": {}
+    },
+    {
+      "lang": "es",
+      "name": "Spanish",
+      "path": "lang/es.json",
+      "flags": {}
+    },
+    {
+      "lang": "pl",
+      "name": "Polish",
+      "path": "lang/pl.json",
+      "flags": {}
+    },
+    {
+      "lang": "de",
+      "name": "Deutsch",
+      "path": "lang/de.json",
+      "flags": {}
+    },
+    {
+      "lang": "pt",
+      "name": "Portuguese",
+      "path": "lang/pt.json",
+      "flags": {}
+    }
+  ],
   "packs": [
     {
       "name": "foes",
@@ -83,11 +121,16 @@
   "esmodules": [
    	 "scripts/init.js",
 	 "scripts/blades-roll.js",
-	 "scripts/blades-helpers.js"
+	 "scripts/blades-helpers.js",
+	 "scripts/blades-actor.js",
+	 "scripts/blades-clock-sheet.js",
+	 "scripts/blades-sheet.js",
+	 "scripts/templates.js"
   	],
 	"templates": [
    	 "templates/icon-actor-sheet.html",
-   	 "templates/icon-player-sheet.html"	
+   	 "templates/icon-player-sheet.html",
+	 "templates/icon-sheet-old.html"
   	],
 	"styles": [
 	"templates/itemsummary.css",

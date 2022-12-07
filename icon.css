@@ -1,54 +1,296 @@
 .worldbuilding .item-list .trait-controls {
   flex: 0 0 36px;
 }
-.worldbuilding.actor * .attributes-container {
-  display: flex;
-  margin: 3px 0px;
-  display: flex;
-  /* Hide the browser's default checkbox */
+
+.worldbuilding .skills {
+	width: 150px;
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
-.worldbuilding.actor * .attributes-container label {
-  height: 15px;
-  width: 15px;
-  background-color: #191813;
-  vertical-align: middle;
-  border: 2px solid #191813;
-  border-radius: 24px;
-  transition: filter 0.1s;
-  cursor: pointer;
+
+.worldbuilding .narrative .skill-label {
+	display: flex;
+	margin-left: 7px;
+	flex-wrap: nowrap;
+	flex: 45%;
 }
-.worldbuilding.actor * .attributes-container label[for$="-0"] {
-  height: 5px;
-  width: 5px;
-  border-radius: 24px;
-  background-image: none !important;
-  background-color: red !important;
-  margin-right: 0px;
+
+.worldbuilding .narrative .skill-ratings {
+    display: flex;
+    flex-wrap: nowrap;
+    flex: 10%;
+    justify-content: flex-start;
 }
-.worldbuilding.actor * .attributes-container label:hover {
-  filter: brightness(0.7);
-  opacity: 0.7;
+
+.worldbuilding * .character-burden-clock .blades-clock {
+	width: 88px;
+	height: 88px;
+	background-size: cover;
 }
-.worldbuilding.actor * .attributes-container input {
+
+.worldbuilding * .character-burden-clock {
+	margin-top: 20px;
+	display: flex;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-4-1-gms_red {
+	left: 49px;
+	top: 22px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-4-2-gms_red {
+	left: 28px;
+	top: 55px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-4-3-gms_red {
+	left: -25px;
+	top: 55px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-4-4-gms_red {
+	left: -45px;
+	top: 23px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-6-1-gms_red {
+	left: 33px;
+	top: 15px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-6-2-gms_red {
+	left: 30px;
+	top: 27px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-6-3-gms_red {
+	left: 10px;
+	top: 49px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-6-4-gms_red {
+	left: -29px;
+	top: 60px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-6-5-gms_red {
+	left: 13px;
+	top: 33px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-6-6-gms_red {
+	left: -8px;
+	top: 10px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-8-1-gms_red {
+	left: 43px;
+	top: 15px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-8-2-gms_red {
+	left: 34px;
+	top: 29px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-8-3-gms_red {
+	left: 13px;
+	top: 47px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-8-4-gms_red {
+	left: -20px;
+	top: 60px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-8-5-gms_red {
+	left: 24px;
+	top: 43px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-8-6-gms_red {
+	left: -10px;
+	top: 30px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-8-7-gms_red {
+	left: -31px;
+	top: 12px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-8-8-gms_red {
+	left: -38px;
+	top: -2px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-4-1-wallflower_green {
+	left: 49px;
+	top: 22px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-4-2-wallflower_green {
+	left: 28px;
+	top: 55px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-4-3-wallflower_green {
+	left: -25px;
+	top: 55px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-4-4-wallflower_green {
+	left: -45px;
+	top: 23px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-6-1-wallflower_green {
+	left: 33px;
+	top: 15px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-6-2-wallflower_green {
+	left: 30px;
+	top: 27px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-6-3-wallflower_green {
+	left: 10px;
+	top: 49px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-6-4-wallflower_green {
+	left: -29px;
+	top: 60px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-6-5-wallflower_green {
+	left: 13px;
+	top: 33px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-6-6-wallflower_green {
+	left: -8px;
+	top: 10px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-10-1-wallflower_green {
+	left: 42px;
+	top: 10px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-10-2-wallflower_green {
+	left: 35px;
+	top: 20px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-10-3-wallflower_green {
+	left: 20px;
+	top: 37px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-10-4-wallflower_green {
+	left: -7px;
+	top: 55px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-10-5-wallflower_green {
+	left: 42px;
+	top: 48px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-10-6-wallflower_green {
+	left: 4px;
+	top: 48px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-10-7-wallflower_green {
+	left: -32px;
+	top: 37px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-10-8-wallflower_green {
+	left: -58px;
+	top: 21px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-10-9-wallflower_green {
+	left: 10px;
+	top: -13px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input#clock-10-10-wallflower_green {
+	left: -23px;
+	top: 3px;
+}
+
+.worldbuilding * .character-burden-clock .blades-clock input[value="0"] {
   display: none;
+  position: absolute;
 }
-.worldbuilding.actor * .attributes-container input:checked ~ label {
-  background-color: #EEEFFF;
+
+.fa-circle:before; {
+	color: pink;
 }
-.worldbuilding.actor * .attributes-container input:checked + label {
-  transition: filter 0.1s;
-  cursor: pointer;
-  background-color: #191813;
+
+.fa-minus-circle:before {
+    color: transparent;
+    height: 5px;
+    width: 5px;
+    border-radius: 24px;
+    background-image: none;
+    background-color: red;
 }
-.worldbuilding.actor * .attributes-container input:checked + label:hover {
-  filter: brightness(0.7);
-  opacity: 0.7;
+
+.worldbuilding .narrative .skill-ratings .fa-trash {
+	height: 5px;
+	width: 5px;
+	color: pink;
+    display: flex;
+    flex-wrap: nowrap;
+    flex: 10%;
+    justify-content: flex-start;
 }
-.worldbuilding.actor * .attributes-container * {
-  margin-right: 5px;
+
+.worldbuilding .icon-header-grid {
+  overflow: hidden;
+  display: inline-grid;
+  column-gap: 10px;
+  grid-template-columns: 50px 120px 120px 120px 120px 120px;
+  grid-template-rows: 60px 70px;
+  flex: 0 0 130px;
 }
+
+.icon-header-grid-item-1 {
+	grid-column: 1 / 1;
+	grid-row: 1 / 1;
+}
+
+.icon-header-grid-item-2 {
+	grid-column: 2 / span 3;
+	grid-row: 1 / 1;
+}
+
+.icon-header-grid-item-3 {
+	grid-column: 5 / 5;
+	grid-row: 1 / 2;
+	width: 110px;
+}
+
+.icon-header-grid-item-4 {
+	grid-column: 6 / 6;
+	grid-row: 1 / 2;
+	width: 110px;
+}
+
+.icon-header-grid-item-5 {
+	grid-column: 1 / span 4;
+	grid-row: 2 / 2;
+}
+
 .worldbuilding .icon-resource {
-  display: flexrow;
   width: 25%;
   height: 40px;
   margin-top: 10px;
@@ -56,7 +298,7 @@
   text-align: center;
 }
 .worldbuilding .icon-resource input {
-  width: 50px;
+  width: 28px;
   height: 28px;
 }
 .worldbuilding .resource-label {
@@ -67,23 +309,15 @@
 	justify-content: center;
 }
 
-.worldbuilding .icon-sheet-header {
-  flex: 0 0 120px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  margin-bottom: 10px;
-}
 .worldbuilding .icon-sheet-header .profile-img {
   flex: 0 0 100px;
-  height: 100px;
+  height: 50px;
+  width: 50px;
   margin-right: 10px;
 }
 .worldbuilding .icon-sheet-header .header-fields {
   flex: 1;
-  height: 100px;
+  height: 50px;
 }
 .worldbuilding .icon-sheet-header h1.charname {
   height: 50px;
@@ -95,4 +329,66 @@
   width: 100%;
   height: 100%;
   margin: 0;
+}
+
+
+.chat-label {
+  background-color: #191813;
+  font-family: Kirsty, serif;
+  color: #EEEFFF;
+  font-size: 21px;
+  text-align: center;
+  padding: 0px 5px;
+  height: 30px !important;
+  text-transform: capitalize;
+}
+
+.chat-label-small {
+  background-color: #999;
+  color: #191813;
+  font-size: small;
+  text-align: center;
+  padding: 3px 5px;
+  height: 20px !important;
+}
+
+.label-stripe-chat {
+  text-transform: uppercase;
+  background-color: #191813;
+  color: #EEEFFF;
+  margin-bottom: 10px;
+  position: relative;
+  padding-top: 3px;
+  display: flex;
+  font-weight: bold;
+  margin: 0;
+}
+
+.label-stripe-chat-small {
+  text-transform: capitalize;
+  background-color: #999;
+  color: #191813;
+  margin-bottom: 10px;
+  position: relative;
+  padding-top: 3px;
+  display: flex;
+  font-weight: bold;
+}
+
+.blades-die-tooltip .die {
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: large;
+}
+.blades-die-tooltip .die.critical-success {
+  color: #12a012;
+}
+.blades-die-tooltip .die.success {
+  color: #008000;
+}
+.blades-die-tooltip .die.partial-success {
+  color: #04578f;
+}
+.blades-die-tooltip .die.failure {
+  color: red;
 }

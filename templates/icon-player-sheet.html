@@ -1,12 +1,30 @@
 <form class="flexcol {{cssClass}}" autocomplete="off">
 
     {{!-- Sheet Header --}}
-    <header class="icon-sheet-header">
-        <img class="profile-img" src="{{data.img}}" data-edit="img" title="{{data.name}}" height="100" width="100" />
-        <div class="header-fields flex-group-center">
+    <header class="icon-sheet-header icon-header-grid">
+        <img class="profile-img icon-header-grid-item-1" src="{{data.img}}" data-edit="img" title="{{data.name}}" height="100" width="100" />
+        <div class="header-fields flex-group-center icon-header-grid-item-2">
             <h1 class="charname">
                 <input name="name" type="text" value="{{data.name}}" placeholder="Name" />
             </h1>
+		</div>
+		<div class="narrative-information icon-header-grid-item-3">
+			<span>Kintype: </span>
+			<input type="text" name="system.attributes.information.kintype.value" placeholder="Arken" value="{{data.system.attributes.information.kintype.value}}"/>
+			<span>Culture: </span>
+			<input type="text" name="system.attributes.information.culture.value" placeholder="Arken" value="{{data.system.attributes.information.culture.value}}"/>
+			<span>Bond: </span>
+			<input type="text" name="system.attributes.information.bond.value" placeholder="Arkenlord" value="{{data.system.attributes.information.bond.value}}"/>
+		</div>
+		<div class="tactical-information icon-header-grid-item-4">
+			<span>Class: </span>
+			<input type="text" name="system.attributes.information.class.value" placeholder="Mendicant" value="{{data.system.attributes.information.class.value}}"/>
+			<span>Job: </span>
+			<input type="text" name="system.attributes.information.job.value" placeholder="Seer" value="{{data.system.attributes.information.job.value}}"/>
+			<span>Level: </span>
+			<input type="text" name="system.attributes.information.level.value" placeholder="1" value="{{data.system.attributes.information.level.value}}"/>
+		</div>
+		<div class="icon-resource-inputs icon-header-grid-item-5">
             <div class="icon-resource">
 				<label for="data.health.value" class="resource-label">Health</label>
                 <input type="number" name="system.health.value" value="{{systemData.health.value}}"/>
@@ -31,12 +49,12 @@
                 <span> / </span>
                 <input type="number" name="system.effort.max" value="{{systemData.effort.max}}"/>
             </div>
-        </div>
+		</div>
     </header>
 
     {{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="primary">
-		<a class="item" data-tab="description">Description</a>
+		<a class="item" data-tab="narrative">Narrative</a>
         <a class="item" data-tab="traits">Traits & Relics</a>
         <a class="item" data-tab="items">Abilities</a>
         <a class="item" data-tab="attributes">Attributes</a>
@@ -45,9 +63,39 @@
     {{!-- Sheet Body --}}
     <section class="sheet-body">
 
-        {{!-- Description Tab --}}
-        <div class="tab description" data-group="primary" data-tab="description">
-            {{editor biographyHTML target="system.biography" button=true editable=editable engine="prosemirror"}}
+		{{!-- Narrative Tab --}}
+        <div class="tab narrative" data-group="primary" data-tab="narrative">
+		<section class="skills">
+        {{#if actor.system.attributes.skills }}
+		{{#each actor.system.attributes.skills as |skill skill_name|}}
+		{{#times_from_0 4}}
+		<i class="fas {{#if (eq this 0)}}
+		fa-minus-circle
+		{{else if (gte skill.value this)}}
+		fa-circle
+		{{else}}
+		fa-circle-dashed
+		{{/if}} click-to-set skill-ratings skill-value-{{this}}" data-value="{{this}}" data-stat="system.attributes.skills.{{skill_name}}.value" id="attributes-{{../../actor._id}}-{{skill_name}}-{{this}}"></i>
+		<label for="attributes-{{../../actor._id}}-{{skill_name}}-{{this}}"></label>
+		{{/times_from_0}}
+		<div class="skill-label roll-die-attribute rollable-text" data-roll-attribute="{{skill_name}}">{{localize skill.label}}</div>
+		{{/each}}
+		{{/if}}
+		</section>
+		<section class="burdens">
+		<div class="character-burden-clock">
+		{{{blades-clock "system.attributes.clocks.Burden4.value" 4 this.actor.system.attributes.clocks.Burden4.value this.data._id "gms_red"}}}
+		{{{blades-clock "system.attributes.clocks.Burden6.value" 6 this.actor.system.attributes.clocks.Burden6.value this.data._id "gms_red"}}}
+		{{{blades-clock "system.attributes.clocks.Burden8.value" 8 this.actor.system.attributes.clocks.Burden8.value this.data._id "gms_red"}}}
+		</div>
+		</section>
+		<section class="ambitions">
+		<div class="character-burden-clock">
+		{{{blades-clock "system.attributes.clocks.Ambition4.value" 4 this.actor.system.attributes.clocks.Ambition4.value this.data._id "wallflower_green"}}}
+		{{{blades-clock "system.attributes.clocks.Ambition6.value" 6 this.actor.system.attributes.clocks.Ambition6.value this.data._id "wallflower_green"}}}
+		{{{blades-clock "system.attributes.clocks.Ambition10.value" 10 this.actor.system.attributes.clocks.Ambition10.value this.data._id "wallflower_green"}}}
+		</div>
+		</section>
         </div>
 		
 		{{!-- Traits Tab --}}
@@ -171,11 +219,11 @@
             </header>
 
             {{!-- Render the attribute list partial. --}}
-            {{> "systems/worldbuilding/templates/parts/sheet-attributes.html" attributes=systemData.ungroupedAttributes dtypes=dtypes}}
+            {{> "modules/icon-145-data-wip/templates/parts/icon-sheet-attributes.html" attributes=systemData.ungroupedAttributes dtypes=dtypes}}
 
             {{!-- Render the grouped attributes partial and control. --}}
             <div class="groups">
-                {{> "systems/worldbuilding/templates/parts/sheet-groups.html" attributes=systemData.groupedAttributes groups=systemData.groups dtypes=dtypes}}
+                {{> "modules/icon-145-data-wip/templates/parts/icon-sheet-groups.html" attributes=systemData.groupedAttributes groups=systemData.groups dtypes=dtypes}}
 
                 <div class="group-controls flexrow">
                     <input class="group-prefix" type="text" value=""/>

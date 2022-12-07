@@ -1,3 +1,5 @@
+8/12/2022 - Added narrative section and some basic functionality. Still working on this.
+
 5/12/2022 - Added strain and effort to player sheets.
 
 2/12/2022 - Slight sheet modification to allow a second set of items ("Traits"), meaning you can paste these to chat.
