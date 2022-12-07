@@ -222,8 +222,8 @@
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-10-10-wallflower_green {
-	left: -23px;
-	top: 3px;
+	left: 4px;
+	top: -23px;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input[value="0"] {
