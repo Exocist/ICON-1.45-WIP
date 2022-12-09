@@ -116,6 +116,16 @@
       "path": "packs/maps.db",
       "private": false,
       "flags": {}
+    },
+    {
+      "label": "Bond Powers",
+      "type": "Item",
+      "name": "bond-powers",
+      "path": "packs/bond-powers.db",
+      "system": "worldbuilding",
+      "private": false,
+      "flags": {},
+      "package": "world"
     }
   ],
   "esmodules": [
@@ -150,5 +160,5 @@
     "minimum": "9",
     "verified": "10"
   },
-  "version": "1.2.2"
+  "version": "1.3"
 }

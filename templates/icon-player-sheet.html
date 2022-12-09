@@ -54,10 +54,10 @@
 
     {{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="primary">
-		<a class="item" data-tab="narrative">Narrative</a>
-        <a class="item" data-tab="traits">Traits & Relics</a>
-        <a class="item" data-tab="items">Abilities</a>
-        <a class="item" data-tab="attributes">Attributes</a>
+		<a class="item" data-tab="narrative" data-group="primary">Narrative</a>
+        <a class="item" data-tab="traits" data-group="primary">Traits & Relics</a>
+        <a class="item" data-tab="items" data-group="primary">Abilities</a>
+        <a class="item" data-tab="attributes" data-group="primary">Attributes</a>
     </nav>
 
     {{!-- Sheet Body --}}
@@ -65,16 +65,17 @@
 
 		{{!-- Narrative Tab --}}
         <div class="tab narrative" data-group="primary" data-tab="narrative">
+		<div class="narrative-grid">
 		<section class="skills">
         {{#if actor.system.attributes.skills }}
 		{{#each actor.system.attributes.skills as |skill skill_name|}}
 		{{#times_from_0 4}}
-		<i class="fas {{#if (eq this 0)}}
-		fa-minus-circle
+		<i class="{{#if (eq this 0)}}
+		fab fa-creative-commons-zero
 		{{else if (gte skill.value this)}}
-		fa-circle
+		fas fa-circle
 		{{else}}
-		fa-circle-dashed
+		fas fa-circle-dashed
 		{{/if}} click-to-set skill-ratings skill-value-{{this}}" data-value="{{this}}" data-stat="system.attributes.skills.{{skill_name}}.value" id="attributes-{{../../actor._id}}-{{skill_name}}-{{this}}"></i>
 		<label for="attributes-{{../../actor._id}}-{{skill_name}}-{{this}}"></label>
 		{{/times_from_0}}
@@ -88,6 +89,11 @@
 		{{{blades-clock "system.attributes.clocks.Burden6.value" 6 this.actor.system.attributes.clocks.Burden6.value this.data._id "gms_red"}}}
 		{{{blades-clock "system.attributes.clocks.Burden8.value" 8 this.actor.system.attributes.clocks.Burden8.value this.data._id "gms_red"}}}
 		</div>
+		<div class="burden-names">
+		<textarea rows="10" cols="30" name="system.attributes.clocks.Burden4Name.value" value="{{data.system.attributes.clocks.Burden4Name.value}}"/>{{data.system.attributes.clocks.Burden4Name.value}}</textarea>
+		<textarea rows="10" cols="30" name="system.attributes.clocks.Burden6Name.value" value="{{data.system.attributes.clocks.Burden6Name.value}}"/>{{data.system.attributes.clocks.Burden6Name.value}}</textarea>
+		<textarea rows="10" cols="30" name="system.attributes.clocks.Burden8Name.value" value="{{data.system.attributes.clocks.Burden8Name.value}}"/>{{data.system.attributes.clocks.Burden8Name.value}}</textarea>
+		</div>
 		</section>
 		<section class="ambitions">
 		<div class="character-burden-clock">
@@ -95,10 +101,115 @@
 		{{{blades-clock "system.attributes.clocks.Ambition6.value" 6 this.actor.system.attributes.clocks.Ambition6.value this.data._id "wallflower_green"}}}
 		{{{blades-clock "system.attributes.clocks.Ambition10.value" 10 this.actor.system.attributes.clocks.Ambition10.value this.data._id "wallflower_green"}}}
 		</div>
+		<div class="ambition-names">
+		<textarea rows="10" cols="30" name="system.attributes.clocks.Ambition4Name.value" value="{{data.system.attributes.clocks.Ambition4Name.value}}">{{data.system.attributes.clocks.Ambition4Name.value}}</textarea>
+		<textarea rows="10" cols="30" name="system.attributes.clocks.Ambition6Name.value" value="{{data.system.attributes.clocks.Ambition6Name.value}}"/>{{data.system.attributes.clocks.Ambition6Name.value}}</textarea>
+		<textarea rows="10" cols="30" name="system.attributes.clocks.Ambition10Name.value" value="{{data.system.attributes.clocks.Ambition10Name.value}}"/>{{data.system.attributes.clocks.Ambition10Name.value}}</textarea>
+		</div>
 		</section>
+		<section class="bond">
+		<nav class="bond-tabs tabs" data-group="bond">
+			<a class="item" data-tab="bond-info" data-group="bond">Narrative Info</a>
+			<a class="item" data-tab="bond-powers" data-group="bond">Bond Powers</a>
+		</nav>
+		<section class="bond-body">
+		<div class="tab bond-info active" data-group="bond" data-tab="bond-info">
+		<div class="XP-and-Dust">
+		<div class="XP-value">
+		<span>XP</span>
+		{{#times_from_0 15}}
+		<i class="{{#if (eq this 0)}}
+		fab fa-creative-commons-zero
+		{{else if (gte ../actor.system.attributes.information.XP.value this)}}
+		fas fa-circle
+		{{else}}
+		fas fa-circle-dashed
+		{{/if}} click-to-set XP-value-{{this}}" data-value="{{this}}" data-stat="system.attributes.information.XP.value" id="attributes-XP-{{this}}"></i>
+		<label for="attributes-XP-{{this}}"></label>
+		{{/times_from_0}}
+		</div>
+		<div class="Dust-value">
+		<span>Dust</span>
+		{{#times_from_0 8}}
+		<i class="{{#if (eq this 0)}}
+		fab fa-creative-commons-zero
+		{{else if (gte ../actor.system.attributes.information.Dust.value this)}}
+		fas fa-circle
+		{{else}}
+		fas fa-circle-dashed
+		{{/if}} click-to-set Dust-value-{{this}}" data-value="{{this}}" data-stat="system.attributes.information.Dust.value" id="attributes-Dust-{{this}}"></i>
+		<label for="attributes-Dust-{{this}}"></label>
+		{{/times_from_0}}
+		</div>
+		</div>
+		<span>Second Wind</span>
+		<textarea rows="10" cols="30" name="system.attributes.information.SecondWind.value" value="{{data.system.attributes.information.SecondWind.value}}">{{data.system.attributes.information.SecondWind.value}}</textarea>
+		<span>Special Ability</span>
+		<textarea rows="10" cols="30" name="system.attributes.information.SpecialAbility.value" value="{{data.system.attributes.information.SpecialAbility.value}}">{{data.system.attributes.information.SpecialAbility.value}}</textarea>
+		</div>
+		<div class="tab bond-powers" data-group="bond" data-tab="bond-powers">
+		
+		
+		<ol class="item-list">
+                {{#each data.items as |item id|}}
+				{{#if item.isBondPower }}
+                <li class="item flexrow" data-item-id="{{item._id}}">
+                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
+                    <h4 class="item-name">{{item.name}}</h4>
+                    {{!-- Iterate through all attributes on the item and output buttons for any that are formula. --}}
+                    <div class="item-buttons">
+                        {{#each item.system.attributes as |itemAttr key|}}
+                        {{#if itemAttr.dtype}}
+                            {{#if itemAttr.isFormula}}
+                                {{!-- Use the items.name.key format for shorthand. --}}
+                                {{#if ../../shorthand}}
+                                <button class="item-button rollable" data-roll="@items.{{slugify item.name}}.{{key}}" data-label="{{ itemAttr.label }}"
+                                    title="{{itemAttr.value}}">{{itemAttr.label}}</button>
+                                {{!-- Use the items.name.attributes.key.value format otherwise. --}}
+                                {{else}}
+                                <button class="item-button rollable"
+                                    data-roll="@items.{{slugify item.name}}.attributes.{{key}}.value" data-label="{{ itemAttr.label }}"
+                                    title="{{itemAttr.value}}">{{itemAttr.label}}</button>
+                                {{/if}}
+                            {{/if}}
+                        {{else}}
+                            {{#each itemAttr as |itemGroupedAttr groupedKey|}}
+                                {{#if itemGroupedAttr.isFormula}}
+                                    {{!-- Use the items.name.key format for shorthand. --}}
+                                    {{#if ../../../shorthand}}
+                                    <button class="item-button rollable" data-roll="@items.{{slugify item.name}}.{{key}}.{{groupedKey}}" data-label="{{ itemGroupedAttr.label }}"
+                                        title="{{itemGroupedAttr.value}}">{{itemGroupedAttr.label}}</button>
+                                    {{!-- Use the items.name.attributes.key.value format otherwise. --}}
+                                    {{else}}
+                                    <button class="item-button rollable"
+                                        data-roll="@items.{{slugify item.name}}.attributes.{{key}}.{{groupedKey}}.value" data-label="{{ itemGroupedAttr.label }}"
+                                        title="{{itemGroupedAttr.value}}">{{itemGroupedAttr.label}}</button>
+                                    {{/if}}
+                                {{/if}}
+                            {{/each}}
+                        {{/if}}
+                        {{/each}}
+                    </div>
+                    <div class="bond-power-controls">
+                        <a class="bond-power-control" title="{{ localize "SIMPLE.ItemEdit" }}" data-action="edit"><i class="fas fa-edit"></i></a>
+                        <a class="bond-power-control" title="{{ localize "SIMPLE.ItemDelete" }}" data-action="delete"><i class="fas fa-trash"></i></a>
+                    </div>
+                </li>
+                {{/if}}
+				{{/each}}
+            </ol>
+            <p>
+                <a class="bond-power-control" title="{{ localize "SIMPLE.ItemCreate" }}" data-action="create"><i class="fas fa-plus"></i> {{ localize "SIMPLE.ItemCreate" }}</a>
+            </p>
+		
+		
+		</div>
+		</section>
+		</section>
+		</div>
         </div>
 		
-		{{!-- Traits Tab --}}
+		{{!-- Traits & Relics Tab --}}
         <div class="tab traits" data-group="primary" data-tab="traits">
             <ol class="item-list">
                 {{#each data.items as |item id|}}
@@ -153,11 +264,11 @@
             </p>
         </div>
 
-        {{!-- Relics & Abilities Tab --}}
+        {{!-- Abilities Tab --}}
         <div class="tab items" data-group="primary" data-tab="items">
             <ol class="item-list">
                 {{#each data.items as |item id|}}
-				{{#if (not item.isTrait) }}
+				{{#if (and (not item.isBondPower) (not item.isTrait)) }}
                 <li class="item flexrow" data-item-id="{{item._id}}">
                     <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
                     <h4 class="item-name">{{item.name}}</h4>

@@ -62,8 +62,9 @@ class ICONSheet extends SimpleActorSheet {
       template: "modules/icon-145-data-wip/templates/icon-actor-sheet.html",
       width: 600,
       height: 600,
-      tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}],
-      scrollY: [".traits", ".items", ".attributes"],
+      tabs: [{navSelector: ".bond-tabs", contentSelector: ".bond-body", initial: "bond-info"},
+	  {navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}],
+      scrollY: [".narrative",".traits", ".items", ".attributes"],
       dragDrop: [{dragSelector: ".trait-list .item-list .item", dropSelector: null}]
     });
   }
@@ -72,6 +73,7 @@ class ICONSheet extends SimpleActorSheet {
     const context = await super.getData(options);
     for (const item of context.data.items) {
 		item.isTrait = item.flags?.['icon-145-data-wip']?.isTrait || false
+		item.isBondPower = item.flags?.['icon-145-data-wip']?.isBondPower || false
 	}
     return context;
   }
@@ -159,12 +161,37 @@ class ICONSheet extends SimpleActorSheet {
         return item.delete();
     }
   }
+  
+  _onBondControl(event) {
+    event.preventDefault();
+	
+    // Obtain event data
+    const button = event.currentTarget;
+    const li = button.closest(".item");
+    const item = this.actor.items.get(li?.dataset.itemId);
+
+    // Handle different actions
+    switch ( button.dataset.action ) {
+      case "create":
+        const cls = getDocumentClass("Item");
+        return cls.create({
+			name: game.i18n.localize("SIMPLE.ItemNew"), 
+			type: "item", 
+			flags: { ['icon-145-data-wip'] : { isBondPower: true }} }, 
+			{parent: this.actor});
+      case "edit":
+        return item.sheet.render(true);
+      case "delete":
+        return item.delete();
+    }
+  }
 
   
   activateListeners(html) {
     super.activateListeners(html);
 	html.find(".item-name").click(event => this._onItemSummary(event));
 	html.find(".trait-control").click(this._onTraitControl.bind(this));
+	html.find(".bond-power-control").click(this._onBondControl.bind(this));
 	html.find("[data-item-id] img").click(event => this._onItemUse(event));
 	html.find('.click-to-set').click(ev => {
 		let stat = ev.currentTarget.dataset.stat
@@ -204,7 +231,8 @@ static get defaultOptions() {
       template: "modules/icon-145-data-wip/templates/icon-player-sheet.html",
       width: 700,
       height: 700,
-      tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}],
+      tabs: [{navSelector: ".bond-tabs", contentSelector: ".bond-body", initial: "bond-info"},
+	  {navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}],
       scrollY: [".narrative", ".biography", ".items", ".attributes"],
       dragDrop: [{dragSelector: ".item-list .item", dropSelector: null}]
     });
@@ -378,6 +406,17 @@ static get defaultOptions() {
     const attribute_name = $(event.currentTarget).data("rollAttribute");
     this.rollAttributePopup(attribute_name);
 
+  }
+  
+  activate(tabName="bond-info", {triggerCallback=false}={}) {
+
+    // Validate the requested tab name
+	console.log(this)
+    const group = this._nav.dataset.group;
+    const items = this._nav.querySelectorAll("[data-tab]");
+	console.log(group)
+	console.log(items)
+	
   }
   
   activateListeners(html) {

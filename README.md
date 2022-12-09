@@ -1,3 +1,5 @@
+9/12/2022 - Narrative section finished (for now), added bond powers.
+
 8/12/2022 - Added narrative section and some basic functionality. Still working on this.
 
 5/12/2022 - Added strain and effort to player sheets.
