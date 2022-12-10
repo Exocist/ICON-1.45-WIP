@@ -52,7 +52,16 @@ Handlebars.registerHelper('blades-clock', function(parameter_name, type, current
     html += `</div>`;
     return html;
   });
+  
+  
+Handlebars.registerHelper('times_from_0', function(n, block) {
 
+    var accum = '';
+    for (var i = 0; i <= n; ++i) {
+      accum += block.fn(i);
+    }
+    return accum;
+  });
 
 
 class ICONSheet extends SimpleActorSheet {
