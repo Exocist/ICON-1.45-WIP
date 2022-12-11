@@ -1,3 +1,5 @@
+11/12/2022 - Realised I forgot the mighty D:
+
 9/12/2022 - Narrative section finished (for now), added bond powers.
 
 8/12/2022 - Added narrative section and some basic functionality. Still working on this.
