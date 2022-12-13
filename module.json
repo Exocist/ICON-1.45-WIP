@@ -126,6 +126,16 @@
       "private": false,
       "flags": {},
       "package": "world"
+    },
+    {
+      "label": "Job Traits",
+      "type": "Item",
+      "name": "job-traits",
+      "path": "packs/job-traits.db",
+      "system": "worldbuilding",
+      "private": false,
+      "flags": {},
+      "package": "world"
     }
   ],
   "esmodules": [
@@ -160,5 +170,5 @@
     "minimum": "9",
     "verified": "10"
   },
-  "version": "1.3.2"
+  "version": "1.3.3"
 }

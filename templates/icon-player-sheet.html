@@ -142,10 +142,18 @@
 		{{/times_from_0}}
 		</div>
 		</div>
+		<div class="Second-Wind">
 		<span>Second Wind</span>
 		<textarea rows="10" cols="30" name="system.attributes.information.SecondWind.value" value="{{data.system.attributes.information.SecondWind.value}}">{{data.system.attributes.information.SecondWind.value}}</textarea>
+		</div>
+		<div class="Special-Ability">
 		<span>Special Ability</span>
 		<textarea rows="10" cols="30" name="system.attributes.information.SpecialAbility.value" value="{{data.system.attributes.information.SpecialAbility.value}}">{{data.system.attributes.information.SpecialAbility.value}}</textarea>
+		</div>
+		<div class="Ideals">
+		<span>Ideals</span>
+		<textarea rows="10" cols="30" name="system.attributes.information.Ideals.value" value="{{data.system.attributes.information.Ideals.value}}">{{data.system.attributes.information.Ideals.value}}</textarea>
+		</div>
 		</div>
 		<div class="tab bond-powers" data-group="bond" data-tab="bond-powers">
 		
@@ -266,6 +274,19 @@
 
         {{!-- Abilities Tab --}}
         <div class="tab items" data-group="primary" data-tab="items">
+		<div class="Personal Resolve">
+		<span>Personal Resolve</span>
+		{{#times_from_0 5}}
+		<i class="{{#if (eq this 0)}}
+		fab fa-creative-commons-zero
+		{{else if (gte ../actor.system.attributes.information.PersonalResolve.value this)}}
+		fas fa-circle
+		{{else}}
+		fas fa-circle-dashed
+		{{/if}} click-to-set PersonalResolve-value-{{this}}" data-value="{{this}}" data-stat="system.attributes.information.PersonalResolve.value" id="attributes-PersonalResolve-{{this}}"></i>
+		<label for="attributes-PersonalResolve-{{this}}"></label>
+		{{/times_from_0}}
+		</div>
             <ol class="item-list">
                 {{#each data.items as |item id|}}
 				{{#if (and (not item.isBondPower) (not item.isTrait)) }}

@@ -1,10 +1,10 @@
 .worldbuilding .item-list .trait-controls {
-  flex: 0 0 36px;
+  flex: 0 0 2.556em;
 }
 
 .worldbuilding .narrative .skill-label {
 	display: flex;
-	margin-left: 7px;
+	margin-left: 0.5em;
 	flex-wrap: nowrap;
 	flex: 45%;
 }
@@ -17,204 +17,210 @@
 }
 
 .worldbuilding * .character-burden-clock .blades-clock {
-	width: 88px;
-	height: 88px;
+	width: 6.248em;
+	height: 6.248em;
 	background-size: cover;
 }
 
 .worldbuilding * .character-burden-clock {
-	margin-top: 15px;
+	margin-top: 1.065em;
 	display: flex;
 }
 
+.worldbuilding input[type="radio"] {
+    position: relative;
+    top: 0.14px;
+    margin: 0 0 0 0.38em;
+}
+
 .worldbuilding * .character-burden-clock .blades-clock input#clock-4-1-gms_red {
-	left: 49px;
-	top: 22px;
+	left: 3.6em;
+	top: 1.55em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-4-2-gms_red {
-	left: 28px;
-	top: 55px;
+	left: 2.1em;
+	top: 3.9em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-4-3-gms_red {
-	left: -25px;
-	top: 55px;
+	left: -1.8em;
+	top: 3.9em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-4-4-gms_red {
-	left: -45px;
-	top: 23px;
+	left: -3.4em;
+	top: 1.65em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-6-1-gms_red {
-	left: 33px;
-	top: 15px;
+	left: 2.5em;
+	top: 1em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-6-2-gms_red {
-	left: 30px;
-	top: 27px;
+	left: 2.4em;
+	top: 1.9em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-6-3-gms_red {
-	left: 10px;
-	top: 49px;
+	left: 0.9em;
+	top: 3.7em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-6-4-gms_red {
-	left: -29px;
-	top: 60px;
+	left: -2.2em;
+	top: 4.5em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-6-5-gms_red {
-	left: 13px;
-	top: 33px;
+	left: 1em;
+	top: 2.5em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-6-6-gms_red {
-	left: -8px;
-	top: 10px;
+	left: -0.6em;
+	top: 0.7em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-8-1-gms_red {
-	left: 43px;
-	top: 15px;
+	left: 3.2em;
+	top: 1em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-8-2-gms_red {
-	left: 34px;
-	top: 29px;
+	left: 2.6em;
+	top: 2.1em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-8-3-gms_red {
-	left: 13px;
-	top: 47px;
+	left: 1em;
+	top: 3.5em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-8-4-gms_red {
-	left: -20px;
-	top: 60px;
+	left: -1.5em;
+	top: 4.5em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-8-5-gms_red {
-	left: 24px;
-	top: 43px;
+	left: 1.7em;
+	top: 3.3em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-8-6-gms_red {
-	left: -10px;
-	top: 30px;
+	left: -0.7em;
+	top: 2.2em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-8-7-gms_red {
-	left: -31px;
-	top: 12px;
+	left: -2.3em;
+	top: 0.9em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-8-8-gms_red {
-	left: -38px;
-	top: -2px;
+	left: -2.95em;
+	top: -0.2em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-4-1-wallflower_green {
-	left: 49px;
-	top: 22px;
+	left: 3.6em;
+	top: 1.55em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-4-2-wallflower_green {
-	left: 28px;
-	top: 55px;
+	left: 2.1em;
+	top: 3.9em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-4-3-wallflower_green {
-	left: -25px;
-	top: 55px;
+	left: -1.8em;
+	top: 3.9em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-4-4-wallflower_green {
-	left: -45px;
-	top: 23px;
+	left: -3.4em;
+	top: 1.65em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-6-1-wallflower_green {
-	left: 33px;
-	top: 15px;
+	left: 2.5em;
+	top: 1em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-6-2-wallflower_green {
-	left: 30px;
-	top: 27px;
+	left: 2.4em;
+	top: 1.9em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-6-3-wallflower_green {
-	left: 10px;
-	top: 49px;
+	left: 0.9em;
+	top: 3.7em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-6-4-wallflower_green {
-	left: -29px;
-	top: 60px;
+	left: -2.2em;
+	top: 4.5em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-6-5-wallflower_green {
-	left: 13px;
-	top: 33px;
+	left: 1em;
+	top: 2.5em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-6-6-wallflower_green {
-	left: -8px;
-	top: 10px;
+	left: -0.6em;
+	top: 0.7em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-10-1-wallflower_green {
-	left: 42px;
-	top: 10px;
+	left: 3.15em;
+	top: 0.8em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-10-2-wallflower_green {
-	left: 35px;
-	top: 20px;
+	left: 2.6em;
+	top: 1.6em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-10-3-wallflower_green {
-	left: 20px;
-	top: 37px;
+	left: 1.4em;
+	top: 2.8em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-10-4-wallflower_green {
-	left: -7px;
-	top: 55px;
+	left: -0.5em;
+	top: 4.05em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-10-5-wallflower_green {
-	left: 42px;
-	top: 48px;
+	left: 3.15em;
+	top: 3.5em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-10-6-wallflower_green {
-	left: 4px;
-	top: 48px;
+	left: 0.3em;
+	top: 3.5em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-10-7-wallflower_green {
-	left: -32px;
-	top: 37px;
+	left: -2.3em;
+	top: 2.8em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-10-8-wallflower_green {
-	left: -58px;
-	top: 21px;
+	left: -4.2em;
+	top: 1.6em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-10-9-wallflower_green {
-	left: 10px;
-	top: -12px;
+	left: 0.8em;
+	top: -0.9em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input#clock-10-10-wallflower_green {
-	left: 3px;
-	top: -23px;
+	left: 0.3em;
+	top: -1.65em;
 }
 
 .worldbuilding * .character-burden-clock .blades-clock input[value="0"] {
@@ -229,21 +235,21 @@
 }
 
 .worldbuilding .bond-body .XP-value {
-	width: 85px;
+	width: 6.035em;
 }
 
 label[for=attributes-XP-0] {
 	display: block;
-	width: 80px;
+	width: 5.68em;
 }
 
 .worldbuilding .bond-body .Dust-value {
-	width: 70px;
+	width: 4.97em;
 }
 
 label[for=attributes-Dust-0] {
 	display: block;
-	width: 80px;
+	width: 5.68em;
 }
 
 .worldbuilding .bond-body i#attributes-XP-5 {
@@ -259,37 +265,39 @@ label[for=attributes-Dust-0] {
 }
 
 .bond-info textarea {
-	height: 150px;
+	height: 10.65em;
+}
+
+.bond-info .Second-Wind textarea {
+	height: 5em;
+}
+
+.bond-info .Special-Ability textarea {
+	height: 9em;
+}
+
+.bond-info .Ideals textarea {
+	height: 7.8em;
 }
 
 h4.item-name {
 	flex: 50%;
 }
 
-.worldbuilding .narrative .skill-ratings .fa-trash {
-	height: 5px;
-	width: 5px;
-	color: pink;
-    display: flex;
-    flex-wrap: nowrap;
-    flex: 10%;
-    justify-content: flex-start;
-}
-
 .worldbuilding .icon-header-grid {
-  overflow: hidden;
-  display: inline-grid;
-  column-gap: 10px;
-  grid-template-columns: 50px 120px 120px 120px 120px 120px;
-  grid-template-rows: 60px 70px;
-  flex: 0 0 130px;
+    overflow: hidden;
+    display: inline-grid;
+    column-gap: 0.71em;
+    grid-template-columns: 3.55em 8.52em 8.52em 8.52em 8.52em 852em;
+    grid-template-rows: 4.26em 4.97em;
+    flex: 0 0 9.23em;
 }
 
 .worldbuilding .narrative-grid {
 	overflow: hidden;
 	display: inline-grid;
-	grid-template-columns: 325px 345px;
-	column-gap: 20px;
+	grid-template-columns: 23.075em 24.495em;
+	column-gap: 1.42em;
 	grid-template-rows: auto auto auto auto;
 }
 
@@ -300,8 +308,8 @@ h4.item-name {
 
 .burden-names textarea {
 	flex: 0.25;
-	height: 30px;
-	min-height: 30px;
+	height: 2.13em;
+	min-height: 2.13em;
 }
 
 .ambition-names {
@@ -311,12 +319,12 @@ h4.item-name {
 
 .ambition-names textarea {
 	flex: 0.25;
-	height: 50px;
+	height: 3.55em;
 }
 
 
 .worldbuilding .skills {
-	width: 150px;
+	width: 10.65em;
     display: flex;
     flex-flow: row;
     justify-content: flex-start;
@@ -360,13 +368,13 @@ section.bond {
 .icon-header-grid-item-3 {
 	grid-column: 5 / 5;
 	grid-row: 1 / 2;
-	width: 110px;
+	width: 7.81em;
 }
 
 .icon-header-grid-item-4 {
 	grid-column: 6 / 6;
 	grid-row: 1 / 2;
-	width: 110px;
+	width: 7.81em;
 }
 
 .icon-header-grid-item-5 {
@@ -376,14 +384,14 @@ section.bond {
 
 .worldbuilding .icon-resource {
   width: 25%;
-  height: 40px;
-  margin-top: 10px;
+  height: 2.84em;
+  margin-top: 0.71em;
   float: left;
   text-align: center;
 }
 .worldbuilding .icon-resource input {
-  width: 28px;
-  height: 28px;
+  width: 1.988em;
+  height: 1.988em;
 }
 .worldbuilding .resource-label {
 	display:flex;
@@ -394,24 +402,24 @@ section.bond {
 }
 
 .worldbuilding .icon-sheet-header .profile-img {
-  flex: 0 0 100px;
-  height: 50px;
-  width: 50px;
-  margin-right: 10px;
+  flex: 0 0 7.1em;
+  height: 3.55em;
+  width: 3.55em;
+  margin-right: 0.71em;
 }
 .worldbuilding .icon-sheet-header .header-fields {
   flex: 1;
-  height: 50px;
+  height: 3.55em;
 }
 .worldbuilding .icon-sheet-header h1.charname {
-  height: 50px;
+  height: 3.55em;
   padding: 0px;
-  margin: 5px 0;
+  margin: 0.355em 0;
   border-bottom: 0;
 }
 .worldbuilding .icon-sheet-header h1.charname input {
   width: 100%;
-  height: 100%;
+  height: 50%;
   margin: 0;
 }
 
@@ -423,7 +431,7 @@ section.bond {
   font-size: 21px;
   text-align: center;
   padding: 0px 5px;
-  height: 30px !important;
+  height: 3px !important;
   text-transform: capitalize;
 }
 
@@ -440,7 +448,7 @@ section.bond {
   text-transform: uppercase;
   background-color: #191813;
   color: #EEEFFF;
-  margin-bottom: 10px;
+  margin-bottom: 1px;
   position: relative;
   padding-top: 3px;
   display: flex;
@@ -452,7 +460,7 @@ section.bond {
   text-transform: capitalize;
   background-color: #999;
   color: #191813;
-  margin-bottom: 10px;
+  margin-bottom: 1px;
   position: relative;
   padding-top: 3px;
   display: flex;
