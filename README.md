@@ -1,3 +1,5 @@
+13/12/2022 - Added some support for larger/smaller font sizes, clocks still don't work with them though. Added ideals, personal resolve and job traits compendium.
+
 11/12/2022 - Realised I forgot the mighty D:
 
 9/12/2022 - Narrative section finished (for now), added bond powers.
