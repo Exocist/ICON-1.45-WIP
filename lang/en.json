@@ -229,5 +229,21 @@
   "BITD.SlyFriends": "Sly Friends",
   "BITD.ShrewdFriends": "Shrewd Friends",
   "BITD.DarkServants": "Dark Servants",
-  "BITD.StrangeFriends": "Strange Friends"
+  "BITD.StrangeFriends": "Strange Friends",
+
+  "ICON.Kintype": "Kintype",
+  "ICON.Culture": "Culture",
+  "ICON.Bond": "Bond",
+  "ICON.Class": "Class",
+  "ICON.Job": "Job",
+  "ICON.Level": "Level",
+  "ICON.Health": "HP",
+  "ICON.JobResource": "Job Resource",
+  "ICON.Strain": "Strain",
+  "ICON.Effort": "Effort",
+  "ICON.Narrative": "Narrative",
+  "ICON.Traits-Relics": "Traits & Relics",
+  "ICON.Traits": "Traits",
+  "ICON.Abilities": "Abilities",
+  "ICON.Attributes": "Attributes"
 }

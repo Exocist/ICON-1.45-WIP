@@ -9,42 +9,42 @@
             </h1>
 		</div>
 		<div class="narrative-information icon-header-grid-item-3">
-			<span>Kintype: </span>
+			<span>{{localize "ICON.Kintype"}}: </span>
 			<input type="text" name="system.attributes.information.kintype.value" placeholder="Arken" value="{{data.system.attributes.information.kintype.value}}"/>
-			<span>Culture: </span>
+			<span>{{localize "ICON.Culture"}}: </span>
 			<input type="text" name="system.attributes.information.culture.value" placeholder="Arken" value="{{data.system.attributes.information.culture.value}}"/>
-			<span>Bond: </span>
+			<span>{{localize "ICON.Bond"}}: </span>
 			<input type="text" name="system.attributes.information.bond.value" placeholder="Arkenlord" value="{{data.system.attributes.information.bond.value}}"/>
 		</div>
 		<div class="tactical-information icon-header-grid-item-4">
-			<span>Class: </span>
+			<span>{{localize "ICON.Class"}}: </span>
 			<input type="text" name="system.attributes.information.class.value" placeholder="Mendicant" value="{{data.system.attributes.information.class.value}}"/>
-			<span>Job: </span>
+			<span>{{localize "ICON.Job"}}: </span>
 			<input type="text" name="system.attributes.information.job.value" placeholder="Seer" value="{{data.system.attributes.information.job.value}}"/>
-			<span>Level: </span>
+			<span>{{localize "ICON.Level"}}: </span>
 			<input type="text" name="system.attributes.information.level.value" placeholder="1" value="{{data.system.attributes.information.level.value}}"/>
 		</div>
 		<div class="icon-resource-inputs icon-header-grid-item-5">
             <div class="icon-resource">
-				<label for="data.health.value" class="resource-label">Health</label>
+				<label for="data.health.value" class="resource-label">{{localize "ICON.Health"}}</label>
                 <input type="number" name="system.health.value" value="{{systemData.health.value}}"/>
                 <span> / </span>
                 <input type="number" name="system.health.max" value="{{systemData.health.max}}"/>
             </div>
             <div class="icon-resource">
-				<label for="data.power.value" class="resource-label">Job Resource</label>
+				<label for="data.power.value" class="resource-label">{{localize "ICON.JobResource"}}</label>
                 <input type="number" name="system.power.value" value="{{systemData.power.value}}"/>
                 <span> / </span>
                 <input type="number" name="system.power.max" value="{{systemData.power.max}}"/>
             </div>
 			<div class="icon-resource">
-				<label for="data.strain.value" class="resource-label">Strain</label>
+				<label for="data.strain.value" class="resource-label">{{localize "ICON.Strain"}}</label>
                 <input type="number" name="system.strain.value" value="{{systemData.strain.value}}"/>
                 <span> / </span>
                 <input type="number" name="system.strain.max" value="{{systemData.strain.max}}"/>
             </div>
             <div class="icon-resource">
-				<label for="data.effort.value" class="resource-label">Effort</label>
+				<label for="data.effort.value" class="resource-label">{{localize "ICON.Effort"}}</label>
                 <input type="number" name="system.effort.value" value="{{systemData.effort.value}}"/>
                 <span> / </span>
                 <input type="number" name="system.effort.max" value="{{systemData.effort.max}}"/>
@@ -54,10 +54,10 @@
 
     {{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="primary">
-		<a class="item" data-tab="narrative" data-group="primary">Narrative</a>
-        <a class="item" data-tab="traits" data-group="primary">Traits & Relics</a>
-        <a class="item" data-tab="items" data-group="primary">Abilities</a>
-        <a class="item" data-tab="attributes" data-group="primary">Attributes</a>
+		<a class="item" data-tab="narrative" data-group="primary">{{localize "ICON.Narrative"}}</a>
+        <a class="item" data-tab="traits" data-group="primary">{{localize "ICON.Traits-Relics"}}</a>
+        <a class="item" data-tab="items" data-group="primary">{{localize "ICON.Abilities"}}</a>
+        <a class="item" data-tab="attributes" data-group="primary">{{localize "ICON.Attributes"}}</a>
     </nav>
 
     {{!-- Sheet Body --}}

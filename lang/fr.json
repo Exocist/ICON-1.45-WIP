@@ -1,0 +1,17 @@
+{
+  "ICON.Kintype": "Peuple",
+  "ICON.Culture": "Culture",
+  "ICON.Bond": "Lien",
+  "ICON.Class": "Classe",
+  "ICON.Job": "Job",
+  "ICON.Level": "Niveau",
+  "ICON.Health": "HP",
+  "ICON.JobResource": "Ressource",
+  "ICON.Strain": "Stress",
+  "ICON.Effort": "Effort",
+  "ICON.Narrative": "Narratif",
+  "ICON.Traits-Relics": "Traits & Reliques",
+  "ICON.Traits": "Traits",
+  "ICON.Abilities": "Aptitudes",
+  "ICON.Attributes": "Attributs"
+}
