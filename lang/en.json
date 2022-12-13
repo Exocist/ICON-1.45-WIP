@@ -245,5 +245,12 @@
   "ICON.Traits-Relics": "Traits & Relics",
   "ICON.Traits": "Traits",
   "ICON.Abilities": "Abilities",
-  "ICON.Attributes": "Attributes"
+  "ICON.Attributes": "Attributes",
+  "ICON.XP": "XP",
+  "ICON.Dust": "Dust",
+  "ICON.SpecialAbility": "Special Ability",
+  "ICON.SecondWind": "Second Wind",
+  "ICON.Ideals": "Ideals",
+  "ICON.NarrativeInfo": "Narrative Info",
+  "ICON.BondPowers": "Bond Powers"
 }

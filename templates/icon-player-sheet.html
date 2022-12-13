@@ -109,14 +109,14 @@
 		</section>
 		<section class="bond">
 		<nav class="bond-tabs tabs" data-group="bond">
-			<a class="item" data-tab="bond-info" data-group="bond">Narrative Info</a>
-			<a class="item" data-tab="bond-powers" data-group="bond">Bond Powers</a>
+			<a class="item" data-tab="bond-info" data-group="bond">{{localize "ICON.NarrativeInfo"}}</a>
+			<a class="item" data-tab="bond-powers" data-group="bond">{{localize "ICON.BondPowers"}}</a>
 		</nav>
 		<section class="bond-body">
 		<div class="tab bond-info active" data-group="bond" data-tab="bond-info">
 		<div class="XP-and-Dust">
 		<div class="XP-value">
-		<span>XP</span>
+		<span>{{localize "ICON.XP"}}</span>
 		{{#times_from_0 15}}
 		<i class="{{#if (eq this 0)}}
 		fab fa-creative-commons-zero
@@ -129,7 +129,7 @@
 		{{/times_from_0}}
 		</div>
 		<div class="Dust-value">
-		<span>Dust</span>
+		<span>{{localize "ICON.Dust"}}</span>
 		{{#times_from_0 8}}
 		<i class="{{#if (eq this 0)}}
 		fab fa-creative-commons-zero
@@ -143,15 +143,15 @@
 		</div>
 		</div>
 		<div class="Second-Wind">
-		<span>Second Wind</span>
+		<span>{{localize "ICON.SecondWind"}}</span>
 		<textarea rows="10" cols="30" name="system.attributes.information.SecondWind.value" value="{{data.system.attributes.information.SecondWind.value}}">{{data.system.attributes.information.SecondWind.value}}</textarea>
 		</div>
 		<div class="Special-Ability">
-		<span>Special Ability</span>
+		<span>{{localize "ICON.SpecialAbility"}}</span>
 		<textarea rows="10" cols="30" name="system.attributes.information.SpecialAbility.value" value="{{data.system.attributes.information.SpecialAbility.value}}">{{data.system.attributes.information.SpecialAbility.value}}</textarea>
 		</div>
 		<div class="Ideals">
-		<span>Ideals</span>
+		<span>{{localize "ICON.Ideals"}}</span>
 		<textarea rows="10" cols="30" name="system.attributes.information.Ideals.value" value="{{data.system.attributes.information.Ideals.value}}">{{data.system.attributes.information.Ideals.value}}</textarea>
 		</div>
 		</div>

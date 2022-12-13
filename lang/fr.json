@@ -13,5 +13,12 @@
   "ICON.Traits-Relics": "Traits & Reliques",
   "ICON.Traits": "Traits",
   "ICON.Abilities": "Aptitudes",
-  "ICON.Attributes": "Attributs"
+  "ICON.Attributes": "Attributs",
+  "ICON.XP": "XP",
+  "ICON.Dust": "Cendre",
+  "ICON.SpecialAbility": "Compàtence",
+  "ICON.SecondWind": "Second Souffle",
+  "ICON.Ideals": "Idéaux",
+  "ICON.NarrativeInfo": "Info Narratif",
+  "ICON.BondPowers": "Pouvoirs de Lien"
 }
