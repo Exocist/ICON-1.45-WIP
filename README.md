@@ -1,3 +1,5 @@
+21/12/2022 - Added placeholder camp stuff while i work on a bigger update.
+
 13/12/2022 - Added some support for larger/smaller font sizes, clocks still don't work with them though. Added ideals, personal resolve and job traits compendium.
 
 Minor french language support added.

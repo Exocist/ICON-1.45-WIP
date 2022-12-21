@@ -130,8 +130,7 @@
       "path": "packs/bond-powers.db",
       "system": "worldbuilding",
       "private": false,
-      "flags": {},
-      "package": "world"
+      "flags": {}
     },
     {
       "label": "Job Traits",
@@ -140,28 +139,32 @@
       "path": "packs/job-traits.db",
       "system": "worldbuilding",
       "private": false,
+      "flags": {}
+    },
+    {
+      "label": "Camp Fixtures",
+      "type": "Item",
+      "name": "camp-fixtures",
+      "path": "packs/camp-fixtures.db",
+      "system": "worldbuilding",
+      "private": false,
       "flags": {},
       "package": "world"
     }
   ],
   "esmodules": [
-   	 "scripts/init.js",
-	 "scripts/blades-roll.js",
-	 "scripts/blades-helpers.js",
-	 "scripts/blades-actor.js",
-	 "scripts/blades-clock-sheet.js",
-	 "scripts/blades-sheet.js",
-	 "scripts/templates.js"
-  	],
-	"templates": [
-   	 "templates/icon-actor-sheet.html",
-   	 "templates/icon-player-sheet.html",
-	 "templates/icon-sheet-old.html"
-  	],
-	"styles": [
-	"templates/itemsummary.css",
-	"icon.css"
-	],
+    "scripts/init.js",
+    "scripts/blades-roll.js",
+    "scripts/blades-helpers.js",
+    "scripts/blades-actor.js",
+    "scripts/blades-clock-sheet.js",
+    "scripts/blades-sheet.js",
+    "scripts/templates.js"
+  ],
+  "styles": [
+    "templates/itemsummary.css",
+    "icon.css"
+  ],
   "id": "icon-145-data-wip",
   "authors": [
     {
@@ -176,5 +179,5 @@
     "minimum": "9",
     "verified": "10"
   },
-  "version": "1.3.5"
+  "version": "1.4"
 }

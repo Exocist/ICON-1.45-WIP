@@ -83,6 +83,7 @@ class ICONSheet extends SimpleActorSheet {
     for (const item of context.data.items) {
 		item.isTrait = item.flags?.['icon-145-data-wip']?.isTrait || false
 		item.isBondPower = item.flags?.['icon-145-data-wip']?.isBondPower || false
+		item.isCampFixture = item.flags?.['icon-145-data-wip']?.isCampFixture || false
 	}
     return context;
   }
@@ -130,7 +131,7 @@ class ICONSheet extends SimpleActorSheet {
       title: item.name,
       description: item.system.description,
       labels: item.system,
-	  //img: item.img
+	  img: item.img
     };
     const html = await renderTemplate("modules/icon-145-data-wip/templates/chatcard.hbs", templateData);
     // Create the ChatMessage data object
@@ -194,6 +195,30 @@ class ICONSheet extends SimpleActorSheet {
         return item.delete();
     }
   }
+  
+  _onCampControl(event) {
+    event.preventDefault();
+	
+    // Obtain event data
+    const button = event.currentTarget;
+    const li = button.closest(".item");
+    const item = this.actor.items.get(li?.dataset.itemId);
+
+    // Handle different actions
+    switch ( button.dataset.action ) {
+      case "create":
+        const cls = getDocumentClass("Item");
+        return cls.create({
+			name: game.i18n.localize("SIMPLE.ItemNew"), 
+			type: "item", 
+			flags: { ['icon-145-data-wip'] : { isCampFixture: true }} }, 
+			{parent: this.actor});
+      case "edit":
+        return item.sheet.render(true);
+      case "delete":
+        return item.delete();
+    }
+  }
 
   
   activateListeners(html) {
@@ -201,6 +226,7 @@ class ICONSheet extends SimpleActorSheet {
 	html.find(".item-name").click(event => this._onItemSummary(event));
 	html.find(".trait-control").click(this._onTraitControl.bind(this));
 	html.find(".bond-power-control").click(this._onBondControl.bind(this));
+	html.find(".camp-fixture-control").click(this._onCampControl.bind(this));
 	html.find("[data-item-id] img").click(event => this._onItemUse(event));
 	html.find('.click-to-set').click(ev => {
 		let stat = ev.currentTarget.dataset.stat
@@ -232,6 +258,7 @@ class OldIconSheet extends ICONSheet {
     });
   }
 }
+
 
 class IconPlayerSheet extends ICONSheet {
 static get defaultOptions() {
@@ -437,6 +464,22 @@ static get defaultOptions() {
   }
   
 }
+
+class IconCampSheet extends IconPlayerSheet {
+	static get defaultOptions() {
+    return foundry.utils.mergeObject(super.defaultOptions, {
+      classes: ["IconCampSheet", "ICONSheet", "worldbuilding", "sheet", "actor"],
+      template: "modules/icon-145-data-wip/templates/icon-camp-sheet.html",
+      width: 700,
+      height: 700,
+      tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}],
+      scrollY: [".biography", ".items", ".attributes"],
+      dragDrop: [{dragSelector: ".trait-list .item-list .item", dropSelector: null}]
+    });
+  }
+}
+
 Actors.registerSheet("icon-player-sheet", IconPlayerSheet, { makeDefault: false });
 Actors.registerSheet("icon-sheet-old", OldIconSheet, { makeDefault: false });
 Actors.registerSheet("icon-145-data-wip", ICONSheet, { makeDefault: true });
+Actors.registerSheet("icon-camp-sheet", IconCampSheet, { makeDefault: false});

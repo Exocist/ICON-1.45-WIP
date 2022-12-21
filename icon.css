@@ -322,6 +322,11 @@ h4.item-name {
 	height: 3.55em;
 }
 
+.group-ambitions textarea {
+	flex: 0.25;
+	height: 5.2em;
+}
+
 
 .worldbuilding .skills {
 	width: 10.65em;
@@ -483,4 +488,12 @@ section.bond {
 }
 .blades-die-tooltip .die.failure {
   color: red;
+}
+
+.requestor.chat-card .card-header img {
+  margin-right: 5px;
+  flex: 0;
+  height: 24px;
+  width: 24px;
+  border: none;
 }

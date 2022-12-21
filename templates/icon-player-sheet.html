@@ -289,7 +289,7 @@
 		</div>
             <ol class="item-list">
                 {{#each data.items as |item id|}}
-				{{#if (and (not item.isBondPower) (not item.isTrait)) }}
+				{{#if (and (not item.isBondPower) (not item.isTrait) (not item.isCampFixture)) }}
                 <li class="item flexrow" data-item-id="{{item._id}}">
                     <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
                     <h4 class="item-name">{{item.name}}</h4>
