@@ -148,8 +148,7 @@
       "path": "packs/camp-fixtures.db",
       "system": "worldbuilding",
       "private": false,
-      "flags": {},
-      "package": "world"
+      "flags": {}
     }
   ],
   "esmodules": [
@@ -179,5 +178,5 @@
     "minimum": "9",
     "verified": "10"
   },
-  "version": "1.4.1"
+  "version": "1.4.2"
 }
