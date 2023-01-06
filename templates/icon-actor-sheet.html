@@ -34,7 +34,7 @@
         <div class="tab traits" data-group="primary" data-tab="traits">
             <ol class="item-list">
                 {{#each data.items as |item id|}}
-				{{#if (and (not item.isBondPower) (not item.isTrait) (not item.isCampFixture)) }}
+				{{#if item.isTrait }}
                 <li class="item flexrow" data-item-id="{{item._id}}">
                     <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
                     <h4 class="item-name">{{item.name}}</h4>
@@ -89,7 +89,7 @@
         <div class="tab items" data-group="primary" data-tab="items">
             <ol class="item-list">
                 {{#each data.items as |item id|}}
-				{{#if (not item.isTrait) }}
+				{{#if (and (not item.isBondPower) (not item.isTrait) (not item.isCampFixture)) }}
                 <li class="item flexrow" data-item-id="{{item._id}}">
                     <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
                     <h4 class="item-name">{{item.name}}</h4>
