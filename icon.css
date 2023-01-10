@@ -497,3 +497,41 @@ section.bond {
   width: 24px;
   border: none;
 }
+
+.worldbuilding .editor, .worldbuilding .editor-content {
+	height: auto;
+	min-height: 3em;
+}
+
+.prosemirror .editor-container .editor-content {
+	height: fit-content;
+	position: relative;
+}
+
+.item-buttons input[type="checkbox"] {
+	flex: 0 0 1.4em;
+	width: 1.4em;
+	height: 1.1em;
+	margin: 0.2em 0.3em;
+}
+
+.worldbuilding .item-list .item-buttons {
+	justify-content: flex-end;
+	margin-right: 2em;
+}
+
+.worldbuilding .camp-fixtures h4.item-name {
+	flex: 20%;
+}
+
+.worldbuilding .bond-powers h4.item-name {
+	flex: 40%;
+}
+
+.worldbuilding .items h4.item-name {
+	flex: 50%;
+}
+
+.worldbuilding .traits h4.item-name {
+	flex: 50%;
+}

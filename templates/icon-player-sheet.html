@@ -197,6 +197,11 @@
                             {{/each}}
                         {{/if}}
                         {{/each}}
+						{{#each item.Talents}}
+						<label>
+						<input type="checkbox" data-id="{{item._id}}" class="talent-checkbox" data-type="{{this.name}}" {{checked this.value }}>
+						</label><br>
+						{{/each}}
                     </div>
                     <div class="bond-power-controls">
                         <a class="bond-power-control" title="{{ localize "SIMPLE.ItemEdit" }}" data-action="edit"><i class="fas fa-edit"></i></a>
@@ -258,6 +263,11 @@
                             {{/each}}
                         {{/if}}
                         {{/each}}
+						{{#each item.Talents}}
+						<label>
+						<input type="checkbox" data-id="{{item._id}}" class="talent-checkbox" data-type="{{this.name}}" {{checked this.value }}>
+						</label><br>
+						{{/each}}
                     </div>
                     <div class="trait-controls">
                         <a class="trait-control" title="{{ localize "SIMPLE.ItemEdit" }}" data-action="edit"><i class="fas fa-edit"></i></a>
@@ -326,6 +336,11 @@
                             {{/each}}
                         {{/if}}
                         {{/each}}
+						{{#each item.Talents}}
+						<label>
+						<input type="checkbox" data-id="{{item._id}}" class="talent-checkbox" data-type="{{this.name}}" {{checked this.value }}>
+						</label><br>
+						{{/each}}
                     </div>
                     <div class="item-controls">
                         <a class="item-control" title="{{ localize "SIMPLE.ItemEdit" }}" data-action="edit"><i class="fas fa-edit"></i></a>

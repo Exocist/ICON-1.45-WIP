@@ -1,4 +1,5 @@
 import { SimpleActorSheet } from "../../../systems/worldbuilding/module/actor-sheet.js";
+import { SimpleItemSheet } from "../../../systems/worldbuilding/module/item-sheet.js";
 import { bladesRoll } from "./blades-roll.js";
 import { BladesHelpers } from "./blades-helpers.js";
 import { BladesActor } from "./blades-actor.js";
@@ -6,7 +7,6 @@ import { BladesClockSheet } from "./blades-clock-sheet.js";
 
 function getValue(name) {
   var value = document.querySelector('input[name="${name}"]:checked').value;
-  console.log(value);
 }
 
 Hooks.once("init", async function() {
@@ -53,6 +53,8 @@ Handlebars.registerHelper('blades-clock', function(parameter_name, type, current
     return html;
   });
   
+
+
   
 Handlebars.registerHelper('times_from_0', function(n, block) {
 
@@ -84,6 +86,12 @@ class ICONSheet extends SimpleActorSheet {
 		item.isTrait = item.flags?.['icon-145-data-wip']?.isTrait || false
 		item.isBondPower = item.flags?.['icon-145-data-wip']?.isBondPower || false
 		item.isCampFixture = item.flags?.['icon-145-data-wip']?.isCampFixture || false
+		try {
+		item.Talents = Object.entries(item.flags?.['icon-145-data-wip']).filter(t => t[0].includes('Talent')).map((t,i) => ({name:t[0],value:t[1]}))
+		}
+		catch (e) {
+			//pass
+		}
 	}
     return context;
   }
@@ -93,13 +101,19 @@ class ICONSheet extends SimpleActorSheet {
     const li = $(event.currentTarget).parents(".item");
     const item = this.actor.items.get(li.data("item-id"));
     const chatData = await item.system;
-
     // Toggle summary
     if ( li.hasClass("expanded") ) {
       let summary = li.children(".item-summary");
       summary.slideUp(200, () => summary.remove());
     } else {
-	  const enriched = await TextEditor.enrichHTML(chatData.description, {async: true});
+	  let enriched = chatData.description
+	  for (let i=1; i<8; i++) {
+		  let Talent = "Talent" + i
+		  if (!!chatData.attributes.Talents?.[Talent]?.value && item.flags?.['icon-145-data-wip']?.[Talent]) {
+			  enriched = enriched + chatData.attributes.Talents[Talent].value
+		  }
+	  }
+	  enriched = await TextEditor.enrichHTML(enriched, {async: true});
       let div = $(`<div class="item-summary">${enriched}</div>`);
       let props = $('<div class="item-properties"></div>');
 	  const attrs = Object.values(chatData.attributes.Tags);
@@ -125,11 +139,18 @@ class ICONSheet extends SimpleActorSheet {
     event.preventDefault();
     const itemId = event.currentTarget.closest(".item").dataset.itemId;
     const item = this.actor.items.get(itemId);
+	let description = item.system.description;
+	for (let i=1; i<8; i++) {
+		  let Talent = "Talent" + i
+		  if (!!item.system.attributes.Talents?.[Talent]?.value && item.flags?.['icon-145-data-wip']?.[Talent]) {
+			  description = description + item.system.attributes.Talents[Talent].value
+		  }
+	  }
     const token = this.actor.token;
     const templateData = {
       tokenId: token?.uuid || null,
       title: item.name,
-      description: item.system.description,
+      description: description,
       labels: item.system,
 	  img: item.img
     };
@@ -234,6 +255,13 @@ class ICONSheet extends SimpleActorSheet {
 		let object = {[stat]: value}
 		this.actor.update(object)
 		})
+	html[0].querySelectorAll(".talent-checkbox").forEach(b => {b.addEventListener("change", async (event) => {
+    const checked = b.checked;
+    const {type, id} = b.dataset;
+    const item = this.object.items.get(id);
+    await item.setFlag("icon-145-data-wip", type, checked);
+  });
+});
 }
 
 _updateObject(event, formData) {
@@ -447,11 +475,8 @@ static get defaultOptions() {
   activate(tabName="bond-info", {triggerCallback=false}={}) {
 
     // Validate the requested tab name
-	console.log(this)
     const group = this._nav.dataset.group;
     const items = this._nav.querySelectorAll("[data-tab]");
-	console.log(group)
-	console.log(items)
 	
   }
   
@@ -479,7 +504,66 @@ class IconCampSheet extends IconPlayerSheet {
   }
 }
 
+class IconItemSheet extends SimpleItemSheet {
+	static get defaultOptions() {
+    return foundry.utils.mergeObject(super.defaultOptions, {
+      classes: ["IconItemSheet", "worldbuilding", "sheet", "item"],
+      template: "modules/icon-145-data-wip/templates/icon-item-sheet.html",
+      width: 520,
+      height: 480,
+      tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}],
+      scrollY: [".attributes"],
+    });
+  }
+  
+  async getData(options){
+	  const context = await super.getData(options);
+	  try {
+		context.data.Talents = Object.entries(context.item.flags?.['icon-145-data-wip']).filter(t => t[0].includes('Talent')).map((t,i) => ({name:t[0],value:t[1],datapath:"system.attributes.Talents."+t[0]+".value",rootpath:"@root."+t[0]+"HTML"}))
+		}
+		catch (e) {
+			console.log("error")
+			//pass
+		}
+	try {
+	  context.Talent1HTML = await TextEditor.enrichHTML(context.systemData.attributes.Talents.Talent1.value, {
+	  secrets: this.document.isOwner,
+      async: true
+    }) || "";
+	context.Talent2HTML = await TextEditor.enrichHTML(context.systemData.attributes.Talents.Talent2.value, {
+	  secrets: this.document.isOwner,
+      async: true
+    }) || "";
+	context.Talent3HTML = await TextEditor.enrichHTML(context.systemData.attributes.Talents.Talent3.value, {
+	  secrets: this.document.isOwner,
+      async: true
+    }) || "";
+	context.Talent4HTML = await TextEditor.enrichHTML(context.systemData.attributes.Talents.Talent4.value, {
+	  secrets: this.document.isOwner,
+      async: true
+    }) || "";
+	context.Talent5HTML = await TextEditor.enrichHTML(context.systemData.attributes.Talents.Talent5.value, {
+	  secrets: this.document.isOwner,
+      async: true
+    }) || "";
+	context.Talent6HTML = await TextEditor.enrichHTML(context.systemData.attributes.Talents.Talent6.value, {
+	  secrets: this.document.isOwner,
+      async: true
+    }) || "";
+	context.Talent7HTML = await TextEditor.enrichHTML(context.systemData.attributes.Talents.Talent7.value, {
+	  secrets: this.document.isOwner,
+      async: true
+    }) || "";
+	}
+	catch (e) {
+		//pass
+	}
+    return context;
+  }
+  }
+
 Actors.registerSheet("icon-player-sheet", IconPlayerSheet, { makeDefault: false });
 Actors.registerSheet("icon-sheet-old", OldIconSheet, { makeDefault: false });
 Actors.registerSheet("icon-145-data-wip", ICONSheet, { makeDefault: true });
 Actors.registerSheet("icon-camp-sheet", IconCampSheet, { makeDefault: false});
+Items.registerSheet("icon-item-sheet", IconItemSheet, { makeDefault: true });
