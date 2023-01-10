@@ -8,8 +8,8 @@ export const preloadHandlebarsTemplates = async function() {
   // Define template paths to load
   const templatePaths = [
     // Attribute list partial.
-    "modules/icon-145-data-wip/templates/parts/sheet-attributes.html",
-    "modules/icon-145-data-wip/templates/parts/sheet-groups.html",
+    "modules/icon_data/templates/parts/sheet-attributes.html",
+    "modules/icon_data/templates/parts/sheet-groups.html",
   ];
 
   // Load the template parts

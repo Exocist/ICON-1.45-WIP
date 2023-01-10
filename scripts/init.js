@@ -18,8 +18,8 @@ Hooks.once("init", async function() {
   
   await loadTemplates([
     // Attribute list partial.
-    "modules/icon-145-data-wip/templates/parts/icon-sheet-attributes.html",
-    "modules/icon-145-data-wip/templates/parts/icon-sheet-groups.html",
+    "modules/icon_data/templates/parts/icon-sheet-attributes.html",
+    "modules/icon_data/templates/parts/icon-sheet-groups.html",
   ]);
 })
 
@@ -36,7 +36,7 @@ Handlebars.registerHelper('blades-clock', function(parameter_name, type, current
 
     // Label for 0
     html += `<label class="clock-zero-label" for="clock-${type}-0-${theme}"><i class="fab fa-creative-commons-zero nullifier"></i></label>`;
-    html += `<div id="blades-clock-${uniq_id}" class="blades-clock clock-${type} clock-${type}-${current_value}" style="background-image:url('modules/icon-145-data-wip/themes/${theme}/${type}clock_${current_value}.png');">`;
+    html += `<div id="blades-clock-${uniq_id}" class="blades-clock clock-${type} clock-${type}-${current_value}" style="background-image:url('modules/icon_data/themes/${theme}/${type}clock_${current_value}.png');">`;
 
     let zero_checked = (parseInt(current_value) === 0) ? 'checked' : '';
     html += `<input type="radio" value="0" id="clock-${type}-0-${theme}" data-dType="String" name="${parameter_name}" ${zero_checked}>`;
@@ -70,7 +70,7 @@ class ICONSheet extends SimpleActorSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["ICONSheet", "worldbuilding", "sheet", "actor"],
-      template: "modules/icon-145-data-wip/templates/icon-actor-sheet.html",
+      template: "modules/icon_data/templates/icon-actor-sheet.html",
       width: 600,
       height: 600,
       tabs: [{navSelector: ".bond-tabs", contentSelector: ".bond-body", initial: "bond-info"},
@@ -83,11 +83,11 @@ class ICONSheet extends SimpleActorSheet {
   async getData(options) {
     const context = await super.getData(options);
     for (const item of context.data.items) {
-		item.isTrait = item.flags?.['icon-145-data-wip']?.isTrait || false
-		item.isBondPower = item.flags?.['icon-145-data-wip']?.isBondPower || false
-		item.isCampFixture = item.flags?.['icon-145-data-wip']?.isCampFixture || false
+		item.isTrait = item.flags?.['icon_data']?.isTrait || false
+		item.isBondPower = item.flags?.['icon_data']?.isBondPower || false
+		item.isCampFixture = item.flags?.['icon_data']?.isCampFixture || false
 		try {
-		item.Talents = Object.entries(item.flags?.['icon-145-data-wip']).filter(t => t[0].includes('Talent')).map((t,i) => ({name:t[0],value:t[1]}))
+		item.Talents = Object.entries(item.flags?.['icon_data']).filter(t => t[0].includes('Talent')).map((t,i) => ({name:t[0],value:t[1]}))
 		}
 		catch (e) {
 			//pass
@@ -109,7 +109,7 @@ class ICONSheet extends SimpleActorSheet {
 	  let enriched = chatData.description
 	  for (let i=1; i<8; i++) {
 		  let Talent = "Talent" + i
-		  if (!!chatData.attributes.Talents?.[Talent]?.value && item.flags?.['icon-145-data-wip']?.[Talent]) {
+		  if (!!chatData.attributes.Talents?.[Talent]?.value && item.flags?.['icon_data']?.[Talent]) {
 			  enriched = enriched + chatData.attributes.Talents[Talent].value
 		  }
 	  }
@@ -142,7 +142,7 @@ class ICONSheet extends SimpleActorSheet {
 	let description = item.system.description;
 	for (let i=1; i<8; i++) {
 		  let Talent = "Talent" + i
-		  if (!!item.system.attributes.Talents?.[Talent]?.value && item.flags?.['icon-145-data-wip']?.[Talent]) {
+		  if (!!item.system.attributes.Talents?.[Talent]?.value && item.flags?.['icon_data']?.[Talent]) {
 			  description = description + item.system.attributes.Talents[Talent].value
 		  }
 	  }
@@ -154,7 +154,7 @@ class ICONSheet extends SimpleActorSheet {
       labels: item.system,
 	  img: item.img
     };
-    const html = await renderTemplate("modules/icon-145-data-wip/templates/chatcard.hbs", templateData);
+    const html = await renderTemplate("modules/icon_data/templates/chatcard.hbs", templateData);
     // Create the ChatMessage data object
     const chatData = {
       user: game.user.id,
@@ -184,7 +184,7 @@ class ICONSheet extends SimpleActorSheet {
         return cls.create({
 			name: game.i18n.localize("SIMPLE.ItemNew"), 
 			type: "item", 
-			flags: { ['icon-145-data-wip'] : { isTrait: true }} }, 
+			flags: { ['icon_data'] : { isTrait: true }} }, 
 			{parent: this.actor});
       case "edit":
         return item.sheet.render(true);
@@ -208,7 +208,7 @@ class ICONSheet extends SimpleActorSheet {
         return cls.create({
 			name: game.i18n.localize("SIMPLE.ItemNew"), 
 			type: "item", 
-			flags: { ['icon-145-data-wip'] : { isBondPower: true }} }, 
+			flags: { ['icon_data'] : { isBondPower: true }} }, 
 			{parent: this.actor});
       case "edit":
         return item.sheet.render(true);
@@ -232,7 +232,7 @@ class ICONSheet extends SimpleActorSheet {
         return cls.create({
 			name: game.i18n.localize("SIMPLE.ItemNew"), 
 			type: "item", 
-			flags: { ['icon-145-data-wip'] : { isCampFixture: true }} }, 
+			flags: { ['icon_data'] : { isCampFixture: true }} }, 
 			{parent: this.actor});
       case "edit":
         return item.sheet.render(true);
@@ -259,7 +259,7 @@ class ICONSheet extends SimpleActorSheet {
     const checked = b.checked;
     const {type, id} = b.dataset;
     const item = this.object.items.get(id);
-    await item.setFlag("icon-145-data-wip", type, checked);
+    await item.setFlag("icon_data", type, checked);
   });
 });
 }
@@ -277,7 +277,7 @@ class OldIconSheet extends ICONSheet {
 	static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["OldIconSheet", "ICONSheet", "worldbuilding", "sheet", "actor"],
-      template: "modules/icon-145-data-wip/templates/icon-sheet-old.html",
+      template: "modules/icon_data/templates/icon-sheet-old.html",
       width: 600,
       height: 600,
       tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}],
@@ -292,7 +292,7 @@ class IconPlayerSheet extends ICONSheet {
 static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["IconPlayerSheet", "ICONSheet", "worldbuilding", "sheet", "actor"],
-      template: "modules/icon-145-data-wip/templates/icon-player-sheet.html",
+      template: "modules/icon_data/templates/icon-player-sheet.html",
       width: 700,
       height: 700,
       tabs: [{navSelector: ".bond-tabs", contentSelector: ".bond-body", initial: "bond-info"},
@@ -494,7 +494,7 @@ class IconCampSheet extends IconPlayerSheet {
 	static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["IconCampSheet", "ICONSheet", "worldbuilding", "sheet", "actor"],
-      template: "modules/icon-145-data-wip/templates/icon-camp-sheet.html",
+      template: "modules/icon_data/templates/icon-camp-sheet.html",
       width: 700,
       height: 700,
       tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}],
@@ -508,7 +508,7 @@ class IconItemSheet extends SimpleItemSheet {
 	static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ["IconItemSheet", "worldbuilding", "sheet", "item"],
-      template: "modules/icon-145-data-wip/templates/icon-item-sheet.html",
+      template: "modules/icon_data/templates/icon-item-sheet.html",
       width: 520,
       height: 480,
       tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}],
@@ -519,7 +519,7 @@ class IconItemSheet extends SimpleItemSheet {
   async getData(options){
 	  const context = await super.getData(options);
 	  try {
-		context.data.Talents = Object.entries(context.item.flags?.['icon-145-data-wip']).filter(t => t[0].includes('Talent')).map((t,i) => ({name:t[0],value:t[1],datapath:"system.attributes.Talents."+t[0]+".value",rootpath:"@root."+t[0]+"HTML"}))
+		context.data.Talents = Object.entries(context.item.flags?.['icon_data']).filter(t => t[0].includes('Talent')).map((t,i) => ({name:t[0],value:t[1],datapath:"system.attributes.Talents."+t[0]+".value",rootpath:"@root."+t[0]+"HTML"}))
 		}
 		catch (e) {
 			console.log("error")
@@ -564,6 +564,6 @@ class IconItemSheet extends SimpleItemSheet {
 
 Actors.registerSheet("icon-player-sheet", IconPlayerSheet, { makeDefault: false });
 Actors.registerSheet("icon-sheet-old", OldIconSheet, { makeDefault: false });
-Actors.registerSheet("icon-145-data-wip", ICONSheet, { makeDefault: true });
+Actors.registerSheet("icon_data", ICONSheet, { makeDefault: true });
 Actors.registerSheet("icon-camp-sheet", IconCampSheet, { makeDefault: false});
 Items.registerSheet("icon-item-sheet", IconItemSheet, { makeDefault: true });

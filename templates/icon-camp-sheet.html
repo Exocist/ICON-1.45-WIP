@@ -130,11 +130,11 @@
             </header>
 
             {{!-- Render the attribute list partial. --}}
-            {{> "modules/icon-145-data-wip/templates/parts/icon-sheet-attributes.html" attributes=systemData.ungroupedAttributes dtypes=dtypes}}
+            {{> "modules/icon_data/templates/parts/icon-sheet-attributes.html" attributes=systemData.ungroupedAttributes dtypes=dtypes}}
 
             {{!-- Render the grouped attributes partial and control. --}}
             <div class="groups">
-                {{> "modules/icon-145-data-wip/templates/parts/icon-sheet-groups.html" attributes=systemData.groupedAttributes groups=systemData.groups dtypes=dtypes}}
+                {{> "modules/icon_data/templates/parts/icon-sheet-groups.html" attributes=systemData.groupedAttributes groups=systemData.groups dtypes=dtypes}}
 
                 <div class="group-controls flexrow">
                     <input class="group-prefix" type="text" value=""/>

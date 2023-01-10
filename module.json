@@ -1,6 +1,6 @@
 {
   "title": "ICON Data",
-  "description": "Data for ICON 1.45 Foes, Abilities, Jobs &amp; Relics. Incomplete.",
+  "description": "Data for ICON for use on Simple Worldbuilding & Sheets for automation",
   "languages": [
     {
       "lang": "en",
@@ -164,7 +164,7 @@
     "templates/itemsummary.css",
     "icon.css"
   ],
-  "id": "icon-145-data-wip",
+  "id": "icon_data",
   "authors": [
     {
       "name": "Exocist",
@@ -178,5 +178,5 @@
     "minimum": "9",
     "verified": "10"
   },
-  "version": "1.5"
+  "version": "1.5.1"
 }
