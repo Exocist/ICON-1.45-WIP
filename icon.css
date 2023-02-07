@@ -535,3 +535,12 @@ section.bond {
 .worldbuilding .traits h4.item-name {
 	flex: 50%;
 }
+
+.CombatBar {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.worldbuilding .Wounds i#attributes-Wounds-4 {
+	color: red;
+}

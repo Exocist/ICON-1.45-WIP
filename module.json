@@ -149,6 +149,15 @@
       "system": "worldbuilding",
       "private": false,
       "flags": {}
+    },
+    {
+      "label": "Trophies",
+      "type": "Item",
+      "name": "trophies",
+      "path": "packs/trophies.db",
+      "system": "worldbuilding",
+      "private": false,
+      "flags": {}
     }
   ],
   "esmodules": [
