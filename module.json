@@ -180,9 +180,9 @@
       "flags": {}
     }
   ],
-  "url": "https://github.com/Exocist/ICON-1.45-WIP/tree/1.5-WIP",
-  "manifest": "https://raw.githubusercontent.com/Exocist/ICON-1.45-WIP/1.5-WIP/module.json",
-  "download": "https://github.com/Exocist/ICON-1.45-WIP/archive/refs/heads/1.5-WIP.zip",
+  "url": "https://github.com/Exocist/ICON-1.45-WIP",
+  "manifest": "https://raw.githubusercontent.com/Exocist/ICON-1.45-WIP/main/module.json",
+  "download": "https://github.com/Exocist/ICON-1.45-WIP/archive/refs/heads/main.zip",
   "compatibility": {
     "minimum": "9",
     "verified": "10"
