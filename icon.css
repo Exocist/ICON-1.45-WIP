@@ -252,7 +252,11 @@ label[for=attributes-Dust-0] {
 	width: 5.68em;
 }
 
-.worldbuilding .bond-body i#attributes-XP-7 {
+.worldbuilding .bond-body i#attributes-XP-5 {
+	color: purple;
+}
+
+.worldbuilding .bond-body i#attributes-XP-10 {
 	color: purple;
 }
 
