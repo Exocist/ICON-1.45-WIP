@@ -284,7 +284,6 @@
 
         {{!-- Abilities Tab --}}
         <div class="tab items" data-group="primary" data-tab="items">
-		<div class="CombatBar">
 		<div class="Personal Resolve">
 		<span>Personal Resolve</span>
 		{{#times_from_0 5}}
@@ -297,20 +296,6 @@
 		{{/if}} click-to-set PersonalResolve-value-{{this}}" data-value="{{this}}" data-stat="system.attributes.information.PersonalResolve.value" id="attributes-PersonalResolve-{{this}}"></i>
 		<label for="attributes-PersonalResolve-{{this}}"></label>
 		{{/times_from_0}}
-		</div>
-		<div class="Wounds">
-		<span>Wounds</span>
-		{{#times_from_0 4}}
-		<i class="{{#if (eq this 0)}}
-		fab fa-creative-commons-zero
-		{{else if (gte ../actor.system.attributes.information.Wounds.value this)}}
-		fas fa-circle
-		{{else}}
-		fas fa-circle-dashed
-		{{/if}} click-to-set Wounds-value-{{this}}" data-value="{{this}}" data-stat="system.attributes.information.Wounds.value" id="attributes-Wounds-{{this}}"></i>
-		<label for="attributes-Wounds-{{this}}"></label>
-		{{/times_from_0}}
-		</div>
 		</div>
             <ol class="item-list">
                 {{#each data.items as |item id|}}
