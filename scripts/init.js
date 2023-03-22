@@ -159,7 +159,6 @@ class ICONSheet extends SimpleActorSheet {
     let thtml = await renderTemplate("modules/icon_data/templates/chatcard.hbs", templateData);
 	
 	if (item.system.attributes.Information) {
-		console.log("here")
 		const HitDamageDice = item.system.attributes.Information.HitDamageDice.value
 		const HitFrayDamage = item.system.attributes.Information.HitFrayDamage.value
 		const HitExtraDamage = item.system.attributes.Information.HitExtraDamage.value
@@ -182,6 +181,14 @@ class ICONSheet extends SimpleActorSheet {
       <label for="bonus-damage">Bonus damage:</label>
       <input type="number" id="bonus-damage" value="0"></input>
      </div>
+	 <div class="form-group">
+      <label for="critnumber">Crit Number:</label>
+      <input type="number" id="critnumber" value="20"></input>
+     </div>
+	 <div class="form-group">
+      <label for="extra-damage">Extra Damage:</label>
+      <input type="number" id="extra-damage" value="0"></input>
+     </div>
      <div class="form-group">
       <label for="force-crit">Force crit?</label>
       <input type="checkbox" id="force-crit" value="force-crit"></input>
@@ -195,6 +202,10 @@ class ICONSheet extends SimpleActorSheet {
       <label for="autohit">Auto-Hit</label>
       <input type="checkbox" id="autohit" value="autohit"></input>
      </div>
+	 <div class="form-group">
+      <label for="nocrit">No Crit</label>
+      <input type="checkbox" id="nocrit" value="nocrit"></input>
+     </div>
     </div>
   </form><hr>`;
   
@@ -204,6 +215,7 @@ class ICONSheet extends SimpleActorSheet {
 	 {{AttackRoll}}
 	<p style="background-color:#666; font-family:capitals; color:white; text-align:center;font-size:1.5em">Damage Roll</p> 
 	{{DamageRoll}}
+		{{Invokes}}
 	`;
 	
 	new Dialog({
@@ -215,9 +227,12 @@ class ICONSheet extends SimpleActorSheet {
     callback: async (html) => {
 	  const num = Number(html[0].querySelector("input[id='number-of-dice']").value);
       var bonus = Number(html[0].querySelector("input[id='bonus-damage']").value);
+	  var extra = Number(html[0].querySelector("input[id='extra-damage']").value);
+	  var critnumber = Number(html[0].querySelector("input[id='critnumber']").value);
       const forceCrit = (html[0].querySelector("input[id='force-crit']").checked);
       const hissatsu = (html[0].querySelector("input[id='hissatsu']").checked);
 	  const autohit = (html[0].querySelector("input[id='autohit']").checked);
+	  const nocrit = (html[0].querySelector("input[id='nocrit']").checked);
       var DamageDice = this.actor.system.attributes.Stats.Damage.value
 	  var FrayDamage = this.actor.system.attributes.Stats.Fray.value
       if (hissatsu) {
@@ -234,13 +249,16 @@ class ICONSheet extends SimpleActorSheet {
       
 	  await hitRoll.evaluate();
       let messageHTML;
+	  let invokeHTML;
+	  
+	  var invokecheck = hitRoll.terms[0].total
 	  
 	  const targetValue = target.actor.system.attributes.Stats.Defense.value;
 	  if (autohit) {
 		  messageHTML=`<p style="color:red">Invoke check vs ${target.name}!</p>`
 		  var crit = 0
 		  var hit = true
-	  } else if(hitRoll.total>=20){
+	  } else if((hitRoll.total>=critnumber) && !nocrit){
 		  messageHTML=`<p style="color:red">You crit ${target.name}!</p>`
 		  var crit=1
 		  var hit=true
@@ -262,13 +280,35 @@ class ICONSheet extends SimpleActorSheet {
 		var CritBonusDamage = 0
 	}
 	
-	if(hit) {
-		var dmgFormula = `${HitTimes}*(${HitDamageDice + bonus + crit + CritBonusDamage}d${DamageDice}kh${HitDamageDice + crit} + ${HitFrayDamage*FrayDamage} + ${HitExtraDamage})`
+	var invokes = []
+	  for (let value of this.actor.items.values()) {
+		  if (value.system.attributes.Tags.Invoke) {
+			  if (value.system.attributes.Tags.Invoke.value <= invokecheck){
+				invokes.push(value.name.split("(")[0])
+			  }
+			}
+		}
+	
+	console.log(invokes.length)
+	
+	if (invokes.length > 0) {
+		invokeHTML = ``
+		for(let invoke of invokes){
+			console.log(invoke)
+			invokeHTML = invokeHTML + `<p style="color:red">${invoke}invoked!</p>`;
+			
+		}
 	} else {
-		var dmgFormula = `${MissTimes}*(${MissDamageDice + bonus}d${DamageDice}kh${MissDamageDice} + ${MissFrayDamage*FrayDamage} + ${MissExtraDamage})`
+		invokeHTML = ``
 	}
 	
-	console.log(dmgFormula)
+	console.log(invokeHTML)
+	
+	if(hit) {
+		var dmgFormula = `${HitTimes}*(${HitDamageDice + bonus + crit + CritBonusDamage}d${DamageDice}kh${HitDamageDice + crit} + ${HitFrayDamage*FrayDamage} + ${HitExtraDamage} + ${extra})`
+	} else {
+		var dmgFormula = `${MissTimes}*(${MissDamageDice + bonus}d${DamageDice}kh${MissDamageDice} + ${MissFrayDamage*FrayDamage} + ${MissExtraDamage} + ${extra})`
+	}
 	
 	const dmgRoll = new Roll(dmgFormula);
     await dmgRoll.evaluate();
@@ -280,7 +320,7 @@ class ICONSheet extends SimpleActorSheet {
     Promise.all([hitRender, dmgRender]).then(async data => {
       const hitHTML = data[0];
       const dmgHTML = data[1];
-	  const html = thtml + `<hr>` + results.replace("{{Message}}", messageHTML).replace("{{AttackRoll}}", hitHTML).replace("{{DamageRoll}}", dmgHTML);
+	  const html = thtml + `<hr>` + results.replace("{{Message}}", messageHTML).replace("{{AttackRoll}}", hitHTML).replace("{{DamageRoll}}", dmgHTML).replace("{{Invokes}}", invokeHTML);
 	  
 	// Create the ChatMessage data object
     const chatData = {
