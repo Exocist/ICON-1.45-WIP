@@ -1,3 +1,5 @@
+13/06/2023 - Basics completed.
+
 12/06/2023 - 1.5 is out which means its time to start updating for 1.5. Abilities, Jobs & Relics are done (thanks WickedRobot)
 
 7/02/2023 - Final update for 1.45, added trophies, wound tracking.
