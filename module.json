@@ -45,6 +45,121 @@
       "flags": {}
     }
   ],
+"packs": [
+    {
+      "name": "foes",
+      "label": "Foes",
+      "type": "Actor",
+      "system": "worldbuilding",
+      "path": "packs/foes",
+      "private": false,
+      "flags": {}
+    },
+    {
+      "name": "jobs",
+      "label": "Jobs",
+      "type": "Actor",
+      "system": "worldbuilding",
+      "path": "packs/jobs",
+      "private": false,
+      "flags": {}
+    },
+    {
+      "name": "relics",
+      "label": "Relics",
+      "type": "Item",
+      "system": "worldbuilding",
+      "path": "packs/relics",
+      "private": false,
+      "flags": {}
+    },
+    {
+      "name": "abilities",
+      "label": "Abilities",
+      "type": "Item",
+      "system": "worldbuilding",
+      "path": "packs/abilities",
+      "private": false,
+      "flags": {}
+    },
+    {
+      "name": "effects",
+      "label": "Effects",
+      "type": "Item",
+      "system": "worldbuilding",
+      "path": "packs/effects",
+      "private": false,
+      "flags": {}
+    },
+    {
+      "name": "rules",
+      "label": "Rules",
+      "type": "JournalEntry",
+      "path": "packs/rules",
+      "private": false,
+      "flags": {}
+    },
+    {
+      "name": "icon-macros",
+      "label": "ICON Macros",
+      "type": "Macro",
+      "path": "packs/icon-macros",
+      "private": false,
+      "flags": {}
+    },
+    {
+      "name": "seer-cards",
+      "label": "Seer Cards",
+      "type": "Cards",
+      "path": "packs/seer-cards",
+      "private": false,
+      "flags": {}
+    },
+    {
+      "name": "maps",
+      "label": "Maps",
+      "type": "Scene",
+      "path": "packs/maps",
+      "private": false,
+      "flags": {}
+    },
+    {
+      "label": "Bond Powers",
+      "type": "Item",
+      "name": "bond-powers",
+      "path": "packs/bond-powers",
+      "system": "worldbuilding",
+      "private": false,
+      "flags": {}
+    },
+    {
+      "label": "Job Traits",
+      "type": "Item",
+      "name": "job-traits",
+      "path": "packs/job-traits",
+      "system": "worldbuilding",
+      "private": false,
+      "flags": {}
+    },
+    {
+      "label": "Camp Fixtures",
+      "type": "Item",
+      "name": "camp-fixtures",
+      "path": "packs/camp-fixtures",
+      "system": "worldbuilding",
+      "private": false,
+      "flags": {}
+    },
+    {
+      "label": "Trophies",
+      "type": "Item",
+      "name": "trophies",
+      "path": "packs/trophies",
+      "system": "worldbuilding",
+      "private": false,
+      "flags": {}
+    }
+  ],
   "esmodules": [
     "scripts/init.js",
     "scripts/blades-roll.js",
@@ -72,5 +187,5 @@
     "minimum": "11",
     "verified": "11"
   },
-  "version": "1.7"
+  "version": "1.7.1"
 }
