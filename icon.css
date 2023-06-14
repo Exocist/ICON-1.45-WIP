@@ -252,7 +252,11 @@ label[for=attributes-Dust-0] {
 	width: 5.68em;
 }
 
-.worldbuilding .bond-body i#attributes-XP-7 {
+.worldbuilding .bond-body i#attributes-XP-5 {
+	color: purple;
+}
+
+.worldbuilding .bond-body i#attributes-XP-10 {
 	color: purple;
 }
 
@@ -530,13 +534,4 @@ section.bond {
 
 .worldbuilding .traits h4.item-name {
 	flex: 50%;
-}
-
-.CombatBar {
-	display: flex;
-	justify-content: space-evenly;
-}
-
-.worldbuilding .Wounds i#attributes-Wounds-4 {
-	color: red;
 }
