@@ -76,7 +76,7 @@ class ICONSheet extends SimpleActorSheet {
       tabs: [{navSelector: ".bond-tabs", contentSelector: ".bond-body", initial: "bond-info"},
 	  {navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}],
       scrollY: [".narrative",".traits", ".items", ".attributes"],
-      dragDrop: [{dragSelector: ".trait-list .item-list .item", dropSelector: null}]
+      dragDrop: [{dragSelector: ".item-list .item", dropSelector: null}]
     });
   }
  
@@ -137,6 +137,7 @@ class ICONSheet extends SimpleActorSheet {
   
   async _onItemUse(event) {
     event.preventDefault();
+	const target = game.user.targets.first();
     const itemId = event.currentTarget.closest(".item").dataset.itemId;
     const item = this.actor.items.get(itemId);
 	let description = item.system.description;
@@ -154,19 +155,226 @@ class ICONSheet extends SimpleActorSheet {
       labels: item.system,
 	  img: item.img
     };
-    const html = await renderTemplate("modules/icon_data/templates/chatcard.hbs", templateData);
-    // Create the ChatMessage data object
+	if (target != null){
+    let thtml = await renderTemplate("modules/icon_data/templates/chatcard.hbs", templateData);
+	
+	if (item.system.attributes.Information) {
+		const HitDamageDice = item.system.attributes.Information.HitDamageDice.value
+		const HitFrayDamage = item.system.attributes.Information.HitFrayDamage.value
+		const HitExtraDamage = item.system.attributes.Information.HitExtraDamage.value
+		const MissDamageDice = item.system.attributes.Information.MissDamageDice.value
+		const MissFrayDamage = item.system.attributes.Information.MissFrayDamage.value
+		const MissExtraDamage = item.system.attributes.Information.MissExtraDamage.value
+		const HitTimes = item.system.attributes.Information.HitTimes.value
+		const MissTimes = item.system.attributes.Information.MissTimes.value
+		const DamageDice = this.actor.system.attributes.Stats.Damage.value
+		const FrayDamage = this.actor.system.attributes.Stats.Fray.value
+		
+		const content = `
+  <form>
+    <div class="form-fields">
+     <div class="form-group">
+      <label for="number-of-dice">Boons or Curses:</label>
+      <input type="number" id="number-of-dice" value="0"></input>
+      </div>
+     <div class="form-group">
+      <label for="bonus-damage">Bonus damage:</label>
+      <input type="number" id="bonus-damage" value="0"></input>
+     </div>
+	 <div class="form-group">
+      <label for="critnumber">Crit Number:</label>
+      <input type="number" id="critnumber" value="20"></input>
+     </div>
+	 <div class="form-group">
+      <label for="exceednumber">Exceed Number:</label>
+      <input type="number" id="exceednumber" value="15"></input>
+     </div>
+	 <div class="form-group">
+      <label for="extra-damage">Extra Damage:</label>
+      <input type="number" id="extra-damage" value="0"></input>
+     </div>
+     <div class="form-group">
+      <label for="force-crit">Force crit?</label>
+      <input type="checkbox" id="force-crit" value="force-crit"></input>
+</input>
+     </div>
+     <div class="form-group">
+      <label for="hissatsu">Hissatsu?</label>
+      <input type="checkbox" id="hissatsu" value="hissatsu"></input>
+     </div>
+	 <div class="form-group">
+      <label for="autohit">Auto-Hit</label>
+      <input type="checkbox" id="autohit" value="autohit"></input>
+     </div>
+	 <div class="form-group">
+      <label for="nocrit">No Crit</label>
+      <input type="checkbox" id="nocrit" value="nocrit"></input>
+     </div>
+    </div>
+  </form><hr>`;
+  
+	  const results = `
+	 {{Message}}
+	<p style="background-color:#333 ; font-family:capitals; color:white; text-align:center;font-size:1.5em">Attack!</p>
+	 {{AttackRoll}}
+	<p style="background-color:#666; font-family:capitals; color:white; text-align:center;font-size:1.5em">Damage Roll</p> 
+	{{DamageRoll}}
+		{{Invokes}}
+	`;
+	
+	new Dialog({
+    title: "Attack Macro",
+    content,
+    buttons: {go: {
+    icon: `<i class="fas fa-check"></i>`,
+    label: "Roll",
+    callback: async (html) => {
+	  const num = Number(html[0].querySelector("input[id='number-of-dice']").value);
+      var bonus = Number(html[0].querySelector("input[id='bonus-damage']").value);
+	  var extra = Number(html[0].querySelector("input[id='extra-damage']").value);
+	  var critnumber = Number(html[0].querySelector("input[id='critnumber']").value);
+	  var exceednumber = Number(html[0].querySelector("input[id='exceednumber']").value);
+      const forceCrit = (html[0].querySelector("input[id='force-crit']").checked);
+      const hissatsu = (html[0].querySelector("input[id='hissatsu']").checked);
+	  const autohit = (html[0].querySelector("input[id='autohit']").checked);
+	  const nocrit = (html[0].querySelector("input[id='nocrit']").checked);
+      var DamageDice = this.actor.system.attributes.Stats.Damage.value
+	  var FrayDamage = this.actor.system.attributes.Stats.Fray.value
+      if (hissatsu) {
+       DamageDice = 10;
+       FrayDamage = 4;
+      }
+
+      // create and evaluate the to-hit roll
+	  if (autohit) {
+		  var hitRoll = new Roll(`1d20`);
+	  } else {
+		  var hitRoll = new Roll(`1d20 + ${num}d6kh1`);
+	  }
+      
+	  await hitRoll.evaluate();
+      let messageHTML;
+	  let invokeHTML;
+	  
+	  var invokecheck = hitRoll.terms[0].total
+	  
+	  const targetValue = target.actor.system.attributes.Stats.Defense.value;
+	  if (autohit) {
+		  messageHTML=`<p style="color:red">Invoke check vs ${target.name}!</p>`
+		  var crit = 0
+		  var hit = true
+	  } else if((hitRoll.total>=critnumber) && !nocrit){
+		  messageHTML=`<p style="color:red">You crit ${target.name}!</p>`
+		  var crit=1
+		  var hit=true
+	  } else if(hitRoll.total>=targetValue) {
+			  messageHTML=`<p style="color:red">You hit ${target.name}!</p>`;
+			  var crit=0
+			  var hit=true
+	  } else {
+		  messageHTML=`<p style="color:red">You miss ${target.name}</p>`;
+		  var crit=0
+		  var hit=false
+	  }
+	if((crit==1) && (forceCrit)) {
+	 const CritBonusDamage = 1
+	} else if((hit) && (forceCrit)) {
+		crit = 1
+		var CritBonusDamage = 0
+	} else {
+		var CritBonusDamage = 0
+	}
+	
+	var invokes = []
+	  for (let value of this.actor.items.values()) {
+		  if (value.system.attributes.Tags.Invoke) {
+			  if (value.system.attributes.Tags.Invoke.value <= invokecheck){
+				invokes.push(value.name.split("(")[0])
+			  }
+			}
+		}
+	
+	console.log(invokes.length)
+	
+	invokeHTML = ``
+	
+	if (hitRoll.total>=exceednumber) {
+		invokeHTML = `<p style="color:red">Exceed triggered!</p>`;
+	}
+	
+	if (invokes.length > 0) {
+		for(let invoke of invokes){
+			console.log(invoke)
+			invokeHTML = invokeHTML + `<p style="color:red">${invoke}invoked!</p>`;
+			
+		}
+	}
+	
+	console.log(invokeHTML)
+	
+	if(hit) {
+		var dmgFormula = `${HitTimes}*(${HitDamageDice + bonus + crit + CritBonusDamage}d${DamageDice}kh${HitDamageDice + crit} + ${HitFrayDamage*FrayDamage} + ${HitExtraDamage} + ${extra})`
+	} else {
+		var dmgFormula = `${MissTimes}*(${MissDamageDice + bonus}d${DamageDice}kh${MissDamageDice} + ${MissFrayDamage*FrayDamage} + ${MissExtraDamage} + ${extra})`
+	}
+	
+	const dmgRoll = new Roll(dmgFormula);
+    await dmgRoll.evaluate();
+      
+    // We await these promises so we can get the HTML
+    const hitRender = hitRoll.render();
+    const dmgRender = dmgRoll.render();
+
+    Promise.all([hitRender, dmgRender]).then(async data => {
+      const hitHTML = data[0];
+      const dmgHTML = data[1];
+	  const html = thtml + `<hr>` + results.replace("{{Message}}", messageHTML).replace("{{AttackRoll}}", hitHTML).replace("{{DamageRoll}}", dmgHTML).replace("{{Invokes}}", invokeHTML);
+	  
+	// Create the ChatMessage data object
     const chatData = {
       user: game.user.id,
-      type: CONST.CHAT_MESSAGE_TYPES.OTHER,
+      type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+	  rolls: [hitRoll, dmgRoll],
       content: html,
       speaker: ChatMessage.getSpeaker({actor: this.actor, token})
     };
-
-    // Create the Chat Message or return its data
-    const card = await ChatMessage.create(chatData)
 	
+	const card = await ChatMessage.create(chatData);
+	card?.render();
+	})
+	
+	}
+	}},
+	default: "go"}).render(true);
+	} else {
+	const html = await renderTemplate("modules/icon_data/templates/chatcard.hbs", templateData);
+	// Create the ChatMessage data object
+    const chatData = {
+      user: game.user.id,
+      type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+	  rolls: [hitRoll, dmgRoll],
+      content: html,
+      speaker: ChatMessage.getSpeaker({actor: this.actor, token})
+    };
+	
+	const card = await ChatMessage.create(chatData)	
 	return card
+	}
+	} else {
+	const html = await renderTemplate("modules/icon_data/templates/chatcard.hbs", templateData);
+	// Create the ChatMessage data object
+    const chatData = {
+      user: game.user.id,
+      type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+	  rolls: [hitRoll, dmgRoll],
+      content: html,
+      speaker: ChatMessage.getSpeaker({actor: this.actor, token})
+    };
+	
+	const card = await ChatMessage.create(chatData)	
+	return card
+	
+	}
   }
   
   _onTraitControl(event) {

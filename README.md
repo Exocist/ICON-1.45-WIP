@@ -1,3 +1,9 @@
+13/06/2023 - Basics completed.
+
+12/06/2023 - 1.5 is out which means its time to start updating for 1.5. Abilities, Jobs & Relics are done (thanks WickedRobot)
+
+7/02/2023 - Final update for 1.45, added trophies, wound tracking.
+
 11/01/2023 - Fixed some backend stuff, fixed some pathing and added book art as default to the module.
 
 10/01/2023 - MAJOR UPDATE - added talent tracking to all player abilities & relics, added upgrade tracking to camp fixtures
