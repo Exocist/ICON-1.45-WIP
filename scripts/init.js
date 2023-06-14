@@ -186,6 +186,10 @@ class ICONSheet extends SimpleActorSheet {
       <input type="number" id="critnumber" value="20"></input>
      </div>
 	 <div class="form-group">
+      <label for="exceednumber">Exceed Number:</label>
+      <input type="number" id="exceednumber" value="15"></input>
+     </div>
+	 <div class="form-group">
       <label for="extra-damage">Extra Damage:</label>
       <input type="number" id="extra-damage" value="0"></input>
      </div>
@@ -229,6 +233,7 @@ class ICONSheet extends SimpleActorSheet {
       var bonus = Number(html[0].querySelector("input[id='bonus-damage']").value);
 	  var extra = Number(html[0].querySelector("input[id='extra-damage']").value);
 	  var critnumber = Number(html[0].querySelector("input[id='critnumber']").value);
+	  var exceednumber = Number(html[0].querySelector("input[id='exceednumber']").value);
       const forceCrit = (html[0].querySelector("input[id='force-crit']").checked);
       const hissatsu = (html[0].querySelector("input[id='hissatsu']").checked);
 	  const autohit = (html[0].querySelector("input[id='autohit']").checked);
@@ -291,15 +296,18 @@ class ICONSheet extends SimpleActorSheet {
 	
 	console.log(invokes.length)
 	
+	invokeHTML = ``
+	
+	if (hitRoll.total>=exceednumber) {
+		invokeHTML = `<p style="color:red">Exceed triggered!</p>`;
+	}
+	
 	if (invokes.length > 0) {
-		invokeHTML = ``
 		for(let invoke of invokes){
 			console.log(invoke)
 			invokeHTML = invokeHTML + `<p style="color:red">${invoke}invoked!</p>`;
 			
 		}
-	} else {
-		invokeHTML = ``
 	}
 	
 	console.log(invokeHTML)
@@ -325,7 +333,8 @@ class ICONSheet extends SimpleActorSheet {
 	// Create the ChatMessage data object
     const chatData = {
       user: game.user.id,
-      type: CONST.CHAT_MESSAGE_TYPES.OTHER,
+      type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+	  rolls: [hitRoll, dmgRoll],
       content: html,
       speaker: ChatMessage.getSpeaker({actor: this.actor, token})
     };
@@ -342,7 +351,8 @@ class ICONSheet extends SimpleActorSheet {
 	// Create the ChatMessage data object
     const chatData = {
       user: game.user.id,
-      type: CONST.CHAT_MESSAGE_TYPES.OTHER,
+      type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+	  rolls: [hitRoll, dmgRoll],
       content: html,
       speaker: ChatMessage.getSpeaker({actor: this.actor, token})
     };
@@ -355,7 +365,8 @@ class ICONSheet extends SimpleActorSheet {
 	// Create the ChatMessage data object
     const chatData = {
       user: game.user.id,
-      type: CONST.CHAT_MESSAGE_TYPES.OTHER,
+      type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+	  rolls: [hitRoll, dmgRoll],
       content: html,
       speaker: ChatMessage.getSpeaker({actor: this.actor, token})
     };
