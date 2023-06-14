@@ -351,8 +351,7 @@ class ICONSheet extends SimpleActorSheet {
 	// Create the ChatMessage data object
     const chatData = {
       user: game.user.id,
-      type: CONST.CHAT_MESSAGE_TYPES.ROLL,
-	  rolls: [hitRoll, dmgRoll],
+      type: CONST.CHAT_MESSAGE_TYPES.OTHER,
       content: html,
       speaker: ChatMessage.getSpeaker({actor: this.actor, token})
     };
@@ -365,8 +364,7 @@ class ICONSheet extends SimpleActorSheet {
 	// Create the ChatMessage data object
     const chatData = {
       user: game.user.id,
-      type: CONST.CHAT_MESSAGE_TYPES.ROLL,
-	  rolls: [hitRoll, dmgRoll],
+      type: CONST.CHAT_MESSAGE_TYPES.OTHER,
       content: html,
       speaker: ChatMessage.getSpeaker({actor: this.actor, token})
     };
