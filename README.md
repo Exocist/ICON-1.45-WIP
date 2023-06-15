@@ -1,3 +1,5 @@
+16/06/2023 - Folk and bond powers completed (thanks Kjell)
+
 13/06/2023 - Basics completed.
 
 12/06/2023 - 1.5 is out which means its time to start updating for 1.5. Abilities, Jobs & Relics are done (thanks WickedRobot)
