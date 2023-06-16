@@ -704,8 +704,8 @@ class IconCampSheet extends IconPlayerSheet {
       width: 700,
       height: 700,
       tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}],
-      scrollY: [".biography", ".items", ".attributes"],
-      dragDrop: [{dragSelector: ".trait-list .item-list .item", dropSelector: null}]
+      scrollY: [".biography", ".items", ".attributes", ".narrative"],
+      dragDrop: [{dragSelector: ".item-list .item", dropSelector: null}]
     });
   }
 }
