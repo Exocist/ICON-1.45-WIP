@@ -1,3 +1,5 @@
+17/06/2023 - camp fixtures and macros fixed, just foes left to do
+
 16/06/2023 - relicts complete
 
 16/06/2023 - Trophies complete (thanks wyntreon), job traits complete, working on relicts
