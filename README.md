@@ -1,4 +1,4 @@
-16/06/2023 - Trophies complete (thanks wyntreon), working on relicts
+16/06/2023 - Trophies complete (thanks wyntreon), job traits complete, working on relicts
 
 16/06/2023 - Folk and bond powers completed (thanks Kjell)
 
