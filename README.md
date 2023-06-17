@@ -1,3 +1,6 @@
+18/06/2023 - Ruin beasts finished, have added Turn Breakdown to the effects and updated all relevant items with turn breakdown hyperlink.
+Fool got a shiny new stacked dice indicator.
+
 17/06/2023 - camp fixtures and macros fixed, just foes left to do
 
 16/06/2023 - relicts complete
