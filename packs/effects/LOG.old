@@ -1,3 +1,5 @@
-2023/06/16-22:29:22.600 4f68 Recovering log #91
-2023/06/16-22:29:22.604 4f68 Delete type=0 #91
-2023/06/16-22:29:22.604 4f68 Delete type=3 #89
+2023/06/18-00:39:25.437 5bec Recovering log #106
+2023/06/18-00:39:25.437 5bec Level-0 table #108: started
+2023/06/18-00:39:25.439 5bec Level-0 table #108: 4534 bytes OK
+2023/06/18-00:39:25.443 5bec Delete type=0 #106
+2023/06/18-00:39:25.443 5bec Delete type=3 #105

@@ -1,3 +1,5 @@
-2023/06/14-17:35:35.155 6db0 Recovering log #44
-2023/06/14-17:35:35.158 6db0 Delete type=0 #44
-2023/06/14-17:35:35.158 6db0 Delete type=3 #43
+2023/06/18-04:02:06.281 8ce8 Recovering log #106
+2023/06/18-04:02:06.281 8ce8 Level-0 table #108: started
+2023/06/18-04:02:06.281 8ce8 Level-0 table #108: 45476 bytes OK
+2023/06/18-04:02:06.291 8ce8 Delete type=0 #106
+2023/06/18-04:02:06.291 8ce8 Delete type=3 #105
