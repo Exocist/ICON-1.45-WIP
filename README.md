@@ -1,3 +1,5 @@
+18/06/2023 - Stalwarts and Wrights have now gotten an aether/vigilance counter. Jotunn added.
+
 18/06/2023 - Ruin beasts finished, have added Turn Breakdown to the effects and updated all relevant items with turn breakdown hyperlink.
 Fool got a shiny new stacked dice indicator.
 
