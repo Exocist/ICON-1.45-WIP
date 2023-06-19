@@ -1,3 +1,6 @@
+20/06/2023 - Scavs added, have added all the book art to book art or jobs. Some abilities updated to use the book art as their icon.
+Some effects updated.
+
 18/06/2023 - Stalwarts and Wrights have now gotten an aether/vigilance counter. Jotunn added.
 
 18/06/2023 - Ruin beasts finished, have added Turn Breakdown to the effects and updated all relevant items with turn breakdown hyperlink.
