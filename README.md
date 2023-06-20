@@ -1,3 +1,5 @@
+21/06/2023 - Imperials added
+
 20/06/2023 - Scavs added, have added all the book art to book art or jobs. Some abilities updated to use the book art as their icon.
 Some effects updated.
 
