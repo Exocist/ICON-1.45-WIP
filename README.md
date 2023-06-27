@@ -1,3 +1,5 @@
+27/06/2023 - All foes finished and rules reference updated. Next step will be adding gear and fixing up some junk code.
+
 25/06/2023 - Lowlanders added
 
 23/06/2023 - Demons added
