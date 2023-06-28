@@ -83,37 +83,7 @@
 		{{/each}}
 		{{/if}}
 		</section>
-		<section class="burdens">
-		<div class="character-burden-clock">
-		{{{blades-clock "system.attributes.clocks.Burden4.value" 4 this.actor.system.attributes.clocks.Burden4.value this.data._id "gms_red"}}}
-		{{{blades-clock "system.attributes.clocks.Burden6.value" 6 this.actor.system.attributes.clocks.Burden6.value this.data._id "gms_red"}}}
-		{{{blades-clock "system.attributes.clocks.Burden8.value" 8 this.actor.system.attributes.clocks.Burden8.value this.data._id "gms_red"}}}
-		</div>
-		<div class="burden-names">
-		<textarea rows="10" cols="30" name="system.attributes.clocks.Burden4Name.value" value="{{data.system.attributes.clocks.Burden4Name.value}}"/>{{data.system.attributes.clocks.Burden4Name.value}}</textarea>
-		<textarea rows="10" cols="30" name="system.attributes.clocks.Burden6Name.value" value="{{data.system.attributes.clocks.Burden6Name.value}}"/>{{data.system.attributes.clocks.Burden6Name.value}}</textarea>
-		<textarea rows="10" cols="30" name="system.attributes.clocks.Burden8Name.value" value="{{data.system.attributes.clocks.Burden8Name.value}}"/>{{data.system.attributes.clocks.Burden8Name.value}}</textarea>
-		</div>
-		</section>
-		<section class="ambitions">
-		<div class="character-burden-clock">
-		{{{blades-clock "system.attributes.clocks.Ambition4.value" 4 this.actor.system.attributes.clocks.Ambition4.value this.data._id "wallflower_green"}}}
-		{{{blades-clock "system.attributes.clocks.Ambition6.value" 6 this.actor.system.attributes.clocks.Ambition6.value this.data._id "wallflower_green"}}}
-		{{{blades-clock "system.attributes.clocks.Ambition10.value" 10 this.actor.system.attributes.clocks.Ambition10.value this.data._id "wallflower_green"}}}
-		</div>
-		<div class="ambition-names">
-		<textarea rows="10" cols="30" name="system.attributes.clocks.Ambition4Name.value" value="{{data.system.attributes.clocks.Ambition4Name.value}}">{{data.system.attributes.clocks.Ambition4Name.value}}</textarea>
-		<textarea rows="10" cols="30" name="system.attributes.clocks.Ambition6Name.value" value="{{data.system.attributes.clocks.Ambition6Name.value}}"/>{{data.system.attributes.clocks.Ambition6Name.value}}</textarea>
-		<textarea rows="10" cols="30" name="system.attributes.clocks.Ambition10Name.value" value="{{data.system.attributes.clocks.Ambition10Name.value}}"/>{{data.system.attributes.clocks.Ambition10Name.value}}</textarea>
-		</div>
-		</section>
-		<section class="bond">
-		<nav class="bond-tabs tabs" data-group="bond">
-			<a class="item" data-tab="bond-info" data-group="bond">{{localize "ICON.NarrativeInfo"}}</a>
-			<a class="item" data-tab="bond-powers" data-group="bond">{{localize "ICON.BondPowers"}}</a>
-		</nav>
-		<section class="bond-body">
-		<div class="tab bond-info active" data-group="bond" data-tab="bond-info">
+		<section class="XPDust">
 		<div class="XP-and-Dust">
 		<div class="XP-value">
 		<span>{{localize "ICON.XP"}}</span>
@@ -142,6 +112,39 @@
 		{{/times_from_0}}
 		</div>
 		</div>
+		</section>
+		<section class="burdens">
+		<div class="character-burden-clock">
+		{{{blades-clock "system.attributes.clocks.Burden4.value" 4 this.actor.system.attributes.clocks.Burden4.value this.data._id "gms_red"}}}
+		{{{blades-clock "system.attributes.clocks.Burden6.value" 6 this.actor.system.attributes.clocks.Burden6.value this.data._id "gms_red"}}}
+		{{{blades-clock "system.attributes.clocks.Burden8.value" 8 this.actor.system.attributes.clocks.Burden8.value this.data._id "gms_red"}}}
+		</div>
+		<div class="burden-names">
+		<textarea rows="10" cols="30" name="system.attributes.clocks.Burden4Name.value" value="{{data.system.attributes.clocks.Burden4Name.value}}"/>{{data.system.attributes.clocks.Burden4Name.value}}</textarea>
+		<textarea rows="10" cols="30" name="system.attributes.clocks.Burden6Name.value" value="{{data.system.attributes.clocks.Burden6Name.value}}"/>{{data.system.attributes.clocks.Burden6Name.value}}</textarea>
+		<textarea rows="10" cols="30" name="system.attributes.clocks.Burden8Name.value" value="{{data.system.attributes.clocks.Burden8Name.value}}"/>{{data.system.attributes.clocks.Burden8Name.value}}</textarea>
+		</div>
+		</section>
+		<section class="ambitions">
+		<div class="character-burden-clock">
+		{{{blades-clock "system.attributes.clocks.Ambition4.value" 4 this.actor.system.attributes.clocks.Ambition4.value this.data._id "wallflower_green"}}}
+		{{{blades-clock "system.attributes.clocks.Ambition6.value" 6 this.actor.system.attributes.clocks.Ambition6.value this.data._id "wallflower_green"}}}
+		{{{blades-clock "system.attributes.clocks.Ambition10.value" 10 this.actor.system.attributes.clocks.Ambition10.value this.data._id "wallflower_green"}}}
+		</div>
+		<div class="ambition-names">
+		<textarea rows="10" cols="30" name="system.attributes.clocks.Ambition4Name.value" value="{{data.system.attributes.clocks.Ambition4Name.value}}">{{data.system.attributes.clocks.Ambition4Name.value}}</textarea>
+		<textarea rows="10" cols="30" name="system.attributes.clocks.Ambition6Name.value" value="{{data.system.attributes.clocks.Ambition6Name.value}}"/>{{data.system.attributes.clocks.Ambition6Name.value}}</textarea>
+		<textarea rows="10" cols="30" name="system.attributes.clocks.Ambition10Name.value" value="{{data.system.attributes.clocks.Ambition10Name.value}}"/>{{data.system.attributes.clocks.Ambition10Name.value}}</textarea>
+		</div>
+		</section>
+		<section class="bond">
+		<nav class="bond-tabs tabs" data-group="bond">
+			<a class="item" data-tab="bond-info" data-group="bond">{{localize "ICON.NarrativeInfo"}}</a>
+			<a class="item" data-tab="gear" data-group="bond">Gear</a>
+			<a class="item" data-tab="bond-powers" data-group="bond">{{localize "ICON.BondPowers"}}</a>
+		</nav>
+		<section class="bond-body">
+		<div class="tab bond-info active" data-group="bond" data-tab="bond-info">
 		<div class="Second-Wind">
 		<span>{{localize "ICON.SecondWind"}}</span>
 		<textarea rows="10" cols="30" name="system.attributes.information.SecondWind.value" value="{{data.system.attributes.information.SecondWind.value}}">{{data.system.attributes.information.SecondWind.value}}</textarea>
@@ -155,6 +158,26 @@
 		<textarea rows="10" cols="30" name="system.attributes.information.Ideals.value" value="{{data.system.attributes.information.Ideals.value}}">{{data.system.attributes.information.Ideals.value}}</textarea>
 		</div>
 		</div>
+		
+		<div class="tab gear" data-group="bond" data-tab="gear">
+		
+		
+		
+		<div class="AdventurerKit">
+		<span>Adventurer's Kit</span>
+		<textarea rows="10" cols="30" name="system.attributes.information.AdventurersKit.value" value="{{data.system.attributes.information.AdventurersKit.value}}">{{data.system.attributes.information.AdventurersKit.value}}</textarea>
+		</div>
+		<div class="OtherKit">
+		<span>Other Kit</span>
+		<textarea rows="10" cols="30" name="system.attributes.information.OtherKit.value" value="{{data.system.attributes.information.OtherKit.value}}">{{data.system.attributes.information.OtherKit.value}}</textarea>
+		</div>
+		<div class="LooseGear">
+		<span>Loose Gear</span>
+		<textarea rows="10" cols="30" name="system.attributes.information.LooseGear.value" value="{{data.system.attributes.information.LooseGear.value}}">{{data.system.attributes.information.LooseGear.value}}</textarea>
+		</div>
+		
+		</div>
+		
 		<div class="tab bond-powers" data-group="bond" data-tab="bond-powers">
 		
 		
@@ -224,6 +247,10 @@
 		
 		{{!-- Traits & Relics Tab --}}
         <div class="tab traits" data-group="primary" data-tab="traits">
+		<div class="traitsrelics">
+		<div class="traitheader">
+		<span>Traits</span>
+		</div>
             <ol class="item-list">
                 {{#each data.items as |item id|}}
 				{{#if item.isTrait }}
@@ -281,9 +308,73 @@
                 <a class="trait-control" title="{{ localize "SIMPLE.ItemCreate" }}" data-action="create"><i class="fas fa-plus"></i> {{ localize "SIMPLE.ItemCreate" }}</a>
             </p>
         </div>
+		<hr>
+		<div class="tab relics" data-group="primary" data-tab="traits">
+		<div class="traitheader">
+		<span>Relics<span>
+		</div>
+            <ol class="item-list">
+                {{#each data.items as |item id|}}
+				{{#if item.isRelic }}
+                <li class="item flexrow" data-item-id="{{item._id}}">
+                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
+                    <h4 class="item-name">{{item.name}}</h4>
+                    {{!-- Iterate through all attributes on the item and output buttons for any that are formula. --}}
+                    <div class="item-buttons">
+                        {{#each item.system.attributes as |itemAttr key|}}
+                        {{#if itemAttr.dtype}}
+                            {{#if itemAttr.isFormula}}
+                                {{!-- Use the items.name.key format for shorthand. --}}
+                                {{#if ../../shorthand}}
+                                <button class="item-button rollable" data-roll="@items.{{slugify item.name}}.{{key}}" data-label="{{ itemAttr.label }}"
+                                    title="{{itemAttr.value}}">{{itemAttr.label}}</button>
+                                {{!-- Use the items.name.attributes.key.value format otherwise. --}}
+                                {{else}}
+                                <button class="item-button rollable"
+                                    data-roll="@items.{{slugify item.name}}.attributes.{{key}}.value" data-label="{{ itemAttr.label }}"
+                                    title="{{itemAttr.value}}">{{itemAttr.label}}</button>
+                                {{/if}}
+                            {{/if}}
+                        {{else}}
+                            {{#each itemAttr as |itemGroupedAttr groupedKey|}}
+                                {{#if itemGroupedAttr.isFormula}}
+                                    {{!-- Use the items.name.key format for shorthand. --}}
+                                    {{#if ../../../shorthand}}
+                                    <button class="item-button rollable" data-roll="@items.{{slugify item.name}}.{{key}}.{{groupedKey}}" data-label="{{ itemGroupedAttr.label }}"
+                                        title="{{itemGroupedAttr.value}}">{{itemGroupedAttr.label}}</button>
+                                    {{!-- Use the items.name.attributes.key.value format otherwise. --}}
+                                    {{else}}
+                                    <button class="item-button rollable"
+                                        data-roll="@items.{{slugify item.name}}.attributes.{{key}}.{{groupedKey}}.value" data-label="{{ itemGroupedAttr.label }}"
+                                        title="{{itemGroupedAttr.value}}">{{itemGroupedAttr.label}}</button>
+                                    {{/if}}
+                                {{/if}}
+                            {{/each}}
+                        {{/if}}
+                        {{/each}}
+						{{#each item.Talents}}
+						<label>
+						<input type="checkbox" data-id="{{item._id}}" class="talent-checkbox" data-type="{{this.name}}" {{checked this.value }}>
+						</label><br>
+						{{/each}}
+                    </div>
+                    <div class="relic-controls">
+                        <a class="relic-control" title="{{ localize "SIMPLE.ItemEdit" }}" data-action="edit"><i class="fas fa-edit"></i></a>
+                        <a class="relic-control" title="{{ localize "SIMPLE.ItemDelete" }}" data-action="delete"><i class="fas fa-trash"></i></a>
+                    </div>
+                </li>
+                {{/if}}
+				{{/each}}
+            </ol>
+            <p>
+                <a class="relic-control" title="{{ localize "SIMPLE.ItemCreate" }}" data-action="create"><i class="fas fa-plus"></i> {{ localize "SIMPLE.ItemCreate" }}</a>
+            </p>
+        </div>
+		</div>
 
         {{!-- Abilities Tab --}}
         <div class="tab items" data-group="primary" data-tab="items">
+		<div class="CombatBar">
 		<div class="Personal Resolve">
 		<span>Personal Resolve</span>
 		{{#times_from_0 5}}
@@ -297,9 +388,27 @@
 		<label for="attributes-PersonalResolve-{{this}}"></label>
 		{{/times_from_0}}
 		</div>
+		<div class="Wounds">
+		<span>Wounds</span>
+		{{#times_from_0 4}}
+		<i class="{{#if (eq this 0)}}
+		fab fa-creative-commons-zero
+		{{else if (gte ../actor.system.attributes.information.Wounds.value this)}}
+		fas fa-circle
+		{{else}}
+		fas fa-circle-dashed
+		{{/if}} click-to-set Wounds-value-{{this}}" data-value="{{this}}" data-stat="system.attributes.information.Wounds.value" id="attributes-Wounds-{{this}}"></i>
+		<label for="attributes-Wounds-{{this}}"></label>
+		{{/times_from_0}}
+		</div>
+		</div>
+		<div class="abilities">
+		<div class="traitheader">
+		<span>Abilities</span>
+		</div>
             <ol class="item-list">
                 {{#each data.items as |item id|}}
-				{{#if (and (not item.isBondPower) (not item.isTrait) (not item.isCampFixture)) }}
+				{{#if (and (not item.isBondPower) (not item.isTrait) (not item.isCampFixture) (not item.isTrophy) (not item.isRelic)) }}
                 <li class="item flexrow" data-item-id="{{item._id}}">
                     <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
                     <h4 class="item-name">{{item.name}}</h4>
@@ -354,6 +463,69 @@
                 <a class="item-control" title="{{ localize "SIMPLE.ItemCreate" }}" data-action="create"><i class="fas fa-plus"></i> {{ localize "SIMPLE.ItemCreate" }}</a>
             </p>
         </div>
+		<hr>
+		<div class="Trophies">
+		<div class="traitheader">
+		<span>Trophies</span>
+		</div>
+		<ol class="item-list">
+                {{#each data.items as |item id|}}
+				{{#if item.isTrophy }}
+                <li class="item flexrow" data-item-id="{{item._id}}">
+                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
+                    <h4 class="item-name">{{item.name}}</h4>
+                    {{!-- Iterate through all attributes on the item and output buttons for any that are formula. --}}
+                    <div class="item-buttons">
+                        {{#each item.system.attributes as |itemAttr key|}}
+                        {{#if itemAttr.dtype}}
+                            {{#if itemAttr.isFormula}}
+                                {{!-- Use the items.name.key format for shorthand. --}}
+                                {{#if ../../shorthand}}
+                                <button class="item-button rollable" data-roll="@items.{{slugify item.name}}.{{key}}" data-label="{{ itemAttr.label }}"
+                                    title="{{itemAttr.value}}">{{itemAttr.label}}</button>
+                                {{!-- Use the items.name.attributes.key.value format otherwise. --}}
+                                {{else}}
+                                <button class="item-button rollable"
+                                    data-roll="@items.{{slugify item.name}}.attributes.{{key}}.value" data-label="{{ itemAttr.label }}"
+                                    title="{{itemAttr.value}}">{{itemAttr.label}}</button>
+                                {{/if}}
+                            {{/if}}
+                        {{else}}
+                            {{#each itemAttr as |itemGroupedAttr groupedKey|}}
+                                {{#if itemGroupedAttr.isFormula}}
+                                    {{!-- Use the items.name.key format for shorthand. --}}
+                                    {{#if ../../../shorthand}}
+                                    <button class="item-button rollable" data-roll="@items.{{slugify item.name}}.{{key}}.{{groupedKey}}" data-label="{{ itemGroupedAttr.label }}"
+                                        title="{{itemGroupedAttr.value}}">{{itemGroupedAttr.label}}</button>
+                                    {{!-- Use the items.name.attributes.key.value format otherwise. --}}
+                                    {{else}}
+                                    <button class="item-button rollable"
+                                        data-roll="@items.{{slugify item.name}}.attributes.{{key}}.{{groupedKey}}.value" data-label="{{ itemGroupedAttr.label }}"
+                                        title="{{itemGroupedAttr.value}}">{{itemGroupedAttr.label}}</button>
+                                    {{/if}}
+                                {{/if}}
+                            {{/each}}
+                        {{/if}}
+                        {{/each}}
+						{{#each item.Talents}}
+						<label>
+						<input type="checkbox" data-id="{{item._id}}" class="talent-checkbox" data-type="{{this.name}}" {{checked this.value }}>
+						</label><br>
+						{{/each}}
+                    </div>
+                    <div class="item-controls">
+                        <a class="trophy-control" title="{{ localize "SIMPLE.ItemEdit" }}" data-action="edit"><i class="fas fa-edit"></i></a>
+                        <a class="trophy-control" title="{{ localize "SIMPLE.ItemDelete" }}" data-action="delete"><i class="fas fa-trash"></i></a>
+                    </div>
+                </li>
+				{{/if}}
+                {{/each}}
+            </ol>
+            <p>
+                <a class="trophy-control" title="{{ localize "SIMPLE.ItemCreate" }}" data-action="create"><i class="fas fa-plus"></i> {{ localize "SIMPLE.ItemCreate" }}</a>
+            </p>
+		</div>
+		</div>
 
         {{!-- Attributes Tab --}}
         <div class="tab attributes" data-group="primary" data-tab="attributes">

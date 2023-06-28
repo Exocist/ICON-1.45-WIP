@@ -85,6 +85,8 @@ class ICONSheet extends SimpleActorSheet {
     for (const item of context.data.items) {
 		item.isTrait = item.flags?.['icon_data']?.isTrait || false
 		item.isBondPower = item.flags?.['icon_data']?.isBondPower || false
+		item.isTrophy = item.flags?.['icon_data']?.isTrophy || false
+		item.isRelic = item.flags?.['icon_data']?.isRelic || false
 		item.isCampFixture = item.flags?.['icon_data']?.isCampFixture || false
 		try {
 		item.Talents = Object.entries(item.flags?.['icon_data']).filter(t => t[0].includes('Talent')).map((t,i) => ({name:t[0],value:t[1]}))
@@ -425,6 +427,54 @@ class ICONSheet extends SimpleActorSheet {
     }
   }
   
+  _onRelicControl(event) {
+    event.preventDefault();
+	
+    // Obtain event data
+    const button = event.currentTarget;
+    const li = button.closest(".item");
+    const item = this.actor.items.get(li?.dataset.itemId);
+
+    // Handle different actions
+    switch ( button.dataset.action ) {
+      case "create":
+        const cls = getDocumentClass("Item");
+        return cls.create({
+			name: game.i18n.localize("SIMPLE.ItemNew"), 
+			type: "item", 
+			flags: { ['icon_data'] : { isRelic: true }} }, 
+			{parent: this.actor});
+      case "edit":
+        return item.sheet.render(true);
+      case "delete":
+        return item.delete();
+    }
+  }
+  
+  _onTrophyControl(event) {
+    event.preventDefault();
+	
+    // Obtain event data
+    const button = event.currentTarget;
+    const li = button.closest(".item");
+    const item = this.actor.items.get(li?.dataset.itemId);
+
+    // Handle different actions
+    switch ( button.dataset.action ) {
+      case "create":
+        const cls = getDocumentClass("Item");
+        return cls.create({
+			name: game.i18n.localize("SIMPLE.ItemNew"), 
+			type: "item", 
+			flags: { ['icon_data'] : { isTrophy: true }} }, 
+			{parent: this.actor});
+      case "edit":
+        return item.sheet.render(true);
+      case "delete":
+        return item.delete();
+    }
+  }
+  
   _onCampControl(event) {
     event.preventDefault();
 	
@@ -455,6 +505,8 @@ class ICONSheet extends SimpleActorSheet {
 	html.find(".item-name").click(event => this._onItemSummary(event));
 	html.find(".trait-control").click(this._onTraitControl.bind(this));
 	html.find(".bond-power-control").click(this._onBondControl.bind(this));
+	html.find(".trophy-control").click(this._onTrophyControl.bind(this));
+	html.find(".relic-control").click(this._onRelicControl.bind(this));
 	html.find(".camp-fixture-control").click(this._onCampControl.bind(this));
 	html.find("[data-item-id] img").click(event => this._onItemUse(event));
 	html.find('.click-to-set').click(ev => {
@@ -771,7 +823,6 @@ class IconItemSheet extends SimpleItemSheet {
   }
 
 Actors.registerSheet("icon-player-sheet", IconPlayerSheet, { makeDefault: false });
-Actors.registerSheet("icon-sheet-old", OldIconSheet, { makeDefault: false });
 Actors.registerSheet("icon_data", ICONSheet, { makeDefault: true });
 Actors.registerSheet("icon-camp-sheet", IconCampSheet, { makeDefault: false});
 Items.registerSheet("icon-item-sheet", IconItemSheet, { makeDefault: true });

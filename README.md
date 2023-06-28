@@ -1,3 +1,7 @@
+28/06/2023 - Sheet update: Added gear, split trophies from abilities and relics from traits.
+You will need to drag out new actors to make gear work.
+Will also need to drag out new relics/trophies.
+
 27/06/2023 - All foes finished and rules reference updated. Next step will be adding gear and fixing up some junk code.
 
 25/06/2023 - Lowlanders added

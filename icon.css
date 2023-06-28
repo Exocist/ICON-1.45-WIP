@@ -228,14 +228,21 @@
   position: absolute;
 }
 
-.worldbuilding .bond-body .XP-and-Dust {
+.worldbuilding .narrative-grid .XP-and-Dust {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: space-evenly;
+	margin-left: 3em;
 }
 
-.worldbuilding .bond-body .XP-value {
+.worldbuilding .narrative-grid .XP-value {
 	width: 6.035em;
+}
+
+section.XPDust {
+	grid-column: 1;
+	grid-row: 1;
+	margin-left: 10.65em;
 }
 
 label[for=attributes-XP-0] {
@@ -243,8 +250,9 @@ label[for=attributes-XP-0] {
 	width: 5.68em;
 }
 
-.worldbuilding .bond-body .Dust-value {
+.worldbuilding .narrative-grid .Dust-value {
 	width: 4.97em;
+	margin-top: 1em;
 }
 
 label[for=attributes-Dust-0] {
@@ -252,15 +260,11 @@ label[for=attributes-Dust-0] {
 	width: 5.68em;
 }
 
-.worldbuilding .bond-body i#attributes-XP-5 {
+.worldbuilding .narrative-grid i#attributes-XP-7 {
 	color: purple;
 }
 
-.worldbuilding .bond-body i#attributes-XP-10 {
-	color: purple;
-}
-
-.worldbuilding .bond-body i#attributes-XP-15 {
+.worldbuilding .narrative-grid i#attributes-XP-15 {
 	color: purple;
 }
 
@@ -534,4 +538,51 @@ section.bond {
 
 .worldbuilding .traits h4.item-name {
 	flex: 50%;
+}
+
+.CombatBar {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.worldbuilding .Wounds i#attributes-Wounds-4 {
+	color: red;
+}	
+	
+.gear .AdventurerKit textarea {
+    height: 9em;
+}
+
+.gear .OtherKit textarea {
+    height: 9em;
+}
+
+.gear .LooseGear textarea {
+    height: 8em;
+}
+
+.Trophies span {
+    display: flex;
+    justify-content: center;
+}
+
+.relics span {
+    display: flex;
+    justify-content: center;
+}
+
+.abilities span {
+    display: flex;
+    justify-content: center;
+}
+
+.traits span {
+    display: flex;
+    justify-content: center;
+}
+
+.traitheader {
+    background-color: #bbbbbb;
+}
+
 }
