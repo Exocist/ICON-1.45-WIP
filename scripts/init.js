@@ -116,16 +116,18 @@ class ICONSheet extends SimpleActorSheet {
 	  enriched = await TextEditor.enrichHTML(enriched, {async: true});
       let div = $(`<div class="item-summary">${enriched}</div>`);
       let props = $('<div class="item-properties"></div>');
+	  if (chatData.attributes.Tags) {
 	  const attrs = Object.values(chatData.attributes.Tags);
-	  for (let index = 0; index < attrs.length; ++index) {
-		  const here = attrs[index];
-		  if (index == attrs.length-1){
-			  props.append(`<span class="tag">${here.label}</span>`);
-			  }
-			else {
-				props.append(`<span class="tag">${here.label}, </span>`);
-				}
-	}
+		  for (let index = 0; index < attrs.length; ++index) {
+			  const here = attrs[index];
+			  if (index == attrs.length-1){
+				  props.append(`<span class="tag">${here.label}</span>`);
+				  }
+				else {
+					props.append(`<span class="tag">${here.label}, </span>`);
+					}
+		}
+	  }
       //attrs.forEach(p => props.append(`<span class="tag">${p.label}</span>`));
 	  div.append(`<hr>`);
       div.append(props);
