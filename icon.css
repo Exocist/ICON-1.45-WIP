@@ -561,22 +561,22 @@ section.bond {
     height: 8em;
 }
 
-.Trophies span {
+.Trophies .traitheader span {
     display: flex;
     justify-content: center;
 }
 
-.relics span {
+.relics .traitheader span {
     display: flex;
     justify-content: center;
 }
 
-.abilities span {
+.abilities .traitheader span {
     display: flex;
     justify-content: center;
 }
 
-.traits span {
+.traits .traitheader span {
     display: flex;
     justify-content: center;
 }
