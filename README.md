@@ -1,3 +1,5 @@
+30/06/2023 - Added white flag icon, renamed dead to incapacitated
+
 28/06/2023 - Sheet update: Added gear, split trophies from abilities and relics from traits.
 You will need to drag out new actors to make gear work.
 Will also need to drag out new relics/trophies.
