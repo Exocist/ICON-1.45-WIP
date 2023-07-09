@@ -4,6 +4,7 @@ import { bladesRoll } from "./blades-roll.js";
 import { BladesHelpers } from "./blades-helpers.js";
 import { BladesActor } from "./blades-actor.js";
 import { BladesClockSheet } from "./blades-clock-sheet.js";
+import { WeaponRangeTemplate } from "./weapon-range-template.js";
 
 function getValue(name) {
   var value = document.querySelector('input[name="${name}"]:checked').value;
@@ -15,6 +16,10 @@ Hooks.once("init", async function() {
   game.system.bladesClocks = {
     sizes: [ 4, 6, 8, 10, 12 ]
   };
+  
+  game.worldbuilding.canvas = {
+      WeaponRangeTemplate: WeaponRangeTemplate,
+  }
   
   await loadTemplates([
     // Attribute list partial.
