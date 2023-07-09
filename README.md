@@ -1,3 +1,5 @@
+09/07/2023 - Added template macros, thanks to Eranziel for coding this!
+
 30/06/2023 - Added white flag icon, renamed dead to incapacitated
 
 28/06/2023 - Sheet update: Added gear, split trophies from abilities and relics from traits.

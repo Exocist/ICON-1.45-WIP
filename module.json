@@ -167,7 +167,8 @@
     "scripts/blades-actor.js",
     "scripts/blades-clock-sheet.js",
     "scripts/blades-sheet.js",
-    "scripts/templates.js"
+    "scripts/templates.js",
+    "scripts/weapon-range-template.js"
   ],
   "styles": [
     "templates/itemsummary.css",
@@ -187,5 +188,5 @@
     "minimum": "11",
     "verified": "11"
   },
-  "version": "1.7.14"
+  "version": "1.7.15"
 }
