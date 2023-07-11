@@ -1,3 +1,5 @@
+11/07/2023 - Updated default seer deck cards to Theta's cards. Have left Jojo's cards in there in case anyone wants to continue using them.
+
 09/07/2023 - Added template macros, thanks to Eranziel for coding this!
 
 30/06/2023 - Added white flag icon, renamed dead to incapacitated
