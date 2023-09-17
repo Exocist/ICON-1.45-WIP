@@ -296,13 +296,14 @@ class ICONSheet extends SimpleActorSheet {
 	
 	var invokes = []
 	  for (let value of this.actor.items.values()) {
+		  if (value.system.attributes.Tags){
 		  if (value.system.attributes.Tags.Invoke) {
 			  if (value.system.attributes.Tags.Invoke.value <= invokecheck){
 				invokes.push(value.name.split("(")[0])
 			  }
 			}
 		}
-	
+	  }
 	console.log(invokes.length)
 	
 	invokeHTML = ``
