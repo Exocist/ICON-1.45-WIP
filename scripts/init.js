@@ -91,10 +91,11 @@ class ICONSheet extends SimpleActorSheet {
 		item.isTrait = item.flags?.['icon_data']?.isTrait || false
 		item.isBondPower = item.flags?.['icon_data']?.isBondPower || false
 		item.isTrophy = item.flags?.['icon_data']?.isTrophy || false
-		item.isRelic = item.flags?.['icon_data']?.isRelic || false
+		item.isTalent = item.flags?.['icon_data']?.isTalent || false
+		item.isAbility = item.flags?.['icon_data']?.isAbility || false
 		item.isCampFixture = item.flags?.['icon_data']?.isCampFixture || false
 		try {
-		item.Talents = Object.entries(item.flags?.['icon_data']).filter(t => t[0].includes('Talent')).map((t,i) => ({name:t[0],value:t[1]}))
+		item.Usage = Object.entries(item.flags?.['icon_data']).filter(t => t[0].includes('Usage')).map((t,i) => ({name:t[0],value:t[1]}))
 		}
 		catch (e) {
 			//pass
@@ -115,9 +116,9 @@ class ICONSheet extends SimpleActorSheet {
     } else {
 	  let enriched = chatData.description
 	  for (let i=1; i<8; i++) {
-		  let Talent = "Talent" + i
-		  if (!!chatData.attributes.Talents?.[Talent]?.value && item.flags?.['icon_data']?.[Talent]) {
-			  enriched = enriched + chatData.attributes.Talents[Talent].value
+		  let Usage = "Usage" + i
+		  if (!!chatData.attributes.Talent?.[Usage]?.value && item.flags?.['icon_data']?.[Usage]) {
+			  enriched = enriched + chatData.attributes.Talents[Usage].value
 		  }
 	  }
 	  enriched = await TextEditor.enrichHTML(enriched, {async: true});
@@ -151,9 +152,9 @@ class ICONSheet extends SimpleActorSheet {
     const item = this.actor.items.get(itemId);
 	let description = item.system.description;
 	for (let i=1; i<8; i++) {
-		  let Talent = "Talent" + i
-		  if (!!item.system.attributes.Talents?.[Talent]?.value && item.flags?.['icon_data']?.[Talent]) {
-			  description = description + item.system.attributes.Talents[Talent].value
+		  let Usage = "Usage" + i
+		  if (!!item.system.attributes.Talents?.[Usage]?.value && item.flags?.['icon_data']?.[Usage]) {
+			  description = description + item.system.attributes.Talents[Usage].value
 		  }
 	  }
     const token = this.actor.token;
@@ -169,34 +170,34 @@ class ICONSheet extends SimpleActorSheet {
 	
 	if (item.system.attributes.Information) {
 		const HitDamageDice = item.system.attributes.Information.HitDamageDice.value
-		const HitFrayDamage = item.system.attributes.Information.HitFrayDamage.value
 		const HitExtraDamage = item.system.attributes.Information.HitExtraDamage.value
 		const MissDamageDice = item.system.attributes.Information.MissDamageDice.value
-		const MissFrayDamage = item.system.attributes.Information.MissFrayDamage.value
 		const MissExtraDamage = item.system.attributes.Information.MissExtraDamage.value
 		const HitTimes = item.system.attributes.Information.HitTimes.value
 		const MissTimes = item.system.attributes.Information.MissTimes.value
-		const DamageDice = this.actor.system.attributes.Stats.Damage.value
-		const FrayDamage = this.actor.system.attributes.Stats.Fray.value
 		
 		const content = `
   <form>
     <div class="form-fields">
      <div class="form-group">
-      <label for="number-of-dice">Boons or Curses:</label>
+      <label for="number-of-dice">Attack (+-):</label>
       <input type="number" id="number-of-dice" value="0"></input>
       </div>
      <div class="form-group">
-      <label for="bonus-damage">Bonus damage:</label>
+      <label for="bonus-damage">Damage (+-):</label>
       <input type="number" id="bonus-damage" value="0"></input>
      </div>
 	 <div class="form-group">
-      <label for="critnumber">Crit Number:</label>
-      <input type="number" id="critnumber" value="20"></input>
+      <label for="effect-dice">Effect (+-):</label>
+      <input type="number" id="effect-dice" value="0"></input>
      </div>
 	 <div class="form-group">
-      <label for="exceednumber">Exceed Number:</label>
-      <input type="number" id="exceednumber" value="15"></input>
+      <label for="critnumber">Crit Number:</label>
+      <input type="number" id="critnumber" value="10"></input>
+     </div>
+	 <div class="form-group">
+      <label for="excelnumber">Excel Number:</label>
+      <input type="number" id="excelnumber" value="8"></input>
      </div>
 	 <div class="form-group">
       <label for="extra-damage">Extra Damage:</label>
@@ -205,11 +206,7 @@ class ICONSheet extends SimpleActorSheet {
      <div class="form-group">
       <label for="force-crit">Force crit?</label>
       <input type="checkbox" id="force-crit" value="force-crit"></input>
-</input>
-     </div>
-     <div class="form-group">
-      <label for="hissatsu">Hissatsu?</label>
-      <input type="checkbox" id="hissatsu" value="hissatsu"></input>
+	</input>
      </div>
 	 <div class="form-group">
       <label for="autohit">Auto-Hit</label>
@@ -228,6 +225,8 @@ class ICONSheet extends SimpleActorSheet {
 	 {{AttackRoll}}
 	<p style="background-color:#666; font-family:capitals; color:white; text-align:center;font-size:1.5em">Damage Roll</p> 
 	{{DamageRoll}}
+	<p style="background-color:#666; font-family:capitals; color:white; text-align:center;font-size:1.5em">Effect Roll</p> 
+		{{EffectRoll}}
 		{{Invokes}}
 	`;
 	
@@ -240,25 +239,21 @@ class ICONSheet extends SimpleActorSheet {
     callback: async (html) => {
 	  const num = Number(html[0].querySelector("input[id='number-of-dice']").value);
       var bonus = Number(html[0].querySelector("input[id='bonus-damage']").value);
+	  var effect = Number(html[0].querySelector("input[id='effect-dice']").value);
 	  var extra = Number(html[0].querySelector("input[id='extra-damage']").value);
 	  var critnumber = Number(html[0].querySelector("input[id='critnumber']").value);
-	  var exceednumber = Number(html[0].querySelector("input[id='exceednumber']").value);
+	  var excelnumber = Number(html[0].querySelector("input[id='excelnumber']").value);
       const forceCrit = (html[0].querySelector("input[id='force-crit']").checked);
-      const hissatsu = (html[0].querySelector("input[id='hissatsu']").checked);
 	  const autohit = (html[0].querySelector("input[id='autohit']").checked);
 	  const nocrit = (html[0].querySelector("input[id='nocrit']").checked);
-      var DamageDice = this.actor.system.attributes.Stats.Damage.value
-	  var FrayDamage = this.actor.system.attributes.Stats.Fray.value
-      if (hissatsu) {
-       DamageDice = 10;
-       FrayDamage = 4;
-      }
 
       // create and evaluate the to-hit roll
 	  if (autohit) {
-		  var hitRoll = new Roll(`1d20`);
+		  var hitRoll = new Roll(`1d10`);
+	  } else if (num >= 0) {
+		  var hitRoll = new Roll(`${1+num}d10kh1`);
 	  } else {
-		  var hitRoll = new Roll(`1d20 + ${num}d6kh1`);
+		  var hitRoll = new Roll(`${1+-1*num}d10kh1`);
 	  }
       
 	  await hitRoll.evaluate();
@@ -272,7 +267,7 @@ class ICONSheet extends SimpleActorSheet {
 		  messageHTML=`<p style="color:red">Invoke check vs ${target.name}!</p>`
 		  var crit = 0
 		  var hit = true
-	  } else if((hitRoll.total>=critnumber) && !nocrit){
+	  } else if (hitRoll.total>=critnumber && !nocrit){
 		  messageHTML=`<p style="color:red">You crit ${target.name}!</p>`
 		  var crit=1
 		  var hit=true
@@ -285,6 +280,7 @@ class ICONSheet extends SimpleActorSheet {
 		  var crit=0
 		  var hit=false
 	  }
+	  
 	if((crit==1) && (forceCrit)) {
 	 const CritBonusDamage = 1
 	} else if((hit) && (forceCrit)) {
@@ -308,8 +304,8 @@ class ICONSheet extends SimpleActorSheet {
 	
 	invokeHTML = ``
 	
-	if (hitRoll.total>=exceednumber) {
-		invokeHTML = `<p style="color:red">Exceed triggered!</p>`;
+	if (hitRoll.total>=excelnumber) {
+		invokeHTML = `<p style="color:red">Excel triggered!</p>`;
 	}
 	
 	if (invokes.length > 0) {
@@ -322,29 +318,44 @@ class ICONSheet extends SimpleActorSheet {
 	
 	console.log(invokeHTML)
 	
-	if(hit) {
-		var dmgFormula = `${HitTimes}*(${HitDamageDice + bonus + crit + CritBonusDamage}d${DamageDice}kh${HitDamageDice + crit} + ${HitFrayDamage*FrayDamage} + ${HitExtraDamage} + ${extra})`
+	if(hit && bonus >= 0) {
+		var dmgFormula = `${HitTimes}*(${HitDamageDice + bonus}d6kh${HitDamageDice} + ${MissExtraDamage}*${1+crit} + ${extra})`
+	} else if (hit && bonus < 0) {
+		var dmgFormula = `${HitTimes}*(${HitDamageDice+-1*bonus}d6kl${HitDamageDice} + ${MissExtraDamage}*${1+crit} + ${extra})`
+	} else if (!hit && bonus >=0) {
+		var dmgFormula = `${MissTimes}*(${MissDamageDice + bonus}d6kh${MissDamageDice} + ${MissExtraDamage} + ${extra})`
 	} else {
-		var dmgFormula = `${MissTimes}*(${MissDamageDice + bonus}d${DamageDice}kh${MissDamageDice} + ${MissFrayDamage*FrayDamage} + ${MissExtraDamage} + ${extra})`
+		var dmgFormula = `${MissTimes}*(${MissDamageDice + -1*bonus}d6kl${MissDamageDice} + ${MissExtraDamage} + ${extra})`
 	}
 	
 	const dmgRoll = new Roll(dmgFormula);
     await dmgRoll.evaluate();
+	
+	if(effect >= 0) {
+		var effectFormula = `${1+effect}d6kh1`
+	} else {
+		var effectFormula = `${1+-1*effect}d6kl1`
+	}
+	
+	const effectRoll = new Roll(effectFormula);
+	await effectRoll.evaluate();
       
     // We await these promises so we can get the HTML
     const hitRender = hitRoll.render();
     const dmgRender = dmgRoll.render();
+	const effectRender = effectRoll.render();
 
-    Promise.all([hitRender, dmgRender]).then(async data => {
+    Promise.all([hitRender, dmgRender, effectRender]).then(async data => {
       const hitHTML = data[0];
       const dmgHTML = data[1];
-	  const html = thtml + `<hr>` + results.replace("{{Message}}", messageHTML).replace("{{AttackRoll}}", hitHTML).replace("{{DamageRoll}}", dmgHTML).replace("{{Invokes}}", invokeHTML);
+	  const effectHTML = data[2];
+	  const html = thtml + `<hr>` + results.replace("{{Message}}", messageHTML).replace("{{AttackRoll}}", hitHTML).replace("{{DamageRoll}}", dmgHTML).replace("{{Invokes}}", invokeHTML).replace("{{EffectRoll}}", effectHTML);
 	  
 	// Create the ChatMessage data object
     const chatData = {
       user: game.user.id,
       type: CONST.CHAT_MESSAGE_TYPES.ROLL,
-	  rolls: [hitRoll, dmgRoll],
+	  rolls: [hitRoll, dmgRoll, effectRoll],
       content: html,
       speaker: ChatMessage.getSpeaker({actor: this.actor, token})
     };
@@ -433,7 +444,7 @@ class ICONSheet extends SimpleActorSheet {
     }
   }
   
-  _onRelicControl(event) {
+  _onTalentControl(event) {
     event.preventDefault();
 	
     // Obtain event data
@@ -448,7 +459,7 @@ class ICONSheet extends SimpleActorSheet {
         return cls.create({
 			name: game.i18n.localize("SIMPLE.ItemNew"), 
 			type: "item", 
-			flags: { ['icon_data'] : { isRelic: true }} }, 
+			flags: { ['icon_data'] : { isTalent: true }} }, 
 			{parent: this.actor});
       case "edit":
         return item.sheet.render(true);
@@ -512,7 +523,7 @@ class ICONSheet extends SimpleActorSheet {
 	html.find(".trait-control").click(this._onTraitControl.bind(this));
 	html.find(".bond-power-control").click(this._onBondControl.bind(this));
 	html.find(".trophy-control").click(this._onTrophyControl.bind(this));
-	html.find(".relic-control").click(this._onRelicControl.bind(this));
+	html.find(".talent-control").click(this._onTalentControl.bind(this));
 	html.find(".camp-fixture-control").click(this._onCampControl.bind(this));
 	html.find("[data-item-id] img").click(event => this._onItemUse(event));
 	html.find('.click-to-set').click(ev => {
@@ -521,7 +532,7 @@ class ICONSheet extends SimpleActorSheet {
 		let object = {[stat]: value}
 		this.actor.update(object)
 		})
-	html[0].querySelectorAll(".talent-checkbox").forEach(b => {b.addEventListener("change", async (event) => {
+	html[0].querySelectorAll(".usage-checkbox").forEach(b => {b.addEventListener("change", async (event) => {
     const checked = b.checked;
     const {type, id} = b.dataset;
     const item = this.object.items.get(id);
@@ -756,6 +767,208 @@ static get defaultOptions() {
   
 }
 
+class KazzamSheet extends ICONSheet {
+static get defaultOptions() {
+    return foundry.utils.mergeObject(super.defaultOptions, {
+      classes: ["IconPlayerSheet", "ICONSheet", "worldbuilding", "sheet", "actor"],
+      template: "modules/icon_data/templates/kazzam-sheet.html",
+      width: 700,
+      height: 700,
+      tabs: [{navSelector: ".bond-tabs", contentSelector: ".bond-body", initial: "bond-info"},
+	  {navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description"}],
+      scrollY: [".narrative", ".biography", ".items", ".attributes"],
+      dragDrop: [{dragSelector: ".item-list .item", dropSelector: null}]
+    });
+  }
+  
+  async getData(options) {
+    const context = await super.getData(options);
+    context.narrativeHTML = await TextEditor.enrichHTML(context.systemData.narrative, {
+      secrets: this.document.isOwner,
+      async: true
+    });
+    return context;
+  }
+  
+  
+  BladesGetRollData(skill_name) {
+    const rollData = this.actor.getRollData();
+    rollData.dice_amount = parseInt(this.object.system.attributes.skills[skill_name].value)
+
+    return rollData;
+  }
+
+  rollAttributePopup(attribute_name) {
+
+    // const roll = new Roll("1d20 + @abilities.wis.mod", actor.getRollData());
+    let attribute_label = attribute_name;
+
+    let content = `
+        <h2>${game.i18n.localize('BITD.Roll')} ${game.i18n.localize(attribute_label)}</h2>
+        <form>
+          <div class="form-group">
+            <label>${game.i18n.localize('BITD.Modifier')}:</label>
+            <select id="mod" name="mod">
+              ${this.createListOfDiceMods(-3,+3,0)}
+            </select>
+          </div>`;
+      content += `
+            <div class="form-group">
+              <label>${game.i18n.localize('BITD.Position')}:</label>
+              <select id="pos" name="pos">
+                <option value="controlled">${game.i18n.localize('BITD.PositionControlled')}</option>
+                <option value="risky" selected>${game.i18n.localize('BITD.PositionRisky')}</option>
+                <option value="desperate">${game.i18n.localize('BITD.PositionDesperate')}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>${game.i18n.localize('BITD.Effect')}:</label>
+              <select id="fx" name="fx">
+                <option value="limited">${game.i18n.localize('BITD.EffectLimited')}</option>
+                <option value="standard" selected>${game.i18n.localize('BITD.EffectStandard')}</option>
+                <option value="great">${game.i18n.localize('BITD.EffectGreat')}</option>
+              </select>
+            </div>`;
+    content += `
+        <div className="form-group">
+          <label>${game.i18n.localize('BITD.Notes')}:</label>
+          <input id="note" name="note" type="text" value="">
+        </div><br/>
+        </form>
+      `;
+
+    new Dialog({
+      title: `${game.i18n.localize('BITD.Roll')} ${game.i18n.localize(attribute_label)}`,
+      content: content,
+      buttons: {
+        yes: {
+          icon: "<i class='fas fa-check'></i>",
+          label: game.i18n.localize('BITD.Roll'),
+          callback: async (html) => {
+            let modifier = parseInt(html.find('[name="mod"]')[0].value);
+            let position = html.find('[name="pos"]')[0].value;
+            let effect = html.find('[name="fx"]')[0].value;
+            let note = html.find('[name="note"]')[0].value;
+            await this.rollAttribute(attribute_name, modifier, position, effect, note);
+          }
+        },
+        no: {
+          icon: "<i class='fas fa-times'></i>",
+          label: game.i18n.localize('Close'),
+        },
+      },
+      default: "yes",
+    }).render(true);
+
+  }
+
+  /* -------------------------------------------- */
+
+  async rollAttribute(attribute_name = "", additional_dice_amount = 0, position, effect, note) {
+
+    let dice_amount = 0;
+    if (attribute_name !== "") {
+      let roll_data = this.BladesGetRollData(attribute_name);
+      dice_amount += roll_data.dice_amount;
+    }
+    else {
+      dice_amount = 1;
+    }
+    dice_amount += additional_dice_amount;
+    await bladesRoll(dice_amount, attribute_name, position, effect, note);
+  }
+
+  /* -------------------------------------------- */
+
+  /**
+   * Create <options> for available actions
+   *  which can be performed.
+   */
+  createListOfActions() {
+
+    let text, attribute, skill;
+    let attributes = this.system.attributes;
+
+    for ( attribute in attributes ) {
+
+      const skills = attributes[attribute].skills;
+
+      text += `<optgroup label="${attribute} Actions">`;
+      text += `<option value="${attribute}">${attribute} (Resist)</option>`;
+
+      for ( skill in skills ) {
+        text += `<option value="${skill}">${skill}</option>`;
+      }
+
+      text += `</optgroup>`;
+
+    }
+
+    return text;
+
+  }
+
+  /* -------------------------------------------- */
+
+  /**
+   * Creates <options> modifiers for dice roll.
+   *
+   * @param {int} rs
+   *  Min die modifier
+   * @param {int} re
+   *  Max die modifier
+   * @param {int} s
+   *  Selected die
+   */
+  createListOfDiceMods(rs, re, s) {
+
+    var text = ``;
+    var i = 0;
+
+    if ( s == "" ) {
+      s = 0;
+    }
+
+    for ( i  = rs; i <= re; i++ ) {
+      var plus = "";
+      if ( i >= 0 ) { plus = "+" };
+      text += `<option value="${i}"`;
+      if ( i == s ) {
+        text += ` selected`;
+      }
+
+      text += `>${plus}${i}d</option>`;
+    }
+
+    return text;
+
+  }
+  
+  async _onRollAttributeDieClick(event) {
+
+    const attribute_name = $(event.currentTarget).data("rollAttribute");
+    this.rollAttributePopup(attribute_name);
+
+  }
+  
+  activate(tabName="bond-info", {triggerCallback=false}={}) {
+
+    // Validate the requested tab name
+    const group = this._nav.dataset.group;
+    const items = this._nav.querySelectorAll("[data-tab]");
+	
+  }
+  
+  activateListeners(html) {
+    super.activateListeners(html);
+	html.find(".roll-die-attribute").click(this._onRollAttributeDieClick.bind(this));
+	if ( this.options.submitOnChange ) {
+      html.on("change", "textarea", this._onChangeInput.bind(this));  // Use delegated listener on the form
+    }
+  }
+  
+}
+
 class IconCampSheet extends IconPlayerSheet {
 	static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -785,38 +998,38 @@ class IconItemSheet extends SimpleItemSheet {
   async getData(options){
 	  const context = await super.getData(options);
 	  try {
-		context.data.Talents = Object.entries(context.item.flags?.['icon_data']).filter(t => t[0].includes('Talent')).map((t,i) => ({name:t[0],value:t[1],datapath:"system.attributes.Talents."+t[0]+".value",rootpath:"@root."+t[0]+"HTML"}))
+		context.data.Usage = Object.entries(context.item.flags?.['icon_data']).filter(t => t[0].includes('Usage')).map((t,i) => ({name:t[0],value:t[1],datapath:"system.attributes.Usage."+t[0]+".value",rootpath:"@root."+t[0]+"HTML"}))
 		}
 		catch (e) {
 			console.log("error")
 			//pass
 		}
 	try {
-	  context.Talent1HTML = await TextEditor.enrichHTML(context.systemData.attributes.Talents.Talent1.value, {
+	  context.Talent1HTML = await TextEditor.enrichHTML(context.systemData.attributes.Talents.Usage1.value, {
 	  secrets: this.document.isOwner,
       async: true
     }) || "";
-	context.Talent2HTML = await TextEditor.enrichHTML(context.systemData.attributes.Talents.Talent2.value, {
+	context.Talent2HTML = await TextEditor.enrichHTML(context.systemData.attributes.Talents.Usage2.value, {
 	  secrets: this.document.isOwner,
       async: true
     }) || "";
-	context.Talent3HTML = await TextEditor.enrichHTML(context.systemData.attributes.Talents.Talent3.value, {
+	context.Talent3HTML = await TextEditor.enrichHTML(context.systemData.attributes.Talents.Usage3.value, {
 	  secrets: this.document.isOwner,
       async: true
     }) || "";
-	context.Talent4HTML = await TextEditor.enrichHTML(context.systemData.attributes.Talents.Talent4.value, {
+	context.Talent4HTML = await TextEditor.enrichHTML(context.systemData.attributes.Talents.Usage4.value, {
 	  secrets: this.document.isOwner,
       async: true
     }) || "";
-	context.Talent5HTML = await TextEditor.enrichHTML(context.systemData.attributes.Talents.Talent5.value, {
+	context.Talent5HTML = await TextEditor.enrichHTML(context.systemData.attributes.Talents.Usage5.value, {
 	  secrets: this.document.isOwner,
       async: true
     }) || "";
-	context.Talent6HTML = await TextEditor.enrichHTML(context.systemData.attributes.Talents.Talent6.value, {
+	context.Talent6HTML = await TextEditor.enrichHTML(context.systemData.attributes.Talents.Usage6.value, {
 	  secrets: this.document.isOwner,
       async: true
     }) || "";
-	context.Talent7HTML = await TextEditor.enrichHTML(context.systemData.attributes.Talents.Talent7.value, {
+	context.Talent7HTML = await TextEditor.enrichHTML(context.systemData.attributes.Talents.Usage7.value, {
 	  secrets: this.document.isOwner,
       async: true
     }) || "";
@@ -829,6 +1042,7 @@ class IconItemSheet extends SimpleItemSheet {
   }
 
 Actors.registerSheet("icon-player-sheet", IconPlayerSheet, { makeDefault: false });
+Actors.registerSheet("kazzam-sheet", KazzamSheet, { makeDefault: false });
 Actors.registerSheet("icon_data", ICONSheet, { makeDefault: true });
 Actors.registerSheet("icon-camp-sheet", IconCampSheet, { makeDefault: false});
 Items.registerSheet("icon-item-sheet", IconItemSheet, { makeDefault: true });

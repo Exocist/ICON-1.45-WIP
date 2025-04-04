@@ -132,6 +132,15 @@
       "private": false,
       "flags": {}
     },
+	{
+      "label": "Talents",
+      "type": "Item",
+      "name": "talents",
+      "path": "packs/talents",
+      "system": "worldbuilding",
+      "private": false,
+      "flags": {}
+    },
     {
       "label": "Job Traits",
       "type": "Item",
@@ -185,8 +194,8 @@
   "manifest": "https://raw.githubusercontent.com/Exocist/ICON-1.45-WIP/main/module.json",
   "download": "https://github.com/Exocist/ICON-1.45-WIP/archive/refs/heads/main.zip",
   "compatibility": {
-    "minimum": "11",
-    "verified": "11"
+    "minimum": "12",
+    "verified": "12"
   },
-  "version": "1.7.19"
+  "version": "1.8.1"
 }

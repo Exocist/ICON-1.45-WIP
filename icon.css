@@ -545,7 +545,7 @@ section.bond {
 	justify-content: space-evenly;
 }
 
-.worldbuilding .Wounds i#attributes-Wounds-4 {
+.worldbuilding .Wounds i#attributes-Wounds-3 {
 	color: red;
 }	
 	
@@ -566,7 +566,7 @@ section.bond {
     justify-content: center;
 }
 
-.relics .traitheader span {
+.talents .traitheader span {
     display: flex;
     justify-content: center;
 }

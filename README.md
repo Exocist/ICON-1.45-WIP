@@ -1,3 +1,5 @@
+5/04/2025 - Nearly two whole years since I worked on this. Updated for 2.0 playtest (missing Relicts) and foundry v12.
+
 09/08/2023 - Added tokens for all foe summons
 
 11/07/2023 - Updated default seer deck cards to Theta's cards. Have left Jojo's cards in there in case anyone wants to continue using them.

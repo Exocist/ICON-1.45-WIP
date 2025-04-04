@@ -8,56 +8,35 @@
                 <input name="name" type="text" value="{{data.name}}" placeholder="Name" />
             </h1>
 		</div>
-		<div class="narrative-information icon-header-grid-item-3">
-			<span>{{localize "ICON.Kintype"}}: </span>
-			<input type="text" name="system.attributes.information.kintype.value" placeholder="Arken" value="{{data.system.attributes.information.kintype.value}}"/>
-			<span>{{localize "ICON.Culture"}}: </span>
-			<input type="text" name="system.attributes.information.culture.value" placeholder="Arken" value="{{data.system.attributes.information.culture.value}}"/>
-			<span>{{localize "ICON.Bond"}}: </span>
-			<input type="text" name="system.attributes.information.bond.value" placeholder="Arkenlord" value="{{data.system.attributes.information.bond.value}}"/>
-		</div>
 		<div class="tactical-information icon-header-grid-item-4">
-			<span>{{localize "ICON.Class"}}: </span>
-			<input type="text" name="system.attributes.information.class.value" placeholder="Mendicant" value="{{data.system.attributes.information.class.value}}"/>
-			<span>{{localize "ICON.Job"}}: </span>
-			<input type="text" name="system.attributes.information.job.value" placeholder="Seer" value="{{data.system.attributes.information.job.value}}"/>
-			<span>{{localize "ICON.Level"}}: </span>
+			<span>Role: </span>
+			<input type="text" name="system.attributes.information.role.value" placeholder="Striker" value="{{data.system.attributes.information.role.value}}"/>
+			<span>Class: </span>
+			<input type="text" name="system.attributes.information.class.value" placeholder="Hexer" value="{{data.system.attributes.information.class.value}}"/>
+			<span>Level: </span>
 			<input type="text" name="system.attributes.information.level.value" placeholder="1" value="{{data.system.attributes.information.level.value}}"/>
 		</div>
 		<div class="icon-resource-inputs icon-header-grid-item-5">
             <div class="icon-resource">
-				<label for="data.health.value" class="resource-label">{{localize "ICON.Health"}}</label>
+				<label for="data.health.value" class="resource-label">Health</label>
                 <input type="number" name="system.health.value" value="{{systemData.health.value}}"/>
                 <span> / </span>
                 <input type="number" name="system.health.max" value="{{systemData.health.max}}"/>
             </div>
             <div class="icon-resource">
-				<label for="data.power.value" class="resource-label">{{localize "ICON.JobResource"}}</label>
+				<label for="data.power.value" class="resource-label">Speed</label>
                 <input type="number" name="system.power.value" value="{{systemData.power.value}}"/>
                 <span> / </span>
                 <input type="number" name="system.power.max" value="{{systemData.power.max}}"/>
-            </div>
-			<div class="icon-resource">
-				<label for="data.strain.value" class="resource-label">{{localize "ICON.Strain"}}</label>
-                <input type="number" name="system.strain.value" value="{{systemData.strain.value}}"/>
-                <span> / </span>
-                <input type="number" name="system.strain.max" value="{{systemData.strain.max}}"/>
-            </div>
-            <div class="icon-resource">
-				<label for="data.effort.value" class="resource-label">{{localize "ICON.Effort"}}</label>
-                <input type="number" name="system.effort.value" value="{{systemData.effort.value}}"/>
-                <span> / </span>
-                <input type="number" name="system.effort.max" value="{{systemData.effort.max}}"/>
             </div>
 		</div>
     </header>
 
     {{!-- Sheet Tab Navigation --}}
     <nav class="sheet-tabs tabs" data-group="primary">
-		<a class="item" data-tab="narrative" data-group="primary">{{localize "ICON.Narrative"}}</a>
-        <a class="item" data-tab="traits" data-group="primary">{{localize "ICON.Traits-Talents"}}</a>
-        <a class="item" data-tab="items" data-group="primary">{{localize "ICON.AbilitiesTrophies"}}</a>
-        <a class="item" data-tab="attributes" data-group="primary">{{localize "ICON.Attributes"}}</a>
+        <a class="item" data-tab="traits" data-group="primary">Passives</a>
+        <a class="item" data-tab="items" data-group="primary">Actions</a>
+        <a class="item" data-tab="attributes" data-group="primary">Attributes</a>
     </nav>
 
     {{!-- Sheet Body --}}
@@ -87,7 +66,7 @@
 		<div class="XP-and-Dust">
 		<div class="XP-value">
 		<span>{{localize "ICON.XP"}}</span>
-		{{#times_from_0 3}}
+		{{#times_from_0 15}}
 		<i class="{{#if (eq this 0)}}
 		fab fa-creative-commons-zero
 		{{else if (gte ../actor.system.attributes.information.XP.value this)}}
@@ -220,9 +199,9 @@
                             {{/each}}
                         {{/if}}
                         {{/each}}
-						{{#each item.}}
+						{{#each item.Talents}}
 						<label>
-						<input type="checkbox" data-id="{{item._id}}" class="-checkbox" data-type="{{this.name}}" {{checked this.value }}>
+						<input type="checkbox" data-id="{{item._id}}" class="talent-checkbox" data-type="{{this.name}}" {{checked this.value }}>
 						</label><br>
 						{{/each}}
                     </div>
@@ -245,11 +224,11 @@
 		</div>
         </div>
 		
-		{{!-- Traits & Talents Tab --}}
+		{{!-- Traits & Relics Tab --}}
         <div class="tab traits" data-group="primary" data-tab="traits">
-		<div class="traitsTalents">
+		<div class="traitsrelics">
 		<div class="traitheader">
-		<span>Traits</span>
+		<span>Class Traits</span>
 		</div>
             <ol class="item-list">
                 {{#each data.items as |item id|}}
@@ -290,9 +269,9 @@
                             {{/each}}
                         {{/if}}
                         {{/each}}
-						{{#each item.Usage}}
+						{{#each item.Talents}}
 						<label>
-						<input type="checkbox" data-id="{{item._id}}" class="usage-checkbox" data-type="{{this.name}}" {{checked this.value }}>
+						<input type="checkbox" data-id="{{item._id}}" class="talent-checkbox" data-type="{{this.name}}" {{checked this.value }}>
 						</label><br>
 						{{/each}}
                     </div>
@@ -309,13 +288,13 @@
             </p>
         </div>
 		<hr>
-		<div class="tab talents" data-group="primary" data-tab="traits">
+		<div class="tab relics" data-group="primary" data-tab="traits">
 		<div class="traitheader">
-		<span>Talents<span>
+		<span>Role Traits<span>
 		</div>
             <ol class="item-list">
                 {{#each data.items as |item id|}}
-				{{#if item.isTalent }}
+				{{#if item.isRelic }}
                 <li class="item flexrow" data-item-id="{{item._id}}">
                     <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
                     <h4 class="item-name">{{item.name}}</h4>
@@ -352,63 +331,35 @@
                             {{/each}}
                         {{/if}}
                         {{/each}}
-						{{#each item.Usage}}
+						{{#each item.Talents}}
 						<label>
-						<input type="checkbox" data-id="{{item._id}}" class="usage-checkbox" data-type="{{this.name}}" {{checked this.value }}>
+						<input type="checkbox" data-id="{{item._id}}" class="talent-checkbox" data-type="{{this.name}}" {{checked this.value }}>
 						</label><br>
 						{{/each}}
                     </div>
-                    <div class="talent-controls">
-                        <a class="talent-control" title="{{ localize "SIMPLE.ItemEdit" }}" data-action="edit"><i class="fas fa-edit"></i></a>
-                        <a class="talent-control" title="{{ localize "SIMPLE.ItemDelete" }}" data-action="delete"><i class="fas fa-trash"></i></a>
+                    <div class="relic-controls">
+                        <a class="relic-control" title="{{ localize "SIMPLE.ItemEdit" }}" data-action="edit"><i class="fas fa-edit"></i></a>
+                        <a class="relic-control" title="{{ localize "SIMPLE.ItemDelete" }}" data-action="delete"><i class="fas fa-trash"></i></a>
                     </div>
                 </li>
                 {{/if}}
 				{{/each}}
             </ol>
             <p>
-                <a class="talent-control" title="{{ localize "SIMPLE.ItemCreate" }}" data-action="create"><i class="fas fa-plus"></i> {{ localize "SIMPLE.ItemCreate" }}</a>
+                <a class="relic-control" title="{{ localize "SIMPLE.ItemCreate" }}" data-action="create"><i class="fas fa-plus"></i> {{ localize "SIMPLE.ItemCreate" }}</a>
             </p>
         </div>
 		</div>
 
         {{!-- Abilities & Trophies Tab --}}
         <div class="tab items" data-group="primary" data-tab="items">
-		<div class="CombatBar">
-		<div class="Personal Resolve">
-		<span>Personal Resolve</span>
-		{{#times_from_0 5}}
-		<i class="{{#if (eq this 0)}}
-		fab fa-creative-commons-zero
-		{{else if (gte ../actor.system.attributes.information.PersonalResolve.value this)}}
-		fas fa-circle
-		{{else}}
-		fas fa-circle-dashed
-		{{/if}} click-to-set PersonalResolve-value-{{this}}" data-value="{{this}}" data-stat="system.attributes.information.PersonalResolve.value" id="attributes-PersonalResolve-{{this}}"></i>
-		<label for="attributes-PersonalResolve-{{this}}"></label>
-		{{/times_from_0}}
-		</div>
-		<div class="Wounds">
-		<span>Wounds</span>
-		{{#times_from_0 3}}
-		<i class="{{#if (eq this 0)}}
-		fab fa-creative-commons-zero
-		{{else if (gte ../actor.system.attributes.information.Wounds.value this)}}
-		fas fa-circle
-		{{else}}
-		fas fa-circle-dashed
-		{{/if}} click-to-set Wounds-value-{{this}}" data-value="{{this}}" data-stat="system.attributes.information.Wounds.value" id="attributes-Wounds-{{this}}"></i>
-		<label for="attributes-Wounds-{{this}}"></label>
-		{{/times_from_0}}
-		</div>
-		</div>
 		<div class="abilities">
 		<div class="traitheader">
-		<span>Abilities</span>
+		<span>Class Abilities</span>
 		</div>
             <ol class="item-list">
                 {{#each data.items as |item id|}}
-				{{#if item.isAbility }}
+				{{#if (and (not item.isBondPower) (not item.isTrait) (not item.isCampFixture) (not item.isTrophy) (not item.isRelic)) }}
                 <li class="item flexrow" data-item-id="{{item._id}}">
                     <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" />
                     <h4 class="item-name">{{item.name}}</h4>
@@ -445,9 +396,9 @@
                             {{/each}}
                         {{/if}}
                         {{/each}}
-						{{#each item.Usage}}
+						{{#each item.Talents}}
 						<label>
-						<input type="checkbox" data-id="{{item._id}}" class="usage-checkbox" data-type="{{this.name}}" {{checked this.value }}>
+						<input type="checkbox" data-id="{{item._id}}" class="talent-checkbox" data-type="{{this.name}}" {{checked this.value }}>
 						</label><br>
 						{{/each}}
                     </div>
@@ -466,7 +417,7 @@
 		<hr>
 		<div class="Trophies">
 		<div class="traitheader">
-		<span>Trophies</span>
+		<span>Role Abilities</span>
 		</div>
 		<ol class="item-list">
                 {{#each data.items as |item id|}}
@@ -507,9 +458,9 @@
                             {{/each}}
                         {{/if}}
                         {{/each}}
-						{{#each item.Usage}}
+						{{#each item.Talents}}
 						<label>
-						<input type="checkbox" data-id="{{item._id}}" class="usage-checkbox" data-type="{{this.name}}" {{checked this.value }}>
+						<input type="checkbox" data-id="{{item._id}}" class="talent-checkbox" data-type="{{this.name}}" {{checked this.value }}>
 						</label><br>
 						{{/each}}
                     </div>
