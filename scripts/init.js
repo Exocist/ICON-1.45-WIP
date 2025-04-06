@@ -253,7 +253,7 @@ class ICONSheet extends SimpleActorSheet {
 	  } else if (num >= 0) {
 		  var hitRoll = new Roll(`${1+num}d10kh1`);
 	  } else {
-		  var hitRoll = new Roll(`${1+-1*num}d10kh1`);
+		  var hitRoll = new Roll(`${1+-1*num}d10kl1`);
 	  }
       
 	  await hitRoll.evaluate();
