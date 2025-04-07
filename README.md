@@ -1,3 +1,5 @@
+7/04/2025 - Relicts added
+
 5/04/2025 - Nearly two whole years since I worked on this. Updated for 2.0 playtest (missing Relicts) and foundry v12.
 
 09/08/2023 - Added tokens for all foe summons
