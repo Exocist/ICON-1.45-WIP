@@ -186,7 +186,7 @@
   "download": "https://github.com/Exocist/ICON-1.45-WIP/archive/refs/heads/main.zip",
   "compatibility": {
     "minimum": "11",
-    "verified": "11"
+    "verified": "12"
   },
   "version": "1.7.19"
 }
