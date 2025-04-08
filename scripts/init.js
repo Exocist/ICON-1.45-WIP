@@ -169,6 +169,23 @@ class ICONSheet extends SimpleActorSheet {
     let thtml = await renderTemplate("modules/icon_data/templates/chatcard.hbs", templateData);
 	
 	if (item.system.attributes.Information) {
+		let statuses = [];
+		console.log(this.actor);
+		if (this.actor) this.actor.effects.forEach(x => statuses.push(x.name.toLowerCase()));
+		let targetStatuses = [];
+		if (target) target.actor.effects.forEach(x => targetStatuses.push(x.name.toLowerCase()));
+
+		var atkDefault = 0, effectDefault = 0, damageDefault = 0;
+		if (statuses.length){
+			if (statuses.includes("blind")) atkDefault--;
+			if (statuses.includes("dazed")) damageDefault--;
+			if (statuses.includes("sealed")) effectDefault--;
+			if (statuses.includes("stunned")){ atkDefault--; damageDefault--; effectDefault--; }
+		}
+		if (targetStatuses.length){
+			if (targetStatuses.includes("sealed")) effectDefault++;
+			if (targetStatuses.includes("vulnerable")) damageDefault++;
+		}
 		const HitDamageDice = item.system.attributes.Information.HitDamageDice.value
 		const HitExtraDamage = item.system.attributes.Information.HitExtraDamage.value
 		const MissDamageDice = item.system.attributes.Information.MissDamageDice.value
@@ -181,15 +198,15 @@ class ICONSheet extends SimpleActorSheet {
     <div class="form-fields">
      <div class="form-group">
       <label for="number-of-dice">Attack (+-):</label>
-      <input type="number" id="number-of-dice" value="0"></input>
+      <input type="number" id="number-of-dice" value="${atkDefault}"></input>
       </div>
      <div class="form-group">
       <label for="bonus-damage">Damage (+-):</label>
-      <input type="number" id="bonus-damage" value="0"></input>
+      <input type="number" id="bonus-damage" value="${damageDefault}"></input>
      </div>
 	 <div class="form-group">
       <label for="effect-dice">Effect (+-):</label>
-      <input type="number" id="effect-dice" value="0"></input>
+      <input type="number" id="effect-dice" value="${effectDefault}"></input>
      </div>
 	 <div class="form-group">
       <label for="critnumber">Crit Number:</label>
