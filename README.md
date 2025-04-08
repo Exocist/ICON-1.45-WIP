@@ -1,3 +1,5 @@
+8/04/2025 - Status check added on attacks, thanks Kat from the chasm discord
+
 7/04/2025 - Relicts added
 
 5/04/2025 - Nearly two whole years since I worked on this. Updated for 2.0 playtest (missing Relicts) and foundry v12.
