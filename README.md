@@ -1,3 +1,5 @@
+11/04/2025 - Updated for new basics
+
 8/04/2025 - Status check added on attacks, thanks Kat from the chasm discord
 
 7/04/2025 - Relicts added
