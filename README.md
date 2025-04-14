@@ -1,3 +1,5 @@
+14/04/2025 - Added vigor bar to player/foe sheets and changed default bar brawl configuration to point there instead. Some errors cleaned up.
+
 11/04/2025 - Updated for new basics
 
 8/04/2025 - Status check added on attacks, thanks Kat from the chasm discord

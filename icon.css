@@ -392,16 +392,31 @@ section.bond {
 }
 
 .worldbuilding .icon-resource {
-  width: 25%;
+  width: 20%;
   height: 2.84em;
   margin-top: 0.71em;
   float: left;
   text-align: center;
 }
+
+.worldbuilding .icon-resource-foe {
+  width: 20%;
+  height: 2.84em;
+  margin-top: -0.29em;
+  float: left;
+  text-align: center;
+}
+
 .worldbuilding .icon-resource input {
   width: 1.988em;
   height: 1.988em;
 }
+
+.worldbuilding .icon-resource-foe input {
+  width: 1.988em;
+  height: 1.988em;
+}
+
 .worldbuilding .resource-label {
 	display:flex;
 	flex-flow:row;
