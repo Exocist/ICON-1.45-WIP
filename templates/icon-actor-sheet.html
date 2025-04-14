@@ -7,16 +7,26 @@
             <h1 class="charname">
                 <input name="name" type="text" value="{{data.name}}" placeholder="Name" />
             </h1>
-            <div class="resource">
+		<div class="icon-resource-inputs icon-header-grid-item-5">
+            <div class="icon-resource-foe">
+				<label for="data.health.value" class="resource-label">{{localize "ICON.Health"}}</label>
                 <input type="number" name="system.health.value" value="{{systemData.health.value}}"/>
                 <span> / </span>
                 <input type="number" name="system.health.max" value="{{systemData.health.max}}"/>
             </div>
-            <div class="resource">
+			<div class="icon-resource-foe">
+				<label for="data.vigor.value" class="resource-label">Vigor</label>
+                <input type="number" name="system.vigor.value" value="{{systemData.vigor.value}}"/>
+                <span> / </span>
+                <input type="number" name="system.vigor.max" value="{{systemData.vigor.max}}"/>
+            </div>
+            <div class="icon-resource-foe">
+				<label for="data.power.value" class="resource-label">{{localize "ICON.JobResource"}}</label>
                 <input type="number" name="system.power.value" value="{{systemData.power.value}}"/>
                 <span> / </span>
                 <input type="number" name="system.power.max" value="{{systemData.power.max}}"/>
             </div>
+		</div>
         </div>
     </header>
 
